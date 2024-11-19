@@ -1,0 +1,13 @@
+section#posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    justify-self: center;
+    width: 80%;
+}
+
+.card {
+    border: 1px solid #000;
+    padding: 1rem;
+}

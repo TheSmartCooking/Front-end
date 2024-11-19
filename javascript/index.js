@@ -18,7 +18,7 @@ function createRecipeCardDOM(recipe) {
     card.appendChild(cardBody);
 
     // Create and append the title
-    const title = document.createElement('h5');
+    const title = document.createElement('h1');
     title.className = 'card-title';
     title.textContent = recipe.title;
     cardBody.appendChild(title);
