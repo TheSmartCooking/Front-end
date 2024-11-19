@@ -1,5 +1,5 @@
 // API URL
-const apiUrl = 'http://greenland.myddns.me:58000';
+const apiUrl = 'http://localhost:5000';
 
 // Function to execute scripts in the loaded HTML
 function executeScripts(elementId) {

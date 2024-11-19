@@ -1,3 +1,5 @@
+const postsSection = document.querySelector('section#posts');
+
 // Function to create a card for a recipe
 function createRecipeCardDOM(recipe) {
     // Create the card container
@@ -44,14 +46,14 @@ function createRecipeCardDOM(recipe) {
 }
 
 // Function to load recipes and display them in a specified element
-function loadRecipesAndDisplay(apiEndpoint, targetElementSelector) {
+function loadRecipesAndDisplay(apiEndpoint, targetElement) {
     fetch(apiEndpoint)
         .then(response => response.json())
         .then(data => {
-            const targetElement = document.querySelector(targetElementSelector);
             // Clear the target element first to avoid duplicating content
             targetElement.innerHTML = '';
             data.forEach(recipe => {
+                console.log("recipe", recipe);
                 const cardElement = createRecipeCardDOM(recipe);
                 targetElement.appendChild(cardElement); // Append the card element to the target element
             });
@@ -59,4 +61,4 @@ function loadRecipesAndDisplay(apiEndpoint, targetElementSelector) {
 }
 
 // Load recipes and display them in main
-loadRecipesAndDisplay(apiUrl + '/recipe/list', 'main');
+loadRecipesAndDisplay(apiUrl + '/recipe/list', postsSection);
