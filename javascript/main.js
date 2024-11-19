@@ -12,14 +12,3 @@ function executeScripts(elementId) {
         document.body.removeChild(newScript);
     }
 }
-
-// Function to dynamically load HTML content
-function loadHTML(url, elementId) {
-    fetch(url)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById(elementId).innerHTML = data;
-            executeScripts(elementId);
-        })
-        .catch(error => console.error('Error loading HTML:', error));
-}

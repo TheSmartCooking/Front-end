@@ -58,9 +58,5 @@ function loadRecipesAndDisplay(apiEndpoint, targetElementSelector) {
         });
 }
 
-// Load the header and footer
-loadHTML('resources/html/header.html', 'header');
-loadHTML('resources/html/footer.html', 'footer');
-
 // Load recipes and display them in main
 loadRecipesAndDisplay(apiUrl + '/recipe/list', 'main');
