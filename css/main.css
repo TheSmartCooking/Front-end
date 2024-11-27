@@ -1,3 +1,13 @@
+:root {
+    color-scheme: light dark;
+
+    --icon-size: 2rem;
+    --polaroid-width: 332px;
+    --polaroid-height: 404px;
+    --polaroid-photo-size: 298px;
+    --polaroid-background-color: light-dark(#e9e9e9, #161616);
+}
+
 * {
     font-family: sans-serif;
     margin: 0;

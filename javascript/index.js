@@ -8,39 +8,45 @@ function createRecipeCardDOM(recipe) {
 
     // Create and append the image
     const img = document.createElement('img');
-    img.src = recipe.image;
+    // img.src = recipe.image;
+    img.src = 'https://picsum.photos/300/300';
     img.alt = recipe.title;
     card.appendChild(img);
+
+    // Create and append the title
+    const titleSpan = document.createElement('figcaption');
+    const title = document.createElement('h1');
+    title.textContent = recipe.title ? recipe.title : 'Unknown';
+    titleSpan.appendChild(title);
+    card.appendChild(titleSpan);
 
     // Create and append the card body
     const cardBody = document.createElement('div');
     cardBody.className = 'card-body';
     card.appendChild(cardBody);
 
-    // Create and append the title
-    const title = document.createElement('h1');
-    title.className = 'card-title';
-    title.textContent = recipe.title;
-    cardBody.appendChild(title);
-
     // Create and append the cook time
     const cookTime = document.createElement('p');
-    cookTime.className = 'card-text';
-    cookTime.textContent = `Cook Time: ${recipe.cook_time}`;
+    cookTime.className = 'card-text cook-time';
+    cookTime.textContent = recipe.cook_time ? recipe.cook_time : 'Unknown';
     cardBody.appendChild(cookTime);
 
     // Create and append the difficulty level
     const difficulty = document.createElement('p');
-    difficulty.className = 'card-text';
-    difficulty.textContent = `Difficulty: ${recipe.difficult_level}`;
+    difficulty.className = 'card-text difficulty';
+    difficulty.textContent = recipe.difficult_level ? recipe.difficult_level : 'Unknown';
     cardBody.appendChild(difficulty);
 
-    // Create and append the view recipe link
-    const viewRecipeLink = document.createElement('a');
-    viewRecipeLink.href = `${apiUrl}/recipe/${recipe.recipe_id}`;
-    viewRecipeLink.className = 'btn btn-primary';
-    viewRecipeLink.textContent = 'View Recipe';
-    cardBody.appendChild(viewRecipeLink);
+    // Create and append the difficulty level
+    const author = document.createElement('a');
+    author.className = 'card-text author';
+    author.textContent = recipe.author ? `@${recipe.author}` : 'Unknown';
+    cardBody.appendChild(author);
+
+    card.addEventListener('click', () => {
+        // Open a prompt detailing the recipe
+        alert(`Title: ${recipe.title}\nCook Time: ${recipe.cook_time}\nDifficulty: ${recipe.difficult_level}`);
+    });
 
     return card;
 }
@@ -53,7 +59,6 @@ function loadRecipesAndDisplay(apiEndpoint, targetElement) {
             // Clear the target element first to avoid duplicating content
             targetElement.innerHTML = '';
             data.forEach(recipe => {
-                console.log("recipe", recipe);
                 const cardElement = createRecipeCardDOM(recipe);
                 targetElement.appendChild(cardElement); // Append the card element to the target element
             });

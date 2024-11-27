@@ -8,6 +8,63 @@ section#posts {
 }
 
 .card {
+    align-items: center;
+    background-color: var(--polaroid-background-color);
     border: 1px solid #000;
-    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: var(--polaroid-height);
+    width: var(--polaroid-width);
+}
+
+.card img {
+    min-height: var(--polaroid-photo-size);
+    margin-top: calc((var(--polaroid-width) - var(--polaroid-photo-size)) / 2);
+    object-fit: cover;
+    width: var(--polaroid-photo-size);
+}
+
+.card figcaption {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-body {
+    height: calc(var(--polaroid-photo-size) + (var(--polaroid-width) - var(--polaroid-photo-size)) / 2);
+    position: absolute;
+    width: var(--polaroid-photo-size);
+}
+
+.card-body>* {
+    background-repeat: no-repeat;
+    background-size: var(--icon-size);
+    font-size: calc(var(--icon-size) * 0.75);
+    font-weight: bold;
+    height: var(--icon-size);
+    line-height: var(--icon-size);
+    position: inherit;
+}
+
+.cook-time,
+.difficulty {
+    top: calc((var(--polaroid-width) - var(--polaroid-photo-size)) / 2);
+}
+
+.cook-time {
+    background-image: url("../image/ci--clock.svg");
+    left: 0;
+    padding-left: calc(var(--icon-size) * 1.1);
+}
+
+/* The difficulty will not be displayed for now */
+.difficulty {
+    display: none;
+    right: 0;
+}
+
+.author {
+    bottom: 0;
 }
