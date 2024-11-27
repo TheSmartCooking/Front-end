@@ -68,3 +68,9 @@ section#posts {
 .author {
     bottom: 0;
 }
+
+/* Pseudo-classes */
+
+.cook-time::after {
+    content: "'";
+}
