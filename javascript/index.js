@@ -66,4 +66,4 @@ function loadRecipesAndDisplay(apiEndpoint, targetElement) {
 }
 
 // Load recipes and display them in main
-loadRecipesAndDisplay(apiUrl + '/recipe/list', postsSection);
+loadRecipesAndDisplay(apiUrl + `/recipe/list?locale_code=${getCookie('locale')}`, postsSection);

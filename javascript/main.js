@@ -12,3 +12,28 @@ function executeScripts(elementId) {
         document.body.removeChild(newScript);
     }
 }
+
+function setCookie(name, value, days) {
+    const expires = new Date();
+    expires.setDate(expires.getDate() + days);
+    document.cookie = `${name}=${value}; path=/; expires=${expires.toUTCString()}`;
+}
+
+function getCookie(name) {
+    const foundRow = document.cookie
+        .split('; ')
+        .find(row => row.startsWith(name + '='));
+    return foundRow ? decodeURIComponent(foundRow.split('=')[1]) : null;
+}
+
+
+// Save the current locale to a cookie
+if (!getCookie('locale')) {
+    fetch(apiUrl + '/locale/codes')
+        .then(response => response.json())
+        .then(data => {
+            // Check if the browser locale is supported
+            const browserLocale = navigator.language.replace('-', '_');
+            setCookie('locale', data.includes(browserLocale) ? browserLocale : 'en_US', 365);
+        });
+}
