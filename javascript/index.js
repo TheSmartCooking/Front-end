@@ -45,7 +45,7 @@ function createRecipeCardDOM(recipe) {
 
     card.addEventListener('click', () => {
         // Open a prompt detailing the recipe
-        openModal();
+        openModal(recipe.recipe_id);
     });
 
     return card;
