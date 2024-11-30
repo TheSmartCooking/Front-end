@@ -29,5 +29,5 @@ function enableScroll() {
 
 function openModal() {
     disableScroll();
-    modalContainer.style.display = 'grid';
+    modalContainer.style.display = 'flex';
 }
