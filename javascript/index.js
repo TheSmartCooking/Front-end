@@ -45,7 +45,7 @@ function createRecipeCardDOM(recipe) {
 
     card.addEventListener('click', () => {
         // Open a prompt detailing the recipe
-        alert(`Title: ${recipe.title}\nCook Time: ${recipe.cook_time}\nDifficulty: ${recipe.difficult_level}`);
+        openModal(recipe.recipe_id);
     });
 
     return card;
