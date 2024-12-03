@@ -54,7 +54,7 @@ function createRecipeCardDOM(recipe) {
 // Function to load recipes and display them in a specified element
 function loadRecipesAndDisplay(apiEndpoint, targetElement) {
     // Display the loading spinner
-    postsLoadingSpinner.style.display = 'block';
+    postsLoadingSpinner.classList.remove('hidden');
 
     fetch(apiEndpoint)
         .then(response => response.json())
@@ -66,7 +66,7 @@ function loadRecipesAndDisplay(apiEndpoint, targetElement) {
                 targetElement.appendChild(cardElement);
             });
 
-            postsLoadingSpinner.style.display = 'none';
+            postsLoadingSpinner.classList.add('hidden');
         })
         .catch(error => {
             console.error('Error loading recipes:', error);

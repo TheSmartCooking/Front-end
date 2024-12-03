@@ -27,7 +27,7 @@ window.addEventListener('keydown', function (e) {
 
 function closeModal() {
     enableScroll();
-    modalContainer.style.display = 'none';
+    modalContainer.classList.add('hidden');
 }
 
 function disableScroll() {
@@ -40,9 +40,9 @@ function enableScroll() {
 
 function openModal() {
     disableScroll();
-    modalContainer.style.display = 'flex';
-    modalLoadingSpinner.style.display = 'block';
-    modalBox.style.display = 'none';
+    modalContainer.classList.remove('hidden');
+    modalLoadingSpinner.classList.remove('hidden');
+    modalBox.classList.add('hidden');
 }
 
 function loadModalContent(recipeId) {
@@ -58,8 +58,8 @@ function loadModalContent(recipeId) {
             modalIngredients.innerText = 'TODO';
 
             // Hide the spinner and show the content
-            modalLoadingSpinner.style.display = 'none';
-            modalBox.style.display = 'grid';
+            modalLoadingSpinner.classList.add('hidden');
+            modalBox.classList.remove('hidden');
         })
         .catch(error => {
             console.error('Error loading modal content:', error);

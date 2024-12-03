@@ -49,11 +49,14 @@ header {
     width: 100%;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .loading-spinner {
     background-image: url("/image/eos-icons--loading.svg");
     background-repeat: no-repeat;
     background-size: contain;
-    display: none;
     height: 7rem;
     text-align: center;
     width: 7rem;
