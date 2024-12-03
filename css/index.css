@@ -7,6 +7,10 @@ section#posts {
     width: 80%;
 }
 
+.author {
+    bottom: 0;
+}
+
 .card {
     align-items: center;
     background-color: var(--polaroid-background-color);
@@ -64,10 +68,6 @@ section#posts {
 .difficulty {
     display: none;
     right: 0;
-}
-
-.author {
-    bottom: 0;
 }
 
 /* Pseudo-classes */

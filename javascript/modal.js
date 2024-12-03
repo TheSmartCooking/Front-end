@@ -1,11 +1,11 @@
 const closeButton = document.getElementById('modal-close');
-const loadingSpinner = document.getElementById('loading-spinner');
 const modalBox = document.getElementById('modal-box');
 const modalContainer = document.getElementById('modal-container');
 const modalDetailsAuthor = document.getElementById('modal-details-author');
 const modalDetailsDate = document.getElementById('modal-details-date');
 const modalImageAuthor = document.getElementById('modal-image-author');
 const modalIngredients = document.getElementById('modal-ingredients');
+const modalLoadingSpinner = document.getElementById('modal-loading-spinner');
 const modalRecipe = document.getElementById('modal-recipe');
 const modalTitle = document.getElementById('modal-title');
 
@@ -41,7 +41,7 @@ function enableScroll() {
 function openModal() {
     disableScroll();
     modalContainer.style.display = 'flex';
-    loadingSpinner.style.display = 'block';
+    modalLoadingSpinner.style.display = 'block';
     modalBox.style.display = 'none';
 }
 
@@ -58,11 +58,11 @@ function loadModalContent(recipeId) {
             modalIngredients.innerText = 'TODO';
 
             // Hide the spinner and show the content
-            loadingSpinner.style.display = 'none';
+            modalLoadingSpinner.style.display = 'none';
             modalBox.style.display = 'grid';
         })
         .catch(error => {
             console.error('Error loading modal content:', error);
-            loadingSpinner.textContent = 'Failed to load content.';
+            modalLoadingSpinner.textContent = 'Failed to load recipe.';
         });
 }

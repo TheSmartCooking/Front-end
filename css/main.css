@@ -28,7 +28,11 @@ body {
 }
 
 main {
+    align-items: center;
+    display: flex;
     flex: 1;
+    flex-direction: column;
+    justify-content: center;
     overflow-y: auto;
     width: 100%;
 }
@@ -43,4 +47,14 @@ header {
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+.loading-spinner {
+    background-image: url("/image/eos-icons--loading.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: none;
+    height: 7rem;
+    text-align: center;
+    width: 7rem;
 }
