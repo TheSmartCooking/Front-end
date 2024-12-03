@@ -1,12 +1,13 @@
-const modalContainer = document.getElementById('modal-container');
-const modalBox = document.getElementById('modal-box');
 const closeButton = document.getElementById('modal-close');
-const modalTitle = document.getElementById('modal-title');
+const loadingSpinner = document.getElementById('loading-spinner');
+const modalBox = document.getElementById('modal-box');
+const modalContainer = document.getElementById('modal-container');
 const modalDetailsAuthor = document.getElementById('modal-details-author');
 const modalDetailsDate = document.getElementById('modal-details-date');
 const modalImageAuthor = document.getElementById('modal-image-author');
-const modalRecipe = document.getElementById('modal-recipe');
 const modalIngredients = document.getElementById('modal-ingredients');
+const modalRecipe = document.getElementById('modal-recipe');
+const modalTitle = document.getElementById('modal-title');
 
 closeButton.addEventListener('click', () => {
     closeModal();
@@ -40,8 +41,8 @@ function enableScroll() {
 function openModal() {
     disableScroll();
     modalContainer.style.display = 'flex';
-    document.getElementById('loading-spinner').style.display = 'block';
-    document.getElementById('modal-box').style.display = 'none';
+    loadingSpinner.style.display = 'block';
+    modalBox.style.display = 'none';
 }
 
 function loadModalContent(recipeId) {
@@ -57,11 +58,11 @@ function loadModalContent(recipeId) {
             modalIngredients.innerText = 'TODO';
 
             // Hide the spinner and show the content
-            document.getElementById('loading-spinner').style.display = 'none';
-            document.getElementById('modal-box').style.display = 'grid';
+            loadingSpinner.style.display = 'none';
+            modalBox.style.display = 'grid';
         })
         .catch(error => {
             console.error('Error loading modal content:', error);
-            document.getElementById('loading-spinner').textContent = 'Failed to load content.';
+            loadingSpinner.textContent = 'Failed to load content.';
         });
 }
