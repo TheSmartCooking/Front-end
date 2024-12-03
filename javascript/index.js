@@ -1,5 +1,4 @@
 const postsSection = document.querySelector('section#posts');
-const postsLoadingSpinner = document.getElementById('posts-loading-spinner');
 
 // Function to create a card for a recipe
 function createRecipeCardDOM(recipe) {
@@ -53,8 +52,7 @@ function createRecipeCardDOM(recipe) {
 
 // Function to load recipes and display them in a specified element
 function loadRecipesAndDisplay(apiEndpoint, targetElement) {
-    // Display the loading spinner
-    postsLoadingSpinner.classList.remove('hidden');
+    showSpinner();
 
     fetch(apiEndpoint)
         .then(response => response.json())
@@ -65,14 +63,10 @@ function loadRecipesAndDisplay(apiEndpoint, targetElement) {
                 const cardElement = createRecipeCardDOM(recipe);
                 targetElement.appendChild(cardElement);
             });
-
-            postsLoadingSpinner.classList.add('hidden');
         })
-        .catch(error => {
-            console.error('Error loading recipes:', error);
-            postsLoadingSpinner.textContent = 'Failed to load recipes.';
-        })
+        .catch(error => { console.error('Error loading recipes:', error); })
+        .finally(() => { hideSpinner(); });
 }
 
-// Load recipes and display them in main
+// Load recipes and display them in main once the DOM is loaded
 loadRecipesAndDisplay(apiUrl + `/recipe/list?locale_code=${getCookie('locale')}`, postsSection);

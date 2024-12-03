@@ -37,3 +37,13 @@ if (!getCookie('locale')) {
             setCookie('locale', data.includes(browserLocale) ? browserLocale : 'en_US', 365);
         });
 }
+
+// Function to show the loading spinner
+function showSpinner() {
+    document.getElementById("loading-spinner").classList.remove("hidden");
+}
+
+// Function to hide the loading spinner
+function hideSpinner() {
+    document.getElementById("loading-spinner").classList.add("hidden");
+}

@@ -17,11 +17,9 @@
 
     <main>
         <section id="posts"></section>
-        <span id="posts-loading-spinner" class="loading-spinner" alt="Loading..."></span>
     </main>
 
-    <aside id="modal-container">
-        <span id="modal-loading-spinner" class="loading-spinner" alt="Loading..."></span>
+    <aside id="modal-container" class="hidden">
         <div id="modal-box">
             <button id="modal-close">&Cross;</button>
             <section id="modal-top">
@@ -40,6 +38,8 @@
             </section>
         </div>
     </aside>
+
+    <aside id="loading-spinner"><span id="spinner"></span></aside>
 
     <footer id="footer-copyright">Smart Cooking &copy; <span id="copyright-year"></span>. All rights reserved.</footer>
 

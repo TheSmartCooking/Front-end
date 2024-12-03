@@ -5,7 +5,6 @@ const modalDetailsAuthor = document.getElementById('modal-details-author');
 const modalDetailsDate = document.getElementById('modal-details-date');
 const modalImageAuthor = document.getElementById('modal-image-author');
 const modalIngredients = document.getElementById('modal-ingredients');
-const modalLoadingSpinner = document.getElementById('modal-loading-spinner');
 const modalRecipe = document.getElementById('modal-recipe');
 const modalTitle = document.getElementById('modal-title');
 
@@ -40,8 +39,8 @@ function enableScroll() {
 
 function openModal() {
     disableScroll();
+    showSpinner();
     modalContainer.classList.remove('hidden');
-    modalLoadingSpinner.classList.remove('hidden');
     modalBox.classList.add('hidden');
 }
 
@@ -56,13 +55,10 @@ function loadModalContent(recipeId) {
             modalImageAuthor.innerText = 'TODO';
             modalRecipe.innerText = recipe.preparation;
             modalIngredients.innerText = 'TODO';
-
-            // Hide the spinner and show the content
-            modalLoadingSpinner.classList.add('hidden');
-            modalBox.classList.remove('hidden');
         })
-        .catch(error => {
-            console.error('Error loading modal content:', error);
-            modalLoadingSpinner.textContent = 'Failed to load recipe.';
+        .catch(error => { console.error('Error loading modal content:', error); })
+        .finally(() => {
+            hideSpinner();
+            modalBox.classList.remove('hidden');
         });
 }

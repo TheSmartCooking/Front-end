@@ -19,7 +19,6 @@
 
 body {
     align-items: center;
-    background-color: var(--background-color-primary);
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -53,11 +52,34 @@ header {
     display: none !important;
 }
 
-.loading-spinner {
-    background-image: url("/image/eos-icons--loading.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 7rem;
-    text-align: center;
+#loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 1000;
+}
+
+#spinner {
     width: 7rem;
+    height: 7rem;
+    border: 1rem solid #888;
+    border-top: 1rem solid var(--polaroid-background-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
