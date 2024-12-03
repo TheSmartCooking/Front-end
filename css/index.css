@@ -20,7 +20,7 @@ section#posts {
 
 .card img {
     min-height: var(--polaroid-photo-size);
-    margin-top: calc((var(--polaroid-width) - var(--polaroid-photo-size)) / 2);
+    margin-top: var(--polaroid-margin-top);
     object-fit: cover;
     width: var(--polaroid-photo-size);
 }
@@ -51,7 +51,7 @@ section#posts {
 
 .cook-time,
 .difficulty {
-    top: calc((var(--polaroid-width) - var(--polaroid-photo-size)) / 2);
+    top: var(--polaroid-margin-top);
 }
 
 .cook-time {

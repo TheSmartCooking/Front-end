@@ -1,5 +1,4 @@
 #loading-spinner {
-    background-color: #000;
     display: none;
 }
 
@@ -17,9 +16,9 @@
 }
 
 #modal-box {
-    background-color: #000;
+    background-color: var(--polaroid-background-color);
     border-radius: 15px;
-    box-shadow: #fff 0 0 10px;
+    box-shadow: var(--polaroid-background-color) 0 0 10px;
     display: grid;
     gap: 1rem;
     grid-template-rows: auto 1fr;
@@ -53,12 +52,12 @@
 
 #modal-top {
     grid-area: modal-top;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #888;
 }
 
 #modal-left {
     grid-area: modal-left;
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #888;
     width: 100%;
 }
 
@@ -83,6 +82,6 @@
 
     #modal-left {
         border-right: none;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #888;
     }
 }
