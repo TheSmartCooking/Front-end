@@ -1,3 +1,9 @@
+/* Loading spinner */
+#loading-spinner {
+    background-color: #000;
+    display: none;
+}
+
 /* Modal close button */
 #modal-close {
     background: none;

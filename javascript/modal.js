@@ -18,6 +18,12 @@ window.addEventListener('click', function (e) {
     }
 });
 
+window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+
 function closeModal() {
     enableScroll();
     modalContainer.style.display = 'none';
@@ -31,13 +37,15 @@ function enableScroll() {
     document.body.style.overflow = 'auto';
 }
 
-function openModal(recipeId) {
-    loadModal(recipeId);
+function openModal() {
     disableScroll();
     modalContainer.style.display = 'flex';
+    document.getElementById('loading-spinner').style.display = 'block';
+    document.getElementById('modal-box').style.display = 'none';
 }
 
-function loadModal(recipeId) {
+function loadModalContent(recipeId) {
+    openModal();
     fetch(`${apiUrl}/recipe/${recipeId}`)
         .then(response => response.json())
         .then(recipe => {
@@ -47,5 +55,13 @@ function loadModal(recipeId) {
             modalImageAuthor.innerText = 'TODO';
             modalRecipe.innerText = recipe.preparation;
             modalIngredients.innerText = 'TODO';
+
+            // Hide the spinner and show the content
+            document.getElementById('loading-spinner').style.display = 'none';
+            document.getElementById('modal-box').style.display = 'grid';
+        })
+        .catch(error => {
+            console.error('Error loading modal content:', error);
+            document.getElementById('loading-spinner').textContent = 'Failed to load content.';
         });
 }
