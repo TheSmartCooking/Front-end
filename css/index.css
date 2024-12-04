@@ -42,7 +42,7 @@ section#posts {
 .card-body * {
     background-repeat: no-repeat;
     background-size: var(--icon-size);
-    filter: drop-shadow(2px 2px 5px light-dark(#fff, #000));
+    filter: drop-shadow(0 0 0.5rem light-dark(#fff, #000));
     font-size: calc(var(--icon-size) * 0.75);
     font-weight: bold;
     height: var(--icon-size);
