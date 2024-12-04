@@ -6,8 +6,8 @@ const loginForm = document.getElementById('login-form');
 const loginSection = document.getElementById('login');
 const registerForm = document.getElementById('register-form');
 const registerSection = document.getElementById('register');
-const passwordFeedback = document.getElementById('password-feedback');
 const passwordInput = document.getElementById('register-password');
+const passwordConfirmInput = document.getElementById('register-password-confirm');
 const passwordStrengthBar = document.getElementById('password-strength');
 
 loginForm.addEventListener('submit', (e) => {
@@ -138,5 +138,31 @@ passwordInput.addEventListener("keyup", () => {
     // Update the strength bar
     passwordStrengthBar.max = maxPoints;
     passwordStrengthBar.value = metCriteriaCount;
-    passwordFeedback.style.display = metCriteriaCount > 0 ? "flex" : "none";
+
+    if (metCriteriaCount > 0) {
+        passwordStrengthBar.classList.remove("hidden");
+    } else {
+        passwordStrengthBar.classList.add("hidden");
+    }
+
+    if (metCriteriaCount === maxPoints) {
+        passwordInput.classList.add("valid");
+        passwordInput.classList.remove("invalid");
+    } else {
+        passwordInput.classList.add("invalid");
+        passwordInput.classList.remove("valid");
+    }
+});
+
+passwordConfirmInput.addEventListener("keyup", () => {
+    const password = passwordInput.value;
+    const passwordConfirm = passwordConfirmInput.value;
+
+    if (password === passwordConfirm) {
+        passwordConfirmInput.classList.add("valid");
+        passwordConfirmInput.classList.remove("invalid");
+    } else {
+        passwordConfirmInput.classList.add("invalid");
+        passwordConfirmInput.classList.remove("valid");
+    }
 });

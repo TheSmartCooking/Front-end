@@ -78,25 +78,26 @@ section {
     transform: rotateY(180deg);
 }
 
-#password-feedback {
-    display: none;
-    flex-direction: row-reverse;
-    gap: 1rem;
-    width: 100%;
-}
-
 #password-strength {
-    flex: 1;
+    appearance: none;
+    height: 0.5rem;
+    width: 100%;
 }
 
 /* Pseudo classes */
 
-input:user-valid {
-    border: 1px solid green;
+input:user-valid,
+input.valid {
     background-color: rgb(0 255 0 / 5%);
+    border: 1px solid green;
+    box-sizing: border-box;
+    width: 100%;
 }
 
-input:user-invalid {
-    border: 1px solid red;
+input:user-invalid,
+input.invalid {
     background-color: rgb(255 0 0 / 5%);
+    border: 1px solid red;
+    box-sizing: border-box;
+    width: 100%;
 }
