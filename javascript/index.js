@@ -46,6 +46,12 @@ function createRecipeCardDOM(recipe) {
     author.textContent = recipe.author ? `@${recipe.author}` : 'Unknown';
     cardBottom.appendChild(author);
 
+    // Create and append the status in the bottom div
+    const status = document.createElement('p');
+    status.className = 'card-text status';
+    status.textContent = recipe.status ? recipe.status : 'Unknown';
+    cardBottom.appendChild(status);
+
     card.addEventListener('click', () => {
         loadModalContent(recipe.recipe_id);
     });

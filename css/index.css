@@ -7,10 +7,6 @@ section#posts {
     width: 80%;
 }
 
-.author {
-    bottom: 0;
-}
-
 .card {
     align-items: center;
     background-color: var(--polaroid-background-color);
@@ -60,8 +56,9 @@ section#posts {
     padding-left: calc(var(--icon-size) * 1.1);
 }
 
-/* The difficulty will not be displayed for now */
-.difficulty {
+/* The difficulty and status will not be displayed for now */
+.difficulty,
+.status {
     display: none;
 }
 
