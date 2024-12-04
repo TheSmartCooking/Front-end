@@ -115,50 +115,59 @@ showPasswordChecks.forEach(checkbox => {
     });
 });
 
-passwordInput.addEventListener("keyup", () => {
-    /*
-    Rates a password based on the following criteria:
-    - At least 12 characters long.
-    - Contains at least one uppercase letter(A - Z).
-    - Contains at least one lowercase letter(a - z).
-    - Contains at least one digit(0 - 9).
-    - Contains at least one special character(any non - alphanumeric character).
-    */
+// Function to evaluate password strength and apply classes
+function evaluatePasswordStrength(passwordElement, strengthBar) {
     const maxPoints = 5;
-    let password = passwordInput.value;
+    let password = passwordElement.value;
+
     const criteria = {
         length: password.length >= 12,
         uppercase: /[A-Z]/.test(password),
         lowercase: /[a-z]/.test(password),
         digit: /[0-9]/.test(password),
-        special: /[^A-Za-z0-9]/.test(password)
-    }
+        special: /[^A-Za-z0-9]/.test(password),
+    };
+
     const metCriteriaCount = Object.values(criteria).filter(Boolean).length;
 
-    // Update the strength bar
-    passwordStrengthBar.max = maxPoints;
-    passwordStrengthBar.value = metCriteriaCount;
+    // Update the strength bar if provided
+    if (strengthBar) {
+        strengthBar.max = maxPoints;
+        strengthBar.value = metCriteriaCount;
 
-    if (metCriteriaCount > 0) {
-        passwordStrengthBar.classList.remove("hidden");
-    } else {
-        passwordStrengthBar.classList.add("hidden");
+        if (metCriteriaCount > 0) {
+            strengthBar.classList.remove("hidden");
+        } else {
+            strengthBar.classList.add("hidden");
+        }
     }
 
-    if (metCriteriaCount === maxPoints) {
-        passwordInput.classList.add("valid");
-        passwordInput.classList.remove("invalid");
+    if (password.length === 0) {
+        passwordElement.classList.remove("valid");
+        passwordElement.classList.remove("invalid");
+    } else if (metCriteriaCount === maxPoints) {
+        passwordElement.classList.add("valid");
+        passwordElement.classList.remove("invalid");
     } else {
-        passwordInput.classList.add("invalid");
-        passwordInput.classList.remove("valid");
+        passwordElement.classList.add("invalid");
+        passwordElement.classList.remove("valid");
     }
+}
+
+[passwordInput, loginForm['login-password']].forEach(input => {
+    input.addEventListener("keyup", function () {
+        evaluatePasswordStrength(this, passwordStrengthBar);
+    });
 });
 
 passwordConfirmInput.addEventListener("keyup", () => {
     const password = passwordInput.value;
     const passwordConfirm = passwordConfirmInput.value;
 
-    if (password === passwordConfirm) {
+    if (passwordConfirm.length === 0) {
+        passwordConfirmInput.classList.remove("valid");
+        passwordConfirmInput.classList.remove("invalid");
+    } else if (password === passwordConfirm) {
         passwordConfirmInput.classList.add("valid");
         passwordConfirmInput.classList.remove("invalid");
     } else {
