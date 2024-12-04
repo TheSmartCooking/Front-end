@@ -44,8 +44,7 @@ function createRecipeCardDOM(recipe) {
     cardBody.appendChild(author);
 
     card.addEventListener('click', () => {
-        // Open a prompt detailing the recipe
-        openModal(recipe.recipe_id);
+        loadModalContent(recipe.recipe_id);
     });
 
     return card;
@@ -53,6 +52,8 @@ function createRecipeCardDOM(recipe) {
 
 // Function to load recipes and display them in a specified element
 function loadRecipesAndDisplay(apiEndpoint, targetElement) {
+    showSpinner();
+
     fetch(apiEndpoint)
         .then(response => response.json())
         .then(data => {
@@ -60,10 +61,12 @@ function loadRecipesAndDisplay(apiEndpoint, targetElement) {
             targetElement.innerHTML = '';
             data.forEach(recipe => {
                 const cardElement = createRecipeCardDOM(recipe);
-                targetElement.appendChild(cardElement); // Append the card element to the target element
+                targetElement.appendChild(cardElement);
             });
-        });
+        })
+        .catch(error => { console.error('Error loading recipes:', error); })
+        .finally(() => { hideSpinner(); });
 }
 
-// Load recipes and display them in main
+// Load recipes and display them in main once the DOM is loaded
 loadRecipesAndDisplay(apiUrl + `/recipe/list?locale_code=${getCookie('locale')}`, postsSection);

@@ -7,6 +7,10 @@ section#posts {
     width: 80%;
 }
 
+.author {
+    bottom: 0;
+}
+
 .card {
     align-items: center;
     background-color: var(--polaroid-background-color);
@@ -20,7 +24,7 @@ section#posts {
 
 .card img {
     min-height: var(--polaroid-photo-size);
-    margin-top: calc((var(--polaroid-width) - var(--polaroid-photo-size)) / 2);
+    margin-top: var(--polaroid-margin-top);
     object-fit: cover;
     width: var(--polaroid-photo-size);
 }
@@ -51,7 +55,7 @@ section#posts {
 
 .cook-time,
 .difficulty {
-    top: calc((var(--polaroid-width) - var(--polaroid-photo-size)) / 2);
+    top: var(--polaroid-margin-top);
 }
 
 .cook-time {
@@ -64,10 +68,6 @@ section#posts {
 .difficulty {
     display: none;
     right: 0;
-}
-
-.author {
-    bottom: 0;
 }
 
 /* Pseudo-classes */
