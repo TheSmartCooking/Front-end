@@ -6,8 +6,8 @@ const loginForm = document.getElementById('login-form');
 const loginSection = document.getElementById('login');
 const registerForm = document.getElementById('register-form');
 const registerSection = document.getElementById('register');
-const passwordInput = document.getElementById('register-password');
 const passwordConfirmInput = document.getElementById('register-password-confirm');
+const passwordInput = document.getElementById('register-password');
 const passwordStrengthBar = document.getElementById('password-strength');
 
 loginForm.addEventListener('submit', (e) => {
