@@ -62,7 +62,7 @@ section#posts {
 
 /* The difficulty will not be displayed for now */
 .difficulty {
-    /* display: none; */
+    display: none;
 }
 
 /* Pseudo-classes */
