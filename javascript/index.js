@@ -6,12 +6,11 @@ function createRecipeCardDOM(recipe) {
     const card = document.createElement('div');
     card.className = 'card';
 
-    // Create and append the image
-    const img = document.createElement('img');
-    // img.src = recipe.image;
-    img.src = 'https://picsum.photos/300/300';
-    img.alt = recipe.title;
-    card.appendChild(img);
+    // Create and append the card body
+    const cardBody = document.createElement('div');
+    cardBody.className = 'card-body';
+    cardBody.style.backgroundImage = 'url(' + 'https://picsum.photos/300/300' + ')';
+    card.appendChild(cardBody);
 
     // Create and append the title
     const titleSpan = document.createElement('figcaption');
@@ -20,28 +19,38 @@ function createRecipeCardDOM(recipe) {
     titleSpan.appendChild(title);
     card.appendChild(titleSpan);
 
-    // Create and append the card body
-    const cardBody = document.createElement('div');
-    cardBody.className = 'card-body';
-    card.appendChild(cardBody);
+    // Create top and bottom divs for the card body
+    const cardTop = document.createElement('div');
+    cardTop.className = 'card-top';
+    cardBody.appendChild(cardTop);
 
-    // Create and append the cook time
+    const cardBottom = document.createElement('div');
+    cardBottom.className = 'card-bottom';
+    cardBody.appendChild(cardBottom);
+
+    // Create and append the cook time in the top div
     const cookTime = document.createElement('p');
     cookTime.className = 'card-text cook-time';
     cookTime.textContent = recipe.cook_time ? recipe.cook_time : 'Unknown';
-    cardBody.appendChild(cookTime);
+    cardTop.appendChild(cookTime);
 
-    // Create and append the difficulty level
+    // Create and append the difficulty level in the top div
     const difficulty = document.createElement('p');
     difficulty.className = 'card-text difficulty';
     difficulty.textContent = recipe.difficult_level ? recipe.difficult_level : 'Unknown';
-    cardBody.appendChild(difficulty);
+    cardTop.appendChild(difficulty);
 
-    // Create and append the difficulty level
+    // Create and append the author in the bottom div
     const author = document.createElement('a');
     author.className = 'card-text author';
     author.textContent = recipe.author ? `@${recipe.author}` : 'Unknown';
-    cardBody.appendChild(author);
+    cardBottom.appendChild(author);
+
+    // Create and append the status in the bottom div
+    const status = document.createElement('p');
+    status.className = 'card-text status';
+    status.textContent = recipe.status ? recipe.status : 'Unknown';
+    cardBottom.appendChild(status);
 
     card.addEventListener('click', () => {
         loadModalContent(recipe.recipe_id);

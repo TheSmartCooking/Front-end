@@ -7,10 +7,6 @@ section#posts {
     width: 80%;
 }
 
-.author {
-    bottom: 0;
-}
-
 .card {
     align-items: center;
     background-color: var(--polaroid-background-color);
@@ -22,13 +18,6 @@ section#posts {
     width: var(--polaroid-width);
 }
 
-.card img {
-    min-height: var(--polaroid-photo-size);
-    margin-top: var(--polaroid-margin-top);
-    object-fit: cover;
-    width: var(--polaroid-photo-size);
-}
-
 .card figcaption {
     height: 100%;
     display: flex;
@@ -37,37 +26,40 @@ section#posts {
 }
 
 .card-body {
-    height: calc(var(--polaroid-photo-size) + (var(--polaroid-width) - var(--polaroid-photo-size)) / 2);
-    position: absolute;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: var(--polaroid-margin-top);
+    min-height: var(--polaroid-photo-size);
     width: var(--polaroid-photo-size);
 }
 
-.card-body>* {
+.card-body * {
     background-repeat: no-repeat;
     background-size: var(--icon-size);
-    filter: drop-shadow(2px 2px 5px light-dark(#fff, #000));
+    filter: drop-shadow(0 0 0.5rem light-dark(#fff, #000));
     font-size: calc(var(--icon-size) * 0.75);
     font-weight: bold;
     height: var(--icon-size);
     line-height: var(--icon-size);
-    position: inherit;
 }
 
-.cook-time,
-.difficulty {
-    top: var(--polaroid-margin-top);
+.card-top,
+.card-bottom {
+    display: flex;
+    justify-content: space-between;
 }
 
 .cook-time {
     background-image: url("../image/ci--clock.svg");
-    left: 0;
     padding-left: calc(var(--icon-size) * 1.1);
 }
 
-/* The difficulty will not be displayed for now */
-.difficulty {
+/* The difficulty and status will not be displayed for now */
+.difficulty,
+.status {
     display: none;
-    right: 0;
 }
 
 /* Pseudo-classes */
