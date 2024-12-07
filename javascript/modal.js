@@ -46,7 +46,7 @@ function openModal() {
 
 function loadModalContent(recipeId) {
     openModal();
-    fetch(`${apiUrl}/recipe/${recipeId}`)
+    fetch(`${API_BASE_URL}/recipe/${recipeId}`)
         .then(response => response.json())
         .then(recipe => {
             modalTitle.innerText = recipe.title;

@@ -78,4 +78,4 @@ function loadRecipesAndDisplay(apiEndpoint, targetElement) {
 }
 
 // Load recipes and display them in main once the DOM is loaded
-loadRecipesAndDisplay(apiUrl + `/recipe/list?locale_code=${getCookie('locale')}`, postsSection);
+loadRecipesAndDisplay(API_BASE_URL + `/recipe/list?locale_code=${getCookie('locale')}`, postsSection);

@@ -1,5 +1,5 @@
 // API URL
-const apiUrl = 'http://localhost:5000';
+const API_BASE_URL = 'http://localhost:5000';
 
 // Function to execute scripts in the loaded HTML
 function executeScripts(elementId) {
@@ -29,7 +29,7 @@ function getCookie(name) {
 
 // Save the current locale to a cookie
 if (!getCookie('locale')) {
-    fetch(apiUrl + '/locale/codes')
+    fetch(API_BASE_URL + '/locale/codes')
         .then(response => response.json())
         .then(data => {
             // Check if the browser locale is supported
