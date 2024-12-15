@@ -49,11 +49,12 @@ function loadModalContent(recipeId) {
     fetch(`${API_BASE_URL}/recipe/${recipeId}`)
         .then(response => response.json())
         .then(recipe => {
-            modalTitle.innerText = recipe.title;
-            modalDetailsAuthor.innerText = recipe.author_name;
-            modalDetailsDate.innerText = recipe.modification_date ? recipe.modification_date : recipe.publication_date;
+            const { title, author_name, modification_date, publication_date, preparation } = recipe.data;
+            modalTitle.innerText = title;
+            modalDetailsAuthor.innerText = author_name;
+            modalDetailsDate.innerText = modification_date ? modification_date : publication_date;
             modalImageAuthor.innerText = 'TODO';
-            modalRecipe.innerText = recipe.preparation;
+            modalRecipe.innerText = preparation;
             modalIngredients.innerText = 'TODO';
         })
         .catch(error => { console.error('Error loading modal content:', error); })

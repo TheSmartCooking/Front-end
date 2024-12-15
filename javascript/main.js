@@ -29,13 +29,8 @@ function getCookie(name) {
 
 // Save the current locale to a cookie
 if (!getCookie('locale')) {
-    fetch(API_BASE_URL + '/locale/codes')
-        .then(response => response.json())
-        .then(data => {
-            // Check if the browser locale is supported
-            const browserLocale = navigator.language.replace('-', '_');
-            setCookie('locale', data.includes(browserLocale) ? browserLocale : 'en_US', 365);
-        });
+    const userLanguageCode = (navigator.language || navigator.userLanguage).split('-')[0];
+    setCookie('locale', userLanguageCode, 365);
 }
 
 // Function to show the loading spinner

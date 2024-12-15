@@ -43,7 +43,7 @@ function createRecipeCardDOM(recipe) {
     // Create and append the author in the bottom div
     const author = document.createElement('a');
     author.className = 'card-text author';
-    author.textContent = recipe.author ? `@${recipe.author}` : 'Unknown';
+    author.textContent = recipe.author_name ? `@${recipe.author_name}` : 'Unknown';
     cardBottom.appendChild(author);
 
     // Create and append the status in the bottom div
@@ -68,7 +68,7 @@ function loadRecipesAndDisplay(apiEndpoint, targetElement) {
         .then(data => {
             // Clear the target element first to avoid duplicating content
             targetElement.innerHTML = '';
-            data.forEach(recipe => {
+            data.data.forEach(recipe => {
                 const cardElement = createRecipeCardDOM(recipe);
                 targetElement.appendChild(cardElement);
             });
@@ -78,4 +78,4 @@ function loadRecipesAndDisplay(apiEndpoint, targetElement) {
 }
 
 // Load recipes and display them in main once the DOM is loaded
-loadRecipesAndDisplay(API_BASE_URL + `/recipe/list?locale_code=${getCookie('locale')}`, postsSection);
+loadRecipesAndDisplay(API_BASE_URL + `/recipe/all?locale=${getCookie('locale')}`, postsSection);
