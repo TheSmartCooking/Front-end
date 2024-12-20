@@ -1,4 +1,8 @@
+// Constant to remember if the user is logged in
+const isLoggedIn = getCookie('access_token') ? true : false;
+
 const postsSection = document.querySelector('section#posts');
+const account = document.getElementById('account');
 
 // Function to create a card for a recipe
 function createRecipeCardDOM(recipe) {
@@ -79,3 +83,38 @@ function loadRecipesAndDisplay(apiEndpoint, targetElement) {
 
 // Load recipes and display them in main once the DOM is loaded
 loadRecipesAndDisplay(API_BASE_URL + `/recipe/all?locale=${getCookie('locale')}`, postsSection);
+
+account.addEventListener('click', () => {
+    if (isLoggedIn) {
+        // Refresh the token to extend the session
+        fetch(API_BASE_URL + '/auth/refresh', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${getCookie('refresh_token')}`
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                setCookie('access_token', data.data.access_token);
+            })
+            .catch(error => { console.error('Error refreshing token:', error); })
+            .finally(() => { window.location.href = 'account.html'; });
+
+    } else {
+        window.location.href = 'authentication.html';
+    }
+});
+
+if (isLoggedIn) {
+    const token = JSON.parse(atob(getCookie('access_token').split('.')[1]));
+    const personId = token.person_id;
+
+    fetch(API_BASE_URL + `/person/${personId}`)
+        .then(response => response.json())
+        .then(data => {
+            const person = data.data;
+            account.title = person.person_name;
+        })
+        .catch(error => { console.error('Error loading person:', error); });
+}
