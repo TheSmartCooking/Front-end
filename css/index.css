@@ -10,11 +10,12 @@ section#posts {
 .card {
     align-items: center;
     background-color: var(--polaroid-background-color);
-    border: 1px solid #000;
+    border: 1px solid #888;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     height: var(--polaroid-height);
+    user-select: none;
     width: var(--polaroid-width);
 }
 
@@ -62,7 +63,22 @@ section#posts {
     display: none;
 }
 
+#account {
+    background-image: url(/image/tabler--user-circle.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    display: flex;
+    height: 2.5em;
+    width: 2.5em;
+}
+
 /* Pseudo-classes */
+
+.card:hover {
+    filter: brightness(1.1);
+    transform: rotate(2deg);
+}
 
 .cook-time::after {
     content: "'";

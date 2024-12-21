@@ -58,16 +58,6 @@ header {
     display: none !important;
 }
 
-#account {
-    background-image: url(/image/tabler--user-circle.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    cursor: pointer;
-    display: flex;
-    height: 2.5em;
-    width: 2.5em;
-}
-
 #loading-spinner {
     position: fixed;
     top: 0;
