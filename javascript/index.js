@@ -1,5 +1,5 @@
 // Constant to remember if the user is logged in
-const isLoggedIn = getCookie('access_token') ? true : false;
+const isLoggedIn = getCookie('refresh_token') ? true : false;
 
 const postsSection = document.querySelector('section#posts');
 const account = document.getElementById('account');
