@@ -1,4 +1,31 @@
+// Constant to remember if the user is logged in
+const isLoggedIn = getCookie('access_token') ? true : false;
+
 const postsSection = document.querySelector('section#posts');
+const account = document.getElementById('account');
+
+function createCookTimeIcon() {
+    const svgNS = "http://www.w3.org/2000/svg"; // SVG namespace
+
+    // Create the SVG element
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('xmlns', svgNS);
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('class', 'cook-time-icon');
+
+    // Create the path element
+    const path = document.createElementNS(svgNS, 'path');
+    path.setAttribute('fill', 'none');
+    path.setAttribute('stroke-linecap', 'round');
+    path.setAttribute('stroke-linejoin', 'round');
+    path.setAttribute('stroke-width', '2');
+    path.setAttribute('d', 'M12 7v5h5m-5 9a9 9 0 1 1 0-18a9 9 0 0 1 0 18');
+
+    // Append the path to the SVG
+    svg.appendChild(path);
+
+    return svg;
+}
 
 // Function to create a card for a recipe
 function createRecipeCardDOM(recipe) {
@@ -29,10 +56,16 @@ function createRecipeCardDOM(recipe) {
     cardBody.appendChild(cardBottom);
 
     // Create and append the cook time in the top div
-    const cookTime = document.createElement('p');
+    const cookTime = document.createElement('span');
     cookTime.className = 'card-text cook-time';
-    cookTime.textContent = recipe.cook_time ? recipe.cook_time : 'Unknown';
+    const cookTimeIcon = createCookTimeIcon();
+    const cookTimeText = document.createElement('span');
+    cookTimeText.textContent = recipe.cook_time ? recipe.cook_time : 'Unknown';
+    cookTime.appendChild(cookTimeIcon);
+    cookTime.appendChild(cookTimeText);
     cardTop.appendChild(cookTime);
+
+    // Create and append the cook time icon in the top div
 
     // Create and append the difficulty level in the top div
     const difficulty = document.createElement('p');
@@ -79,3 +112,38 @@ function loadRecipesAndDisplay(apiEndpoint, targetElement) {
 
 // Load recipes and display them in main once the DOM is loaded
 loadRecipesAndDisplay(API_BASE_URL + `/recipe/all?locale=${getCookie('locale')}`, postsSection);
+
+account.addEventListener('click', () => {
+    if (isLoggedIn) {
+        // Refresh the token to extend the session
+        fetch(API_BASE_URL + '/auth/refresh', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${getCookie('refresh_token')}`
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                setCookie('access_token', data.data.access_token);
+            })
+            .catch(error => { console.error('Error refreshing token:', error); })
+            .finally(() => { window.location.href = 'account.html'; });
+
+    } else {
+        window.location.href = 'authentication.html';
+    }
+});
+
+if (isLoggedIn) {
+    const token = JSON.parse(atob(getCookie('access_token').split('.')[1]));
+    const personId = token.person_id;
+
+    fetch(API_BASE_URL + `/person/${personId}`)
+        .then(response => response.json())
+        .then(data => {
+            const person = data.data;
+            account.title = person.person_name;
+        })
+        .catch(error => { console.error('Error loading person:', error); });
+}

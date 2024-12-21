@@ -13,10 +13,14 @@ function executeScripts(elementId) {
     }
 }
 
-function setCookie(name, value, days) {
-    const expires = new Date();
-    expires.setDate(expires.getDate() + days);
-    document.cookie = `${name}=${value}; path=/; expires=${expires.toUTCString()}`;
+function setCookie(name, value, expiresDays) {
+    let cookie = `${name}=${value}; path=/;`;
+    if (expiresDays) {
+        const expires = new Date();
+        expires.setDate(expires.getDate() + expiresDays);
+        cookie += ` expires=${expires.toUTCString()};`;
+    }
+    document.cookie = cookie;
 }
 
 function getCookie(name) {

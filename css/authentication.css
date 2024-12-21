@@ -34,13 +34,7 @@ form {
 
 form>div {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    gap: calc(var(--gap) / 2);
-}
-
-form>div>div {
-    display: flex;
 }
 
 input {
@@ -48,6 +42,10 @@ input {
     border: none;
     border-radius: var(--border-radius);
     width: calc(100% - 0.5rem * 2);
+}
+
+main {
+    justify-content: center;
 }
 
 section {

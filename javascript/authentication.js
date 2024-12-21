@@ -16,7 +16,7 @@ loginForm.addEventListener('submit', (e) => {
     const email = loginForm['login-email'].value;
     const password = loginForm['login-password'].value;
 
-    fetch(`${API_BASE_URL}/authentication/login`, {
+    fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email, password: password })
@@ -28,14 +28,11 @@ loginForm.addEventListener('submit', (e) => {
             if (data.success) {
                 const accessToken = data.data.access_token;
                 const refreshToken = data.data.refresh_token;
-                console.log('Access Token:', accessToken);
-                console.log('Refresh Token:', refreshToken);
 
-                // Optionally store tokens in localStorage
-                // localStorage.setItem('access_token', accessToken);
-                // localStorage.setItem('refresh_token', refreshToken);
+                setCookie('access_token', accessToken, 0);
+                setCookie('refresh_token', refreshToken, 30);
 
-                alert('Login successful!');
+                document.location.href = '/index.html';
             } else {
                 const errorMessage = data.data.message || 'Login failed for an unknown reason.';
                 console.error('Login failed:', errorMessage);
@@ -55,10 +52,10 @@ registerForm.addEventListener('submit', (e) => {
     const email = registerForm['register-email'].value;
     const password = registerForm['register-password'].value;
 
-    fetch(`${API_BASE_URL}/authentication/register`, {
+    fetch(`${API_BASE_URL}/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name, email: email, password: password })
+        body: JSON.stringify({ email: email, username: name, password: password, locale_code: getCookie('locale') })
     })
         .then(response => {
             return response.json();

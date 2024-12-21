@@ -10,11 +10,12 @@ section#posts {
 .card {
     align-items: center;
     background-color: var(--polaroid-background-color);
-    border: 1px solid #000;
+    border: 1px solid #888;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     height: var(--polaroid-height);
+    user-select: none;
     width: var(--polaroid-width);
 }
 
@@ -35,10 +36,14 @@ section#posts {
     width: var(--polaroid-photo-size);
 }
 
+#account {
+    filter: drop-shadow(0 0 0.5rem #888);
+}
+
 .card-body * {
     background-repeat: no-repeat;
     background-size: var(--icon-size);
-    filter: drop-shadow(0 0 0.5rem light-dark(#fff, #000));
+    filter: drop-shadow(0 0 0.5rem var(--polaroid-background-color));
     font-size: calc(var(--icon-size) * 0.75);
     font-weight: bold;
     height: var(--icon-size);
@@ -51,9 +56,11 @@ section#posts {
     justify-content: space-between;
 }
 
-.cook-time {
-    background-image: url("../image/ci--clock.svg");
-    padding-left: calc(var(--icon-size) * 1.1);
+.cook-time-icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    stroke: currentColor;
+    vertical-align: bottom;
 }
 
 /* The difficulty and status will not be displayed for now */
@@ -62,7 +69,20 @@ section#posts {
     display: none;
 }
 
+#account {
+    stroke: #fff;
+    cursor: pointer;
+    display: flex;
+    height: 2.5em;
+    width: 2.5em;
+}
+
 /* Pseudo-classes */
+
+.card:hover {
+    filter: brightness(1.1);
+    transform: rotate(2deg);
+}
 
 .cook-time::after {
     content: "'";
