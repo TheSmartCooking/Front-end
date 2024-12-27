@@ -36,10 +36,6 @@ section#posts {
     width: var(--polaroid-photo-size);
 }
 
-#account {
-    filter: drop-shadow(0 0 0.5rem #888);
-}
-
 .card-body * {
     background-repeat: no-repeat;
     background-size: var(--icon-size);
@@ -73,6 +69,7 @@ section#posts {
     stroke: #fff;
     cursor: pointer;
     display: flex;
+    filter: drop-shadow(0 0 0.5rem #888);
     height: 2.5em;
     width: 2.5em;
 }
