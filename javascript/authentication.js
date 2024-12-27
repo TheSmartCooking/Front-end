@@ -1,6 +1,7 @@
 const flipper = document.getElementsByTagName("main")[0];
 const goToRegisterButton = document.getElementById("go-to-register");
 const goToLoginButton = document.getElementById("go-to-login");
+const home = document.getElementById('home');
 const showPasswordChecks = document.querySelectorAll(".show-password-check");
 const loginForm = document.getElementById('login-form');
 const loginSection = document.getElementById('login');
@@ -171,4 +172,8 @@ passwordConfirmInput.addEventListener("keyup", () => {
         passwordConfirmInput.classList.add("invalid");
         passwordConfirmInput.classList.remove("valid");
     }
+});
+
+home.addEventListener('click', () => {
+    document.location.href = '/index.html';
 });
