@@ -1,6 +1,7 @@
 const flipper = document.getElementsByTagName("main")[0];
 const goToRegisterButton = document.getElementById("go-to-register");
 const goToLoginButton = document.getElementById("go-to-login");
+const home = document.getElementById('home');
 const showPasswordChecks = document.querySelectorAll(".show-password-check");
 const loginForm = document.getElementById('login-form');
 const loginSection = document.getElementById('login');
@@ -62,7 +63,9 @@ registerForm.addEventListener('submit', (e) => {
         })
         .then(data => {
             if (data.success) {
+                loginForm['login-email'].value = email;
                 alert('Registration successful! Please log in.');
+                toggleFlipper("login");
             } else {
                 const errorMessage = data.data.message || 'Registration failed for an unknown reason.';
                 console.error('Registration failed:', errorMessage);
@@ -73,8 +76,6 @@ registerForm.addEventListener('submit', (e) => {
             console.error('Error:', error);
             alert('An error occurred. Please try again.');
         });
-
-    toggleFlipper("login");
 });
 
 function toggleFlipper(side) {
@@ -83,12 +84,14 @@ function toggleFlipper(side) {
         setTimeout(() => {
             loginSection.style.display = "flex";
             registerSection.style.display = "none";
+            loginForm['login-email'].focus();
         }, 100);
     } else {
         flipper.style.transform = "rotateY(180deg)";
         setTimeout(() => {
             loginSection.style.display = "none";
             registerSection.style.display = "flex";
+            registerForm['register-username'].focus();
         }, 100);
     }
 }
@@ -171,4 +174,8 @@ passwordConfirmInput.addEventListener("keyup", () => {
         passwordConfirmInput.classList.add("invalid");
         passwordConfirmInput.classList.remove("valid");
     }
+});
+
+home.addEventListener('click', () => {
+    document.location.href = '/index.html';
 });

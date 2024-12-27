@@ -71,6 +71,15 @@ section {
     background-image: url(../images/tabler--eye-off.svg);
 }
 
+#home {
+    stroke: #fff;
+    cursor: pointer;
+    display: flex;
+    filter: drop-shadow(0 0 0.5rem #888);
+    height: 2.5em;
+    width: 2.5em;
+}
+
 #register {
     display: none;
     transform: rotateY(180deg);
@@ -83,6 +92,10 @@ section {
 }
 
 /* Pseudo classes */
+
+input:placeholder-shown {
+    border-bottom: 1px solid light-dark(black, white);
+}
 
 input:user-valid,
 input.valid {
