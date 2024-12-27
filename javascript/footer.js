@@ -16,5 +16,5 @@ if (currentYear !== baseYear) {
 const copyrightElement = document.createElement('div');
 copyrightElement.innerHTML = `Smart Cooking &copy; ${yearString}. All rights reserved.`;
 
-// Append the generated element to the body (or a specific container)
+// Append the generated element to the body
 document.body.appendChild(copyrightElement);
