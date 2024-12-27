@@ -93,6 +93,10 @@ section {
 
 /* Pseudo classes */
 
+input:placeholder-shown {
+    border-bottom: 1px solid light-dark(black, white);
+}
+
 input:user-valid,
 input.valid {
     background-color: rgb(0 255 0 / 5%);
