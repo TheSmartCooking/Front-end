@@ -12,5 +12,9 @@ if (currentYear !== baseYear) {
     yearString += `-${currentYear}`;
 }
 
-// Set the string to the paragraph
-document.getElementById('copyright-year').innerText = yearString;
+// Create the entire copyright element dynamically
+const copyrightElement = document.createElement('div');
+copyrightElement.innerHTML = `Smart Cooking &copy; ${yearString}. All rights reserved.`;
+
+// Append the generated element to the body (or a specific container)
+document.body.appendChild(copyrightElement);
