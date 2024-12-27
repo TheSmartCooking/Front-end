@@ -27,7 +27,7 @@ form {
     width: clamp(300px, 80%, 600px);
     flex-direction: column;
     border: 1px solid var(--background-color-secondary);
-    padding: 2rem 2rem;
+    padding: 2rem;
     border-radius: var(--border-radius);
     gap: 1rem;
 }
@@ -59,7 +59,7 @@ section {
 }
 
 .password-input>label {
-    background-image: url(../images/tabler--eye.svg);
+    background-image: "url(../images/tabler--eye.svg)";
     height: 2rem;
     width: 2rem;
     background-repeat: no-repeat;
@@ -68,7 +68,7 @@ section {
 }
 
 .show-password-check:checked+label.show-password {
-    background-image: url(../images/tabler--eye-off.svg);
+    background-image: "url(../images/tabler--eye-off.svg)";
 }
 
 #home {

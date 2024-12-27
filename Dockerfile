@@ -1,5 +1,5 @@
 # Use the latest nginx as the base image
-FROM nginx:latest
+FROM nginx:1.27.3
 
 # Set environment variables
 ENV TEMP_FRONTEND_DIR=/temp-frontend-files
@@ -17,6 +17,9 @@ COPY . /usr/share/nginx/html
 RUN chown -R frontenduser:frontenduser /usr/share/nginx/html \
     && chown -R frontenduser:frontenduser /var/cache/nginx \
     && chown -R frontenduser:frontenduser /var/log/nginx
+
+# Switch to non-root user
+USER frontenduser
 
 # Expose the default nginx port (80)
 EXPOSE 80
