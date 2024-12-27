@@ -62,7 +62,9 @@ registerForm.addEventListener('submit', (e) => {
         })
         .then(data => {
             if (data.success) {
+                loginForm['login-email'].value = email;
                 alert('Registration successful! Please log in.');
+                toggleFlipper("login");
             } else {
                 const errorMessage = data.data.message || 'Registration failed for an unknown reason.';
                 console.error('Registration failed:', errorMessage);
@@ -73,8 +75,6 @@ registerForm.addEventListener('submit', (e) => {
             console.error('Error:', error);
             alert('An error occurred. Please try again.');
         });
-
-    toggleFlipper("login");
 });
 
 function toggleFlipper(side) {
@@ -83,12 +83,14 @@ function toggleFlipper(side) {
         setTimeout(() => {
             loginSection.style.display = "flex";
             registerSection.style.display = "none";
+            loginForm['login-email'].focus();
         }, 100);
     } else {
         flipper.style.transform = "rotateY(180deg)";
         setTimeout(() => {
             loginSection.style.display = "none";
             registerSection.style.display = "flex";
+            registerForm['register-username'].focus();
         }, 100);
     }
 }
