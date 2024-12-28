@@ -17,11 +17,9 @@
     box-shadow: var(--polaroid-background-color) 0 0 10px;
     display: grid;
     gap: 1rem;
-    grid-template-rows: auto 1fr;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        "modal-top modal-top"
-        "modal-left modal-right";
+    grid-template:
+        "modal-top modal-top" auto
+        "modal-left modal-right" auto / 1fr 1fr;
     height: 75%;
     width: 60%;
     overflow-y: auto;
@@ -66,12 +64,10 @@
 @media screen and (width<=850px) {
     #modal-box {
         border-radius: 0;
-        grid-template-rows: auto 1fr;
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "modal-top"
-            "modal-left"
-            "modal-right";
+        grid-template:
+            "modal-top" auto
+            "modal-left" auto
+            "modal-right" auto / 1fr;
         height: 80%;
         width: 100%;
     }

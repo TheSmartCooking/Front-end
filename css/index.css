@@ -55,7 +55,7 @@ section#posts {
 .cook-time-icon {
     width: var(--icon-size);
     height: var(--icon-size);
-    stroke: currentColor;
+    stroke: currentcolor;
     vertical-align: bottom;
 }
 
