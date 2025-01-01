@@ -30,6 +30,10 @@ function getCookie(name) {
     return foundRow ? decodeURIComponent(foundRow.split('=')[1]) : null;
 }
 
+function deleteCookie(name) {
+    document.cookie = `${name}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+}
+
 
 // Save the current locale to a cookie
 if (!getCookie('locale')) {

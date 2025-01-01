@@ -2,7 +2,7 @@
 const isLoggedIn = getCookie('refresh_token') ? true : false;
 
 const postsSection = document.querySelector('section#posts');
-const account = document.getElementById('account');
+const profile = document.getElementById('profile');
 
 function createCookTimeIcon() {
     const svgNS = "http://www.w3.org/2000/svg"; // SVG namespace
@@ -113,7 +113,7 @@ function loadRecipesAndDisplay(apiEndpoint, targetElement) {
 // Load recipes and display them in main once the DOM is loaded
 loadRecipesAndDisplay(API_BASE_URL + `/recipe/all?locale=${getCookie('locale')}`, postsSection);
 
-account.addEventListener('click', () => {
+profile.addEventListener('click', () => {
     if (isLoggedIn) {
         // Refresh the token to extend the session
         fetch(API_BASE_URL + '/auth/refresh', {
@@ -128,7 +128,7 @@ account.addEventListener('click', () => {
                 setCookie('access_token', data.data.access_token);
             })
             .catch(error => { console.error('Error refreshing token:', error); })
-            .finally(() => { window.location.href = 'account.html'; });
+            .finally(() => { window.location.href = 'profile.html'; });
 
     } else {
         window.location.href = 'authentication.html';
@@ -143,7 +143,7 @@ if (isLoggedIn) {
         .then(response => response.json())
         .then(data => {
             const person = data.data;
-            account.title = person.person_name;
+            profile.title = person.person_name;
         })
         .catch(error => { console.error('Error loading person:', error); });
 }
