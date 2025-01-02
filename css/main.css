@@ -25,6 +25,12 @@ body {
     justify-content: center;
 }
 
+button {
+    background-color: var(--background-color-tertiary);
+    color: var(--text-color-tertiary);
+    height: 3rem;
+}
+
 main {
     align-items: center;
     display: flex;
@@ -55,6 +61,15 @@ header {
 
 .hidden {
     display: none !important;
+}
+
+#home {
+    stroke: #fff;
+    cursor: pointer;
+    display: flex;
+    filter: drop-shadow(0 0 0.5rem #888);
+    height: 2.5em;
+    width: 2.5em;
 }
 
 #loading-spinner {

@@ -65,7 +65,7 @@ section#posts {
     display: none;
 }
 
-#account {
+#profile {
     stroke: #fff;
     cursor: pointer;
     display: flex;
