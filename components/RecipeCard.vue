@@ -29,7 +29,6 @@ defineProps({
 
 // Constants
 const placeholderImage = 'https://picsum.photos/300/300';
-const cookTimeIcon = '';
 
 // Router for navigation
 const router = useRouter();
