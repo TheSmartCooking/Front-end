@@ -6,7 +6,10 @@ export default defineNuxtConfig({
     ],
     devtools: { enabled: false },
     runtimeConfig: {
-        public: { appTitle: 'Smart Cooking &copy;' }
+        public: {
+            appTitle: 'Smart Cooking &copy;',
+            apiBaseUrl: 'http://localhost:5000',
+        }
     },
     ssr: false,
     vite: {

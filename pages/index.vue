@@ -19,8 +19,10 @@
 // Import RecipeCard component
 import RecipeCard from '@/components/RecipeCard.vue';
 
+const config = useRuntimeConfig();
+
 // Fetch recipes from the API
-const { data: recipes, pending, error } = useFetch('http://localhost:5000/recipe/all', {
+const { data: recipes, _, error } = useFetch(`${config.public.apiBaseUrl}/recipe/all`, {
     params: { language_code: 'fr' },
 });
 </script>

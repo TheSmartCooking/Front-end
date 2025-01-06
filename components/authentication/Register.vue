@@ -31,6 +31,8 @@ import { ref } from 'vue';
 import IconShow from '@/assets/icons/eye.svg';
 import IconHide from '@/assets/icons/eye-off.svg';
 
+const config = useRuntimeConfig();
+
 const username = ref('');
 const email = ref('');
 const password = ref('');
@@ -53,7 +55,7 @@ const register = async () => {
     }
 
     try {
-        const response = await fetch('http://localhost:5000/auth/register', {
+        const response = await fetch(`${config.public.apiBaseUrl}/auth/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
