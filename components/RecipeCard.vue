@@ -20,7 +20,7 @@
 import { useRouter } from 'vue-router';
 
 // Props
-defineProps({
+const { recipe } = defineProps({
     recipe: {
         type: Object,
         required: true,
