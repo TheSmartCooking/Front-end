@@ -1,4 +1,22 @@
-# Use the latest nginx as the base image
+# Stage 1: Build the Nuxt.js app
+FROM node:18-alpine AS build-stage
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY . .
+
+# Build the application for static hosting
+RUN npm run generate
+
+# Stage 2: Serve the static files using Nginx
 FROM nginx:1.27.3
 
 # Set environment variables
@@ -13,8 +31,8 @@ RUN groupadd -r frontenduser && useradd -r -g frontenduser frontenduser
 # Create a directory for the PID file and assign ownership to frontenduser
 RUN mkdir -p /var/run/nginx && chown -R frontenduser:frontenduser /var/run/nginx
 
-# Copy all files to the container
-COPY . /usr/share/nginx/html
+# Copy the generated static files from the build stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 
 # Copy nginx.conf to a writable location and modify the PID path
 RUN cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.custom && \
