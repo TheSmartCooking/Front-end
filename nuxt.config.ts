@@ -8,5 +8,10 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: { appTitle: 'Smart Cooking &copy;' }
     },
-    ssr: false
+    ssr: false,
+    vite: {
+        plugins: [
+            require('vite-svg-loader')(),
+        ],
+    },
 })
