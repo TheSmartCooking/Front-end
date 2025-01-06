@@ -13,10 +13,9 @@ export default {
         const router = useRouter();
 
         const logout = () => {
+            // Remove session cookies
             const accessToken = useCookie('access_token');
             const refreshToken = useCookie('refresh_token');
-
-            // Remove cookies
             accessToken.value = null;
             refreshToken.value = null;
 

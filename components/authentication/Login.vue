@@ -6,6 +6,12 @@
     </form>
 </template>
 
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+</script>
+
 <script>
 export default {
     data() {
@@ -17,7 +23,7 @@ export default {
     methods: {
         login() {
             fetch('http://localhost:5000/auth/login', {
-                method: 'GET',
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     email: this.email,
@@ -33,6 +39,14 @@ export default {
             })
             .then(data => {
                 console.log('Login successful:', data);
+
+                // Create or update session cookies
+                const accessToken = useCookie('access_token');
+                const refreshToken = useCookie('refresh_token');
+                accessToken.value = data.access_token;
+                refreshToken.value = data.refresh_token;
+
+                router.push('/');
             })
             .catch(error => {
                 console.error('Error:', error);

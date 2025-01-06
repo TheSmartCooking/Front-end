@@ -20,6 +20,12 @@
     </form>
 </template>
 
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+</script>
+
 <script>
 export default {
     data() {
@@ -55,6 +61,7 @@ export default {
             })
             .then(data => {
                 console.log('Registration successful:', data);
+                router.push('/');
             })
             .catch(error => {
                 console.error('Error:', error);
