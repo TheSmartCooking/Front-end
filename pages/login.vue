@@ -38,7 +38,7 @@ section {
 }
 
 .link-color {
-    color: var(--color-primary);
+    color: var(--color-secondary);
 }
 
 #authentication {

@@ -35,7 +35,7 @@ router.afterEach(() => {
 
 <style scoped>
 header {
-    background-color: var(--color-primary);
+    background-color: var(--color-quinary);
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -43,6 +43,7 @@ header {
 
 span {
     font-size: var(--font-size-heading);
+    color: var(--color-secondary)
 }
 
 ul {

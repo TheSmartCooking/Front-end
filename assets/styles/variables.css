@@ -6,7 +6,7 @@
     --color-secondary: light-dark(#d9dbbc, #636645);
     --color-tertiary: light-dark(#fcddbc, #925527);
     --color-quaternary: light-dark(#ef959d, #782939);
-    --color-quinary: light-dark(#69585f, #2C2629);
+    --color-quinary: light-dark(#69585f, #3d373a);
     --color-error: red;
     --color-success: green;
 
@@ -44,7 +44,7 @@
 }
 
 a {
-    color: var(--color-quinary);
+    color: var(--color-primary);
     font-weight: bold;
     text-decoration: none;
 }

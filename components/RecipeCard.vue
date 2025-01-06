@@ -60,6 +60,7 @@ const handleClick = () => {
 }
 
 .recipe-title>h1 {
+    color: light-dark(var(--color-quinary), var(--color-primary));
     font-size: var(--font-size-title);
 }
 
