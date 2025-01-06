@@ -28,6 +28,8 @@ const { data: recipes, pending, error } = useFetch('http://localhost:5000/recipe
 <style scoped>
 main {
     overflow-y: auto;
+    scrollbar-color: var(--color-quinary) transparent;
+    scrollbar-width: thin;
 }
 
 #recipe-list>div {
