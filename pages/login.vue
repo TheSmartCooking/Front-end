@@ -50,10 +50,6 @@ section {
     margin-top: 1rem;
 }
 
-:deep(input[type="checkbox"]) {
-    display: none;
-}
-
 :deep(form) {
     display: flex;
     width: clamp(300px, 80%, 600px);
@@ -64,29 +60,10 @@ section {
     gap: var(--spacing-medium);
 }
 
-:deep(form>div) {
-    display: flex;
-    flex-direction: column;
-}
-
 :deep(input) {
     padding: 0.5rem;
     border: none;
-    border-radius: var(--border-radius);
     width: calc(100% - 0.5rem * 2);
-}
-
-:deep(.password-input>label) {
-    background-image: "url(../images/tabler--eye.svg)";
-    height: 2rem;
-    width: 2rem;
-    background-repeat: no-repeat;
-    background-size: contain;
-    cursor: pointer;
-}
-
-:deep(.show-password-check:checked+label.show-password) {
-    background-image: "url(../images/tabler--eye-off.svg)";
 }
 
 /* Pseudo-elements */
