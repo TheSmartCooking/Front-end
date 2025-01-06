@@ -21,54 +21,47 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
+import { ref } from 'vue';
 
-const router = useRouter();
-</script>
+const username = ref('');
+const email = ref('');
+const password = ref('');
+const passwordConfirm = ref('');
 
-<script>
-export default {
-    data() {
-        return {
-            username: '',
-            email: '',
-            password: '',
-            passwordConfirm: ''
-        };
+const props = defineProps({
+    goToLogin: {
+        type: Function,
     },
-    methods: {
-        register() {
-            if (this.password !== this.passwordConfirm) {
-                console.error('Passwords do not match');
-                return;
-            }
+});
 
-            fetch('http://localhost:5000/auth/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    username: this.username,
-                    email: this.email,
-                    password: this.password
-                }),
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Registration failed');
-                }
-            })
-            .then(data => {
-                console.log('Registration successful:', data);
-                router.push('/');
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+const register = async () => {
+    if (password.value !== passwordConfirm.value) {
+        console.error('Passwords do not match');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:5000/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: username.value,
+                email: email.value,
+                password: password.value,
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Registration failed');
         }
-    },
-}
+
+        const data = await response.json();
+        console.log('Registration successful:', data);
+        props.goToLogin();
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
 </script>
 
 <style scoped>
