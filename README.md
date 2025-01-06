@@ -81,6 +81,22 @@ yarn build
 bun run build
 ```
 
+Or for any static hosting
+
+```bash
+# npm
+npm run generate
+
+# pnpm
+pnpm generate
+
+# yarn
+yarn generate
+
+# bun
+bun run generate
+```
+
 Locally preview production build:
 
 ```bash
