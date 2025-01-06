@@ -25,5 +25,6 @@ const yearString = computed(() => {
 footer {
     display: flex;
     gap: var(--spacing-small);
+    color: var(--color-secondary);
 }
 </style>
