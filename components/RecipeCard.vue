@@ -42,7 +42,7 @@ const handleClick = () => {
 <style scoped>
 .card {
     align-items: center;
-    background-color: var(--polaroid-background-color);
+    background-color: var(--polaroid-color);
     border: 1px solid #888;
     cursor: pointer;
     display: flex;
@@ -59,6 +59,10 @@ const handleClick = () => {
     justify-content: center;
 }
 
+.recipe-title>h1 {
+    font-size: var(--font-size-title);
+}
+
 .card-body {
     background-size: cover;
     display: flex;
@@ -72,9 +76,8 @@ const handleClick = () => {
 .card-body * {
     background-repeat: no-repeat;
     background-size: var(--icon-size);
-    filter: drop-shadow(0 0 0.5rem var(--polaroid-background-color));
-    font-size: calc(var(--icon-size) * 0.75);
-    font-weight: bold;
+    filter: drop-shadow(0 0 var(--spacing-small) var(--polaroid-color));
+    font-size: var(--font-size-body);
     height: var(--icon-size);
     line-height: var(--icon-size);
 }

@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
 #logout {
-    color: red;
+    color: var(--color-primary);
     font-weight: bold;
     width: 100%;
 }

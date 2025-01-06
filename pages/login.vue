@@ -58,10 +58,10 @@ section {
     display: flex;
     width: clamp(300px, 80%, 600px);
     flex-direction: column;
-    border: 1px solid var(--background-color-secondary);
+    border: 1px solid var(--color-primary);
     padding: 2rem;
-    border-radius: var(--border-radius);
-    gap: 1rem;
+    border-radius: var(--border-radius-small);
+    gap: var(--spacing-medium);
 }
 
 :deep(form>div) {
@@ -100,7 +100,7 @@ section {
     input.valid
 ) {
     background-color: rgb(0 255 0 / 5%);
-    border: 1px solid green;
+    border: 1px solid var(--color-success);
     box-sizing: border-box;
     width: 100%;
 }
@@ -110,7 +110,7 @@ section {
     input.invalid
 ) {
     background-color: rgb(255 0 0 / 5%);
-    border: 1px solid red;
+    border: 1px solid var(--color-error);
     box-sizing: border-box;
     width: 100%;
 }

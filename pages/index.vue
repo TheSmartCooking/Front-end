@@ -1,8 +1,8 @@
 <template>
     <main>
         <div id="recipe-list">
-            <div v-if="error">Error: {{ error.message }}</div>
-            <div v-else-if="!recipes">Unable to fetch recipes</div>
+            <div v-if="error">Unable to load recipes, please try again later or contact support</div>
+            <div v-else-if="!recipes">Loading recipes...</div>
             <div v-else-if="!recipes.data">No recipes available</div>
             <div v-else>
                 <RecipeCard
@@ -30,12 +30,13 @@ main {
     overflow-y: auto;
 }
 
-#recipe-list> div {
+#recipe-list>div {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: var(--spacing-medium);
     justify-content: center;
     justify-self: center;
     width: 80%;
+    text-wrap: nowrap;
 }
 </style>

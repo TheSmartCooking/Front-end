@@ -35,7 +35,7 @@ router.afterEach(() => {
 
 <style scoped>
 header {
-    background-color: rgb(0 0 0 / 30%);
+    background-color: var(--color-primary);
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -49,8 +49,7 @@ ul {
     align-items: center;
     display: flex;
     gap: var(--spacing-medium);
-    justify-content: center;
     list-style-type: none;
-    padding: 0;
+    margin-right: var(--spacing-medium);
 }
 </style>
