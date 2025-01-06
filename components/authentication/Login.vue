@@ -1,5 +1,5 @@
 <template>
-    <form id="login-form" @submit.prevent="login()">
+    <form id="login-form" @submit.prevent="login">
         <input type="email" id="login-email" name="email" v-model="email" placeholder="Email" required>
         <input type="password" id="login-password" name="password" v-model="password" placeholder="Password" required>
         <button type="submit">Login</button>
@@ -7,51 +7,51 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useCookie } from '#app';
 
 const router = useRouter();
-</script>
 
-<script>
-export default {
-    data() {
-        return {
-            email: '',
-            password: ''
-        };
-    },
-    methods: {
-        login() {
-            fetch('http://localhost:5000/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    email: this.email,
-                    password: this.password,
-                }),
-            })
+const email = ref('');
+const password = ref('');
+
+const login = async () => {
+    try {
+        const data = await fetch('http://localhost:5000/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: email.value, // Correct usage of ref
+                password: password.value, // Correct usage of ref
+            }),
+        })
             .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
+                if (!response.ok) {
                     throw new Error('Login failed');
                 }
+                return response.json(); // Parse JSON only if response is OK
             })
-            .then(data => {
-                console.log('Login successful:', data);
+            .then(data => data.data);
 
-                // Create or update session cookies
-                const accessToken = useCookie('access_token');
-                const refreshToken = useCookie('refresh_token');
-                accessToken.value = data.access_token;
-                refreshToken.value = data.refresh_token;
+        // Use cookies to store tokens
+        const accessToken = useCookie('access_token', {
+            maxAge: 60 * 60 * 1, // 1 hour
+            path: '/',
+        });
 
-                router.push('/');
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
-    },
-}
+        const refreshToken = useCookie('refresh_token', {
+            maxAge: 60 * 60 * 24 * 30, // 30 days
+            path: '/',
+        });
+
+        accessToken.value = data.access_token;
+        refreshToken.value = data.refresh_token;
+
+        // Navigate to home page
+        router.push('/');
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
 </script>
