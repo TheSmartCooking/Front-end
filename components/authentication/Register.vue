@@ -5,17 +5,21 @@
 
         <div id="password-container">
             <div class="password-container">
-                <input type="password" id="register-password" name="password" v-model="password" placeholder="Password" required>
-                <input class="show-password-check" id="show-password-input" type="checkbox" tabindex="-1">
-                <label class="show-password" for="show-password-input" title="Show Password"><IconEye /></label>
+                <input :type="passwordVisible ? 'text' : 'password'" v-model="password" placeholder="Password" required>
+                <label @click="togglePasswordVisibility" title="Show Password">
+                    <IconShow v-if="!passwordVisible" />
+                    <IconHide v-else />
+                </label>
             </div>
             <progress id="password-strength" class="hidden"></progress>
         </div>
 
         <div class="password-container">
-            <input type="password" id="register-password-confirm" name="password-confirm" v-model="passwordConfirm" placeholder="Confirm password" required>
-            <input class="show-password-check" id="show-password-confirm-input" type="checkbox" tabindex="-1">
-            <label class="show-password" for="show-password-confirm-input" title="Show Password"><IconEye /></label>
+            <input :type="passwordVisible ? 'text' : 'password'" v-model="passwordConfirm" placeholder="Confirm password" required>
+            <label @click="togglePasswordVisibility" title="Show Password">
+                <IconShow v-if="!passwordVisible" />
+                <IconHide v-else />
+            </label>
         </div>
 
         <button type="submit">Register</button>
@@ -24,18 +28,23 @@
 
 <script setup>
 import { ref } from 'vue';
-import IconEye from '@/assets/icons/eye.svg';
+import IconShow from '@/assets/icons/eye.svg';
+import IconHide from '@/assets/icons/eye-off.svg';
 
 const username = ref('');
 const email = ref('');
 const password = ref('');
 const passwordConfirm = ref('');
 
-const props = defineProps({
-    goToLogin: {
-        type: Function,
-    },
-});
+// Single state to control visibility of both password inputs
+const passwordVisible = ref(false);
+
+const props = defineProps({ goToLogin: { type: Function } });
+
+// Toggle visibility for both password inputs
+const togglePasswordVisibility = () => {
+    passwordVisible.value = !passwordVisible.value;
+};
 
 const register = async () => {
     if (password.value !== passwordConfirm.value) {
@@ -59,14 +68,12 @@ const register = async () => {
         }
 
         const data = await response.json();
-        console.log('Registration successful:', data);
         props.goToLogin();
     } catch (error) {
         console.error('Error:', error);
     }
 };
 </script>
-
 
 <style scoped>
 input[type="checkbox"] {
@@ -77,6 +84,7 @@ svg {
     height: var(--icon-size);
     stroke: var(--color-primary);
     width: var(--icon-size);
+    cursor: pointer;
 }
 
 .password-container {
@@ -87,10 +95,12 @@ svg {
 .password-container label {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .password-container input[type="password"] {
     flex: 1;
+    transition-duration: 0s;
 }
 
 #password-strength {
