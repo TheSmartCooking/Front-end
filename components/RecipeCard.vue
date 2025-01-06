@@ -75,12 +75,8 @@ const handleClick = () => {
 }
 
 .card-body * {
-    background-repeat: no-repeat;
-    background-size: var(--icon-size);
     filter: drop-shadow(0 0 var(--spacing-small) var(--polaroid-color));
     font-size: var(--font-size-body);
-    height: var(--icon-size);
-    line-height: var(--icon-size);
 }
 
 .card-top,
