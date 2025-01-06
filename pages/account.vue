@@ -5,22 +5,28 @@
 </template>
 
 <script>
-import { deleteCookie } from '@/utils/cookie.js';
 import { useRouter } from 'vue-router';
+import { useCookie } from '#app';
 
 export default {
     setup() {
         const router = useRouter();
 
         const logout = () => {
-            deleteCookie('access_token');
-            deleteCookie('refresh_token');
+            const accessToken = useCookie('access_token');
+            const refreshToken = useCookie('refresh_token');
+
+            // Remove cookies
+            accessToken.value = null;
+            refreshToken.value = null;
+
+            // Redirect to home
             router.push('/');
         };
 
         return { logout };
-    }
-}
+    },
+};
 </script>
 
 <style scoped>
