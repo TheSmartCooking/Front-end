@@ -2,7 +2,8 @@
     <main>
         <div id="recipe-list">
             <div v-if="error">Error: {{ error.message }}</div>
-            <div v-else-if="!recipes.data">Loading...</div>
+            <div v-else-if="!recipes">Unable to fetch recipes</div>
+            <div v-else-if="!recipes.data">No recipes available</div>
             <div v-else>
                 <RecipeCard
                     v-for="recipe in recipes.data"
