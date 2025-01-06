@@ -2,10 +2,10 @@
     <header>
         <span v-html="appTitle"></span>
         <ul>
-            <li><nuxt-link to="/">Home</nuxt-link></li>
-            <li v-if="isLoggedIn"><nuxt-link to="/account">Account</nuxt-link></li>
-            <li v-else><nuxt-link to="/login">Login</nuxt-link></li>
-            <li><nuxt-link to="/contact">Contact</nuxt-link></li>
+            <li><nuxt-link to="/" title="Home"><IconHome /></nuxt-link></li>
+            <li v-if="isLoggedIn"><nuxt-link to="/account" title="Account"><IconAccount /></nuxt-link></li>
+            <li v-else><nuxt-link to="/login" title="Login"><IconAccount /></nuxt-link></li>
+            <li><nuxt-link to="/contact" title="Contact Us"><IconContact /></nuxt-link></li>
         </ul>
     </header>
 </template>
@@ -14,6 +14,9 @@
 import { ref, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
 import { useCookie } from '#app';
+import IconHome from '@/assets/icons/home.svg';
+import IconAccount from '@/assets/icons/user.svg';
+import IconContact from '@/assets/icons/mail-question.svg';
 
 const { public: { appTitle } } = useRuntimeConfig();
 const isLoggedIn = ref(false);
@@ -52,5 +55,12 @@ ul {
     gap: var(--spacing-medium);
     list-style-type: none;
     margin-right: var(--spacing-medium);
+}
+
+li svg {
+    height: var(--icon-size);
+    stroke: var(--color-primary);
+    width: var(--icon-size);
+    cursor: pointer;
 }
 </style>
