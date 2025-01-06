@@ -38,7 +38,7 @@ main {
     gap: var(--spacing-medium);
     justify-content: center;
     justify-self: center;
-    width: 80%;
+    width: 100%;
     text-wrap: nowrap;
 }
 </style>
