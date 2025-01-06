@@ -1,13 +1,13 @@
 <template>
-  <header>
-    <span v-html="appTitle"></span>
-    <ul>
-      <li><nuxt-link to="/">Home</nuxt-link></li>
-      <li v-if="isLoggedIn"><nuxt-link to="/account">Account</nuxt-link></li>
-      <li v-else><nuxt-link to="/login">Login</nuxt-link></li>
-      <li><nuxt-link to="/contact">Contact</nuxt-link></li>
-    </ul>
-  </header>
+    <header>
+        <span v-html="appTitle"></span>
+        <ul>
+            <li><nuxt-link to="/">Home</nuxt-link></li>
+            <li v-if="isLoggedIn"><nuxt-link to="/account">Account</nuxt-link></li>
+            <li v-else><nuxt-link to="/login">Login</nuxt-link></li>
+            <li><nuxt-link to="/contact">Contact</nuxt-link></li>
+        </ul>
+    </header>
 </template>
 
 <script setup>
