@@ -45,8 +45,10 @@ header {
 }
 
 span {
+    color: var(--color-secondary);
     font-size: var(--font-size-heading);
-    color: var(--color-secondary)
+    font-weight: bold;
+    margin-left: var(--spacing-medium);
 }
 
 ul {
