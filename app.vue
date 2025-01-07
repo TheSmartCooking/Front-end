@@ -3,7 +3,7 @@
         <Header />
         <NuxtPage />
         <Footer />
-        <!-- <LoadingSpinner /> -->
+        <LoadingSpinner />
     </div>
 </template>
 
@@ -14,7 +14,7 @@ const nav = [
     { label: 'Home', to: '/' },
     { label: 'Account', to: '/account' },
     { label: 'Contact', to: '/contact' },
-]
+];
 </script>
 
 <style scoped>

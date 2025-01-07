@@ -4,10 +4,6 @@
     </aside>
 </template>
 
-<script setup>
-
-</script>
-
 <style scoped>
 aside {
     position: fixed;
