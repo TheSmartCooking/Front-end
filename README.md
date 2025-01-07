@@ -4,32 +4,12 @@ This repository contains the frontend for SmartCooking.
 
 ## Getting Started
 
-To set up the frontend locally, you'll need Docker installed. Follow the steps below to build and run the database in a container.
 
-### Setup Steps
+### Nuxt Minimal Development Server
 
-1. **Build the Docker Image**:
+* To develop the frontend locally, you'll need Nuxt.js installed. Follow the steps below to develop the frontend with Nuxt.js.
 
-   ```bash
-   docker build -t smartcooking-nginx .
-   ```
-
-2. **Run the Docker Container**:
-
-   ```bash
-   docker run -d --name Smart-Cooking_Frontend -p 8080:80 smartcooking-nginx
-   ```
-
-3. **Access the Site**:
-   Open your browser and access `http://localhost:8080/`.
-
-## Nuxt Minimal Starter
-
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
-### Setup
-
-Make sure to install dependencies:
+1. Install the dependencies:
 
 ```bash
 # npm
@@ -45,9 +25,7 @@ yarn install
 bun install
 ```
 
-### Development Server
-
-Start the development server on `http://localhost:3000`:
+2. Start the development server on `http://localhost:3000`:
 
 ```bash
 # npm
@@ -63,54 +41,23 @@ yarn dev
 bun run dev
 ```
 
-### Production
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-Build the application for production:
+### Docker image and Container and hosting with Nginx
 
-```bash
-# npm
-npm run build
+To set up the frontend locally, you'll need Docker installed. Follow the steps below to build and run the frontend in a container.
 
-# pnpm
-pnpm build
+1. **Build the Docker Image**:
 
-# yarn
-yarn build
+   ```bash
+   docker build -t smartcooking-nginx .
+   ```
 
-# bun
-bun run build
-```
+2. **Run the Docker Container**:
 
-Or for any static hosting
+   ```bash
+   docker run -d --name Smart-Cooking_Frontend -p 8080:80 smartcooking-nginx
+   ```
 
-```bash
-# npm
-npm run generate
-
-# pnpm
-pnpm generate
-
-# yarn
-yarn generate
-
-# bun
-bun run generate
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+3. **Access the Site**:
+   Open your browser and access `http://localhost:8080/`.
