@@ -2,7 +2,7 @@ name: Scan Docker Images
 
 on:
   push:
-    branch:
+    branches:
       - main
   pull_request: null
 
