@@ -68,9 +68,14 @@ onMounted(() => { fetchRecipes(); });
 
 <style scoped>
 main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
     overflow: hidden auto;
     scrollbar-color: var(--color-quinary) transparent;
     scrollbar-width: thin;
+    width: 100%;
 }
 
 #recipes {
@@ -78,7 +83,6 @@ main {
     flex-wrap: wrap;
     gap: var(--spacing-medium);
     justify-content: center;
-    justify-self: center;
     text-wrap: nowrap;
     width: 100%;
 }
