@@ -10,24 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Étape pour vérifier le code source
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      # Étape pour configurer Trivy
-      - name: Setup Trivy
+      - name: Build an image from Dockerfile
+        run: docker build -t docker.io/my-organization/my-app:${{ github.sha }} .
+
+      - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.29.0
         with:
-          version: latest
-
-      # Scanner l'image Node.js
-      - name: Scan Node.js Base Image
-        run: |
-          echo "Scanning Node.js image: node:18.20-slim"
-          trivy image --severity CRITICAL,HIGH node:18.20-slim
-
-      # Scanner l'image Nginx
-      - name: Scan Nginx Base Image
-        run: |
-          echo "Scanning Nginx image: nginx:1.24-alpine-slim"
-          trivy image --severity CRITICAL,HIGH nginx:1.24-alpine-slim
+          image-ref: "docker.io/my-organization/my-app:${{ github.sha }}"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
