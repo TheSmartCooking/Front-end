@@ -5,7 +5,7 @@ on:
   push: null
   pull_request: null
 
-permissions: {}
+# permissions: {}
 
 jobs:
   build:
