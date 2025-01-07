@@ -35,7 +35,7 @@ const router = useRouter();
 
 // Methods
 const handleClick = () => {
-    console.log('Navigating to recipe:', recipe.recipe_id);
+    router.push(`/recipe/${recipe.recipe_id}`);
 };
 </script>
 

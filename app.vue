@@ -3,19 +3,9 @@
         <Header />
         <NuxtPage />
         <Footer />
-        <LoadingSpinner />
+        <LoadingSpinner class="hidden" />
     </div>
 </template>
-
-<script setup lang="ts">
-const router = useRouter()
-
-const nav = [
-    { label: 'Home', to: '/' },
-    { label: 'Account', to: '/account' },
-    { label: 'Contact', to: '/contact' },
-];
-</script>
 
 <style scoped>
 .layout {
