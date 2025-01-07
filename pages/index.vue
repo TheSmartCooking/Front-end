@@ -1,17 +1,15 @@
 <template>
     <main>
-        <div id="recipe-list">
-            <div v-if="error">Unable to load recipes, please try again later or contact support</div>
-            <div v-else-if="!recipes">Loading recipes...</div>
-            <div v-else-if="!recipes.data">No recipes available</div>
-            <div v-else>
-                <RecipeCard
-                    v-for="recipe in recipes.data"
-                    :key="recipe.recipe_id"
-                    :recipe="recipe"
-                />
-            </div>
-        </div>
+        <p v-if="error">Unable to load recipes, please try again later or contact support</p>
+        <p v-else-if="!recipes">Loading recipes...</p>
+        <p v-else-if="!recipes.data">No recipes available</p>
+        <section v-else id="recipes">
+            <RecipeCard
+                v-for="recipe in recipes.data"
+                :key="recipe.recipe_id"
+                :recipe="recipe"
+            />
+        </section>
     </main>
 </template>
 
@@ -34,7 +32,7 @@ main {
     scrollbar-width: thin;
 }
 
-#recipe-list>div {
+#recipes {
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-medium);
