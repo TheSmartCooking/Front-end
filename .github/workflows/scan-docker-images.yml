@@ -1,7 +1,9 @@
 name: Scan Docker Images
 
 on:
-  push: null
+  push:
+    branch:
+      - main
   pull_request: null
 
 jobs:
