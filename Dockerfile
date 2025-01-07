@@ -1,5 +1,5 @@
 # Stage 1: Build the Nuxt.js app
-FROM node:18-alpine AS build-stage
+FROM node:18.20-slim AS build-stage
 
 # Set the working directory
 WORKDIR /app
@@ -17,16 +17,13 @@ COPY . .
 RUN npm run generate
 
 # Stage 2: Serve the static files using Nginx
-FROM nginx:1.27.3
+FROM nginx:1.24-alpine-slim
 
 # Set environment variables
 ENV TEMP_FRONTEND_DIR=/temp-frontend-files
 
-# Set the shell for safer execution
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
 # Create a non-root user and group
-RUN groupadd -r frontenduser && useradd -r -g frontenduser frontenduser
+RUN addgroup -S frontenduser && adduser -S -G frontenduser frontenduser
 
 # Create a directory for the PID file and assign ownership to frontenduser
 RUN mkdir -p /var/run/nginx && chown -R frontenduser:frontenduser /var/run/nginx
