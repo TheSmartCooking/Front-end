@@ -1,11 +1,6 @@
 <template>
     <main>
-        <input
-            type="text"
-            v-model="search"
-            @input="onSearchInput"
-            placeholder="Search for recipes"
-        />
+        <SearchBar @search="onSearch" />
         <p v-if="error">Unable to load recipes, please try again later or contact support</p>
         <p v-else-if="loading">Loading recipes...</p>
         <p v-else-if="!recipes || recipes.length === 0">No recipes available</p>
@@ -23,6 +18,7 @@
 import { ref, onMounted } from 'vue';
 import { fetchJSON } from '@/utils/fetch.js';
 import RecipeCard from '@/components/RecipeCard.vue';
+import SearchBar from '@/components/SearchBar.vue';
 
 const config = useRuntimeConfig();
 
@@ -30,9 +26,6 @@ const config = useRuntimeConfig();
 const recipes = ref(null);
 const error = ref(false);
 const loading = ref(true);
-const search = ref('');
-let lastSearchTerm = ''; // To track the previous search term
-let debounceTimeout = null; // Timeout ID for debouncing
 
 // Fetch recipes from the API
 async function fetchRecipes(query = '') {
@@ -51,15 +44,9 @@ async function fetchRecipes(query = '') {
     }
 }
 
-function onSearchInput() {
-    clearTimeout(debounceTimeout);
-
-    debounceTimeout = setTimeout(() => {
-        if (search.value !== lastSearchTerm) {
-            lastSearchTerm = search.value; // Update the last search term
-            console.log('Searching for:', search.value.trim());
-        }
-    }, 750);
+function onSearch(searchTerm) {
+    console.log('Searching for:', searchTerm);
+    // fetchRecipes(searchTerm);
 }
 
 // Fetch recipes on component mount
