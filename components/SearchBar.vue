@@ -31,6 +31,6 @@ input {
     padding: var(--spacing-small);
     border: 1px solid var(--color-secondary);
     border-radius: var(--border-radius-small);
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-title);
 }
 </style>
