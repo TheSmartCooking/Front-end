@@ -83,7 +83,6 @@ main {
     flex-wrap: wrap;
     gap: var(--spacing-medium);
     justify-content: center;
-    text-wrap: nowrap;
     width: 100%;
 }
 </style>
