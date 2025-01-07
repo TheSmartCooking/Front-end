@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted } from 'vue';
 import { fetchJSON } from '@/utils/fetch.js';
 import RecipeCard from '@/components/RecipeCard.vue';
 
@@ -43,7 +43,7 @@ async function fetchRecipes(query = '') {
         const data = await fetchJSON(
             `${config.public.apiBaseUrl}/recipe/all${query ? `?search=${query}` : ''}`
         );
-        recipes.value = data.data || []; // Assuming `data.data` contains the recipes array
+        recipes.value = data.data || [];
     } catch (e) {
         error.value = true;
     } finally {
