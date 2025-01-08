@@ -1,9 +1,5 @@
 <template>
-    <footer>
-        <span v-html="appTitle"></span>
-        <span>{{ yearString }}</span>
-        <span>All rights reserved</span>
-    </footer>
+    <footer>{{ appTitle }} {{ yearString }} All rights reserved</footer>
 </template>
 
 <script setup>
@@ -23,8 +19,6 @@ const yearString = computed(() => {
 
 <style scoped>
 footer {
-    display: flex;
-    gap: var(--spacing-small);
     color: var(--color-secondary);
 }
 </style>

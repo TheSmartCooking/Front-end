@@ -1,6 +1,6 @@
 <template>
     <header>
-        <span v-html="appTitle"></span>
+        <span>{{ appTitle }}</span>
         <ul>
             <li><nuxt-link to="/" title="Home"><IconHome /></nuxt-link></li>
             <li v-if="isLoggedIn"><nuxt-link to="/account" title="Account"><IconAccount /></nuxt-link></li>

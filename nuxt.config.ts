@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     devtools: { enabled: false },
     runtimeConfig: {
         public: {
-            appTitle: 'Smart Cooking &copy;',
+            appTitle: `Smart Cooking ${String.fromCharCode(169)}`, // Smart Cooking &copy;
             apiBaseUrl: 'http://localhost:5000',
         }
     },
