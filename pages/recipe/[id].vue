@@ -45,3 +45,9 @@ const fetchRecipe = async () => {
 // Fetch recipe on mounted
 fetchRecipe();
 </script>
+
+<style scoped>
+#recipe-details {
+    width: 80%;
+}
+</style>
