@@ -50,4 +50,10 @@ fetchRecipe();
 #recipe-details {
     width: 80%;
 }
+
+@media screen and (width<=850px) {
+    #recipe-details {
+        width: 100%;
+    }
+}
 </style>

@@ -61,4 +61,18 @@ const { recipe } = defineProps({
 #modal-right {
     grid-area: modal-right;
 }
+
+@media screen and (width<=850px) {
+    #recipe {
+        grid-template:
+            "modal-top" auto
+            "modal-left" auto
+            "modal-right" auto / 1fr;
+    }
+
+    #modal-left {
+        border-right: none;
+        border-bottom: 1px solid #888;
+    }
+}
 </style>
