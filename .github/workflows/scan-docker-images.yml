@@ -25,4 +25,3 @@ jobs:
           scan-type: 'fs'
           format: 'table'
           exit-code: '1'
-          output: 'table.txt'
