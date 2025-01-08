@@ -40,6 +40,8 @@
     font-size: var(--font-size-body);
     margin: 0;
     padding: 0;
+    scrollbar-color: var(--color-quinary) transparent;
+    scrollbar-width: thin;
     transition-duration: .5s;
 }
 

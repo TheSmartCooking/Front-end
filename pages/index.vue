@@ -63,8 +63,6 @@ main {
     flex-direction: column;
     gap: var(--spacing-medium);
     overflow: hidden auto;
-    scrollbar-color: var(--color-quinary) transparent;
-    scrollbar-width: thin;
     width: 100%;
 }
 

@@ -1,26 +1,33 @@
 <template>
     <div id="recipe">
-        <section id="modal-top">
-            <h2>{{ recipe.title }}</h2>
-            <p id="modal-details">
-                <p v-if="recipe.author_name"><strong>Author:</strong> {{ recipe.author_name }}</p>
+        <section id="section-top">
+            <h1>{{ recipe.title }}</h1>
+            <p>
+                <span v-if="recipe.author_name">@{{ recipe.author_name }}</span>
+                <span v-if="recipe.publication_date">{{ recipe.publication_date }}</span>
+                <span v-if="recipe.modification_date"> (Last Modified: {{ recipe.modification_date }})</span>
+            </p>
+        </section>
+        <section id="section-left">
+            <div>
+                <img src="https://picsum.photos/300/300" alt="Recipe image">
+                <span v-if="null">{{ recipe_picture.author_name }}</span>
+                <span v-else>Unknown author.</span>
+                <p v-if="recipe.picture_id"><strong>Picture ID:</strong> {{ recipe.picture_id }}</p>
+            </div>
+            <div>
                 <p v-if="recipe.cook_time"><strong>Cook Time:</strong> {{ recipe.cook_time }} minutes</p>
                 <p v-if="recipe.difficulty_level"><strong>Difficulty Level:</strong> {{ recipe.difficulty_level }}</p>
                 <p v-if="recipe.number_of_reviews"><strong>Number of Reviews:</strong> {{ recipe.number_of_reviews }}</p>
                 <p v-if="recipe.nutritional_information"><strong>Nutritional Information:</strong> {{ recipe.nutritional_information }}</p>
-                <p v-if="recipe.picture_id"><strong>Picture ID:</strong> {{ recipe.picture_id }}</p>
-                <p v-if="recipe.preparation"><strong>Preparation:</strong> {{ recipe.preparation }}</p>
+                <p v-if="recipe.details"><strong>Details:</strong> {{ recipe.details }}</p>
                 <p v-if="recipe.recipe_status"><strong>Status:</strong> {{ recipe.recipe_status }}</p>
                 <p v-if="recipe.video_url"><strong>Video URL:</strong> <a :href="recipe.video_url" target="_blank">{{ recipe.video_url }}</a></p>
-            </p>
+            </div>
         </section>
-        <section id="modal-left">
-            <img id="modal-author" src="https://picsum.photos/300/300" alt="Recipe image">
-            <span id="modal-image-author"></span>
-            <div id="modal-recipe"></div>
-        </section>
-        <section id="modal-right">
-            <p v-if="recipe.details"><strong>Details:</strong> {{ recipe.details }}</p>
+        <section id="section-right">
+            <p v-if="recipe.preparation"><strong>Preparation:</strong> {{ recipe.preparation }}</p>
+            <p v-else>No preparation details available.</p>
         </section>
     </div>
 </template>
@@ -37,40 +44,79 @@ const { recipe } = defineProps({
 
 <style scoped>
 #recipe {
+    align-items: start;
     display: grid;
     gap: 1rem;
     grid-template:
-        "modal-top modal-top" auto
-        "modal-left modal-right" auto / 1fr 1fr;
+        "section-top section-top" auto
+        "section-left section-right" 1fr / 1fr 1fr;
     height: 100%;
     width: 100%;
     overflow-y: auto;
 }
 
-#modal-top {
-    grid-area: modal-top;
+#section-top {
+    grid-area: section-top;
     border-bottom: 1px solid #888;
+    height: fit-content;
 }
 
-#modal-left {
-    grid-area: modal-left;
+#section-top>p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--spacing-small);
+}
+
+#section-left {
     border-right: 1px solid #888;
+    grid-area: section-left;
     width: 100%;
 }
 
-#modal-right {
-    grid-area: modal-right;
+
+#section-left>div:first-child {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#section-left>div:first-child>img {
+    object-fit: cover;
+    width: var(--polaroid-photo-size);
+    height: var(--polaroid-photo-size);
+}
+
+#section-left>div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+}
+
+#section-right {
+    grid-area: section-right;
+    max-height: calc(var(--polaroid-photo-size) * 2);
+    overflow-y: auto;
+}
+
+@media screen and (width>850px) {
+    #section-top>p>:nth-child(2):before {
+        content: "| ";
+    }
 }
 
 @media screen and (width<=850px) {
     #recipe {
         grid-template:
-            "modal-top" auto
-            "modal-left" auto
-            "modal-right" auto / 1fr;
+            "section-top" auto
+            "section-left" auto
+            "section-right" 1fr / 1fr;
     }
 
-    #modal-left {
+    #section-top>p {
+        flex-direction: column;
+    }
+
+    #section-left {
         border-right: none;
         border-bottom: 1px solid #888;
     }
