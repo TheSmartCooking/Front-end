@@ -9,6 +9,12 @@ jobs:
     name: Scan Docker Images for Vulnerabilities
     runs-on: ubuntu-latest
 
+    permissions:
+      actions: read
+      contents: read
+      # To report GitHub Actions status checks
+      security-events: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
