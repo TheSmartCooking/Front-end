@@ -15,27 +15,37 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
-import { fetchJSON } from '@/utils/fetch.js';
+import { ref } from 'vue';
 import { useRoute } from 'vue-router';
+import { useHead } from '@vueuse/head';
+import { fetchJSON } from '@/utils/fetch.js';
 
-const config = useRuntimeConfig();
+const { public: { apiBaseUrl, appTitle  } } = useRuntimeConfig();
 
 const { id } = useRoute().params;
 const recipe = ref({});
 
-onMounted(async () => {
+// Reactive head for title
+const pageTitle = ref('Loading Recipe...');
+useHead(() => ({ title: `${appTitle} - ${pageTitle.value}` || 'Recipe Details' }));
+
+// Fetch the recipe data
+const fetchRecipe = async () => {
     try {
-        const response = await fetchJSON(
-            `${config.public.apiBaseUrl}/recipe/${id}`
-        );
+        const response = await fetchJSON(`${apiBaseUrl}/recipe/${id}`);
         if (response.success) {
             recipe.value = response.data;
+            pageTitle.value = recipe.value.title || 'Recipe Details';
         } else {
             console.error('Failed to fetch recipe data.');
+            pageTitle.value = 'Recipe Not Found';
         }
     } catch (e) {
         console.error('Error fetching recipe:', e);
+        pageTitle.value = 'Error Loading Recipe';
     }
-});
+};
+
+// Fetch recipe on mounted
+fetchRecipe();
 </script>

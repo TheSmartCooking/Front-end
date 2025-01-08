@@ -15,17 +15,20 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { fetchJSON } from '@/utils/fetch.js';
+import { useHead } from '@vueuse/head';
 import RecipeCard from '@/components/RecipeCard.vue';
 import SearchBar from '@/components/SearchBar.vue';
 
-const config = useRuntimeConfig();
+const { public: { apiBaseUrl, appTitle  } } = useRuntimeConfig();
 
 // Reactive state
 const recipes = ref(null);
 const error = ref(false);
 const loading = ref(true);
+
+useHead(() => ({ title: appTitle }));
 
 // Fetch recipes from the API
 async function fetchRecipes(query = '') {
@@ -34,7 +37,7 @@ async function fetchRecipes(query = '') {
 
     try {
         const data = await fetchJSON(
-            `${config.public.apiBaseUrl}/recipe/all${query ? `?search=${query}` : ''}`
+            `${apiBaseUrl}/recipe/all${query ? `?search=${query}` : ''}`
         );
         recipes.value = data.data || [];
     } catch (e) {
@@ -49,8 +52,8 @@ function onSearch(searchTerm) {
     // fetchRecipes(searchTerm);
 }
 
-// Fetch recipes on component mount
-onMounted(() => { fetchRecipes(); });
+// Fetch recipes on mounted
+fetchRecipes();
 </script>
 
 <style scoped>
