@@ -11,7 +11,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useCookie } from '#app';
 
-const config = useRuntimeConfig();
+const { public: { apiBaseUrl  } } = useRuntimeConfig();
 const router = useRouter();
 
 const email = ref('');
@@ -19,7 +19,7 @@ const password = ref('');
 
 const login = async () => {
     try {
-        const data = await fetch(`${config.public.apiBaseUrl}/auth/login`, {
+        const data = await fetch(`${apiBaseUrl}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
