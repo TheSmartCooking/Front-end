@@ -56,6 +56,13 @@ button {
     height: 3rem;
 }
 
+svg {
+    height: var(--icon-size);
+    stroke: var(--color-primary);
+    width: var(--icon-size);
+    cursor: pointer;
+}
+
 .hidden {
     display: none !important;
 }
