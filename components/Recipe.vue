@@ -10,10 +10,15 @@
         </section>
         <section id="section-left">
             <div>
-                <img src="https://picsum.photos/300/300" alt="Recipe image">
-                <span v-if="null">{{ recipe_picture.author_name }}</span>
-                <span v-else>Unknown author.</span>
-                <p v-if="recipe.picture_id"><strong>Picture ID:</strong> {{ recipe.picture_id }}</p>
+                <img
+                    :src="imagePath || defaultImage"
+                    @error="handleImageError"
+                    alt="Recipe image"
+                >
+                <div v-if="imagePath && imagePath !== defaultImage">
+                    <span v-if="recipe_picture?.author_name">{{ recipe_picture.author_name }}</span>
+                    <span v-else>Unknown author.</span>
+                </div>
             </div>
             <div>
                 <p v-if="recipe.cook_time"><strong>Cook Time:</strong> {{ recipe.cook_time }} minutes</p>
@@ -33,6 +38,10 @@
 </template>
 
 <script setup>
+import { ref, watch } from 'vue';
+
+const { public: { apiBaseUrl } } = useRuntimeConfig();
+
 // Props
 const { recipe } = defineProps({
     recipe: {
@@ -40,6 +49,38 @@ const { recipe } = defineProps({
         required: true,
     },
 });
+
+// Reactive state for the image path
+const imagePath = ref(null);
+const recipe_picture = ref(null); // Placeholder for picture metadata if needed
+const defaultImage = '/default-recipe.png';
+
+// Function to fetch picture data
+const fetchPictureData = async () => {
+    if (recipe.picture_id) {
+        try {
+            const response = await fetch(`${apiBaseUrl}/picture/${recipe.picture_id}`);
+            if (!response.ok) throw new Error('Failed to fetch picture data');
+
+            const data = await response.json();
+            imagePath.value = `${apiBaseUrl}/picture/${data.data.picture_path}`;
+            recipe_picture.value = data.data;
+        } catch (error) {
+            console.error('Error fetching picture data:', error);
+        }
+    } else {
+        imagePath.value = null;
+        recipe_picture.value = null;
+    }
+};
+
+// Function to handle image loading errors
+const handleImageError = (event) => {
+    event.target.src = defaultImage;
+};
+
+// Watch for changes to the recipe prop
+watch(() => recipe.picture_id, fetchPictureData, { immediate: true });
 </script>
 
 <style scoped>
