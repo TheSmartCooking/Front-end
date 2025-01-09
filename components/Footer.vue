@@ -19,6 +19,13 @@ const yearString = computed(() => {
 
 <style scoped>
 footer {
+    text-align: center;
     color: var(--color-secondary);
+}
+
+@media screen and (width<=850px) {
+    footer {
+        font-size: 1rem;
+    }
 }
 </style>

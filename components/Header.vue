@@ -58,4 +58,13 @@ ul {
     list-style-type: none;
     margin-right: var(--spacing-medium);
 }
+@media screen and (width<=850px) {
+    header {
+        flex-direction: column;
+    }
+
+    ul {
+        justify-content: space-around;
+    }
+}
 </style>

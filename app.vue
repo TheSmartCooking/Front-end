@@ -20,5 +20,12 @@
 
 .layout > :nth-child(2) {
     flex: 1;
+    overflow-y: auto;
+}
+
+@media screen and (width<=850px) {
+    .layout {
+        gap: var(--spacing-small);
+    }
 }
 </style>

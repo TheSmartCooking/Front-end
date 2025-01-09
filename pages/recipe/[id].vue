@@ -5,9 +5,6 @@
             :recipe="recipe"
         />
     </div>
-    <div id="similar-recipes">
-        <!-- TODO -->
-    </div>
 </template>
 
 <script setup>

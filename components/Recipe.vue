@@ -1,6 +1,6 @@
 <template>
     <div id="recipe">
-        <section id="section-top">
+        <section id="header-section">
             <h1>{{ recipe.title }}</h1>
             <p>
                 <span v-if="recipe.author_name">@{{ recipe.author_name }}</span>
@@ -8,7 +8,7 @@
                 <span v-if="recipe.modification_date"> (Last Modified: {{ recipe.modification_date }})</span>
             </p>
         </section>
-        <section id="section-left">
+        <section id="detail-section">
             <div>
                 <img
                     :src="imagePath || defaultImage"
@@ -30,10 +30,13 @@
                 <p v-if="recipe.video_url"><strong>Video URL:</strong> <a :href="recipe.video_url" target="_blank">{{ recipe.video_url }}</a></p>
             </div>
         </section>
-        <section id="section-right">
+        <section id="preparation-section">
             <p v-if="recipe.preparation"><strong>Preparation:</strong> {{ recipe.preparation }}</p>
             <p v-else>No preparation details available.</p>
         </section>
+        <section id="review-section"></section>
+        <section id="comment-section"></section>
+        <section id="similar-recipes-section"></section>
     </div>
 </template>
 
@@ -89,77 +92,83 @@ watch(() => recipe.picture_id, fetchPictureData, { immediate: true });
     display: grid;
     gap: 1rem;
     grid-template:
-        "section-top section-top" auto
-        "section-left section-right" 1fr / 1fr 1fr;
+        "header-section header-section" auto
+        "detail-section preparation-section" 1fr
+        "review-section review-section" auto
+        "comment-section comment-section" auto
+        "similar-recipes-section similar-recipes-section" auto
+        / 1fr 1fr;
     height: 100%;
     width: 100%;
     overflow-y: auto;
 }
 
-#section-top {
-    grid-area: section-top;
+#header-section {
+    grid-area: header-section;
     border-bottom: 1px solid #888;
     height: fit-content;
 }
 
-#section-top>p {
+#header-section>p {
     display: flex;
     flex-wrap: wrap;
     gap: 0 var(--spacing-small);
 }
 
-#section-left {
+#detail-section {
     border-right: 1px solid #888;
-    grid-area: section-left;
+    grid-area: detail-section;
     width: 100%;
 }
 
 
-#section-left>div:first-child {
+#detail-section>div:first-child {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
 }
 
-#section-left>div:first-child>img {
+#detail-section>div:first-child>img {
     object-fit: cover;
     width: var(--polaroid-photo-size);
     height: var(--polaroid-photo-size);
 }
 
-#section-left>div:nth-child(2) {
+#detail-section>div:nth-child(2) {
     display: flex;
     flex-direction: column;
 }
 
-#section-right {
-    grid-area: section-right;
+#preparation-section {
+    grid-area: preparation-section;
     max-height: calc(var(--polaroid-photo-size) * 2);
     overflow-y: auto;
 }
 
 @media screen and (width>850px) {
-    #section-top>p>:nth-child(2):before {
+    #header-section>p>:nth-child(2):before {
         content: "| ";
     }
 }
 
 @media screen and (width<=850px) {
     #recipe {
-        grid-template:
-            "section-top" auto
-            "section-left" auto
-            "section-right" 1fr / 1fr;
-    }
-
-    #section-top>p {
+        display: flex;
         flex-direction: column;
     }
 
-    #section-left {
-        border-right: none;
+    #recipe section:not(:last-child) {
+        width: 100%;
         border-bottom: 1px solid #888;
+    }
+
+    #header-section>p {
+        flex-direction: column;
+    }
+
+    #detail-section {
+        border-right: none;
     }
 }
 </style>
