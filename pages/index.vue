@@ -31,11 +31,11 @@ const loading = ref(true);
 useHead(() => ({ title: appTitle }));
 
 // Fetch recipes from the API
-(async (query = '') => {
+async function fetchRecipes(query = '') {
     loading.value = true;
     error.value = false;
 
-    fetchJSON(`${apiBaseUrl}/recipe/all${query ? `?search=${query}` : ''}`)
+    fetchJSON(`${apiBaseUrl}/recipe/${query ? `search?name=${query}&language_code=en` : 'all'}`)
         .then(data => {
             recipes.value = data.data || [];
         })
@@ -46,12 +46,15 @@ useHead(() => ({ title: appTitle }));
         .finally(() => {
             loading.value = false;
         });
-})();
+};
 
 function onSearch(searchTerm) {
     console.log('Searching for:', searchTerm);
-    // fetchRecipes(searchTerm);
+    fetchRecipes(searchTerm);
 }
+
+// Fetch recipes on mounted
+fetchRecipes();
 </script>
 
 <style scoped>
