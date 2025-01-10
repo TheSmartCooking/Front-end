@@ -35,15 +35,25 @@
             <p v-else>No preparation details available.</p>
         </section>
         <section id="review-section"></section>
-        <section id="comment-section"></section>
+        <section id="comment-section">
+            <Comment
+                v-for="comment in commentSection"
+                :key="comment.comment_id"
+                :comment="comment"
+            />
+        </section>
         <section id="similar-recipes-section"></section>
     </div>
 </template>
 
 <script setup>
 import { ref, watch } from 'vue';
+import Comment from './Comment.vue';
 
 const { public: { apiBaseUrl } } = useRuntimeConfig();
+
+const { id } = useRoute().params;
+const commentSection = ref(null);
 
 // Props
 const { recipe } = defineProps({
@@ -81,6 +91,18 @@ const fetchPictureData = async () => {
 const handleImageError = (event) => {
     event.target.src = defaultImage;
 };
+
+// Function to fetch comments
+(async => {
+    fetch(`${apiBaseUrl}/comment/recipe/${id}`)
+        .then(response => response.json())
+        .then(data => {
+            commentSection.value = data.data || [];
+        })
+        .catch(error => {
+            console.error('Error fetching comments:', error);
+        });
+})();
 
 // Watch for changes to the recipe prop
 watch(() => recipe.picture_id, fetchPictureData, { immediate: true });

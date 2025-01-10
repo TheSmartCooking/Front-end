@@ -31,29 +31,27 @@ const loading = ref(true);
 useHead(() => ({ title: appTitle }));
 
 // Fetch recipes from the API
-async function fetchRecipes(query = '') {
+(async (query = '') => {
     loading.value = true;
     error.value = false;
 
-    try {
-        const data = await fetchJSON(
-            `${apiBaseUrl}/recipe/all${query ? `?search=${query}` : ''}`
-        );
-        recipes.value = data.data || [];
-    } catch (e) {
-        error.value = true;
-    } finally {
-        loading.value = false;
-    }
-}
+    fetchJSON(`${apiBaseUrl}/recipe/all${query ? `?search=${query}` : ''}`)
+        .then(data => {
+            recipes.value = data.data || [];
+        })
+        .catch(e => {
+            error.value = true;
+            console.error('Error fetching recipes:', e);
+        })
+        .finally(() => {
+            loading.value = false;
+        });
+})();
 
 function onSearch(searchTerm) {
     console.log('Searching for:', searchTerm);
     // fetchRecipes(searchTerm);
 }
-
-// Fetch recipes on mounted
-fetchRecipes();
 </script>
 
 <style scoped>
