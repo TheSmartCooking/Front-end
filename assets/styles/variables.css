@@ -1,0 +1,68 @@
+:root {
+    color-scheme: light dark;
+
+    /* Colors */
+    --color-primary: light-dark(#b8d8ba, #426347);
+    --color-secondary: light-dark(#d9dbbc, #636645);
+    --color-tertiary: light-dark(#fcddbc, #925527);
+    --color-quaternary: light-dark(#ef959d, #782939);
+    --color-quinary: light-dark(#69585f, #3d373a);
+    --color-error: red;
+    --color-success: green;
+
+    /* Typography */
+    --font-family: 'Roboto', sans-serif;
+    --font-size-heading: 2rem;
+    --font-size-title: 1.6rem;
+    --font-size-body: 1.1rem;
+
+    /* Spacing */
+    --spacing-small: 0.4rem;
+    --spacing-medium: 1.6rem;
+    --spacing-large: 3.2rem;
+
+    /* Curvature */
+    --border-radius-small: 0.4rem;
+    --border-radius-medium: 1.6rem;
+    --border-radius-large: 3.2rem;
+
+    /* Personalized elements */
+    --icon-size: 2rem;
+    --polaroid-color: light-dark(#e9e9e9, #161616);
+    --polaroid-height: 107mm;
+    --polaroid-photo-size: 79mm;
+    --polaroid-width: 88mm;
+    --polaroid-margin-top: calc((var(--polaroid-width) - var(--polaroid-photo-size)) / 2);
+}
+
+* {
+    font-family: var(--font-family);
+    font-size: var(--font-size-body);
+    margin: 0;
+    padding: 0;
+    scrollbar-color: var(--color-quinary) transparent;
+    scrollbar-width: thin;
+    transition-duration: .5s;
+}
+
+a {
+    color: var(--color-primary);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+button {
+    background-color: var(--color-primary);
+    height: 3rem;
+}
+
+svg {
+    height: var(--icon-size);
+    stroke: var(--color-primary);
+    width: var(--icon-size);
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
