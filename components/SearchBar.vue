@@ -1,17 +1,12 @@
 <template>
-    <input
-        type="text"
-        v-model="search"
-        @input="onInput"
-        placeholder="Search for recipes"
-    />
+    <input type="text" v-model="search" @input="onInput" placeholder="Search for recipes" />
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
-const search = ref('');
-const emit = defineEmits(['search']);
+const search = ref("");
+const emit = defineEmits(["search"]);
 
 // Debounce logic
 let debounceTimeout = null;
@@ -19,7 +14,7 @@ function onInput() {
     clearTimeout(debounceTimeout);
 
     debounceTimeout = setTimeout(() => {
-        emit('search', search.value.trim());
+        emit("search", search.value.trim());
     }, 750);
 }
 </script>

@@ -5,7 +5,9 @@
             <p>
                 <span v-if="recipe.author_name">@{{ recipe.author_name }}</span>
                 <span v-if="recipe.publication_date">{{ recipe.publication_date }}</span>
-                <span v-if="recipe.modification_date"> (Last Modified: {{ recipe.modification_date }})</span>
+                <span v-if="recipe.modification_date">
+                    (Last Modified: {{ recipe.modification_date }})
+                </span>
             </p>
         </section>
         <section id="detail-section">
@@ -14,20 +16,33 @@
                     :src="imagePath || defaultImage"
                     @error="handleImageError"
                     alt="Recipe image"
-                >
+                />
                 <div v-if="imagePath && imagePath !== defaultImage">
                     <span v-if="recipe_picture?.author_name">{{ recipe_picture.author_name }}</span>
                     <span v-else>Unknown author.</span>
                 </div>
             </div>
             <div>
-                <p v-if="recipe.cook_time"><strong>Cook Time:</strong> {{ recipe.cook_time }} minutes</p>
-                <p v-if="recipe.difficulty_level"><strong>Difficulty Level:</strong> {{ recipe.difficulty_level }}</p>
-                <p v-if="recipe.number_of_reviews"><strong>Number of Reviews:</strong> {{ recipe.number_of_reviews }}</p>
-                <p v-if="recipe.nutritional_information"><strong>Nutritional Information:</strong> {{ recipe.nutritional_information }}</p>
+                <p v-if="recipe.cook_time">
+                    <strong>Cook Time:</strong> {{ recipe.cook_time }} minutes
+                </p>
+                <p v-if="recipe.difficulty_level">
+                    <strong>Difficulty Level:</strong> {{ recipe.difficulty_level }}
+                </p>
+                <p v-if="recipe.number_of_reviews">
+                    <strong>Number of Reviews:</strong> {{ recipe.number_of_reviews }}
+                </p>
+                <p v-if="recipe.nutritional_information">
+                    <strong>Nutritional Information:</strong> {{ recipe.nutritional_information }}
+                </p>
                 <p v-if="recipe.details"><strong>Details:</strong> {{ recipe.details }}</p>
-                <p v-if="recipe.recipe_status"><strong>Status:</strong> {{ recipe.recipe_status }}</p>
-                <p v-if="recipe.video_url"><strong>Video URL:</strong> <a :href="recipe.video_url" target="_blank">{{ recipe.video_url }}</a></p>
+                <p v-if="recipe.recipe_status">
+                    <strong>Status:</strong> {{ recipe.recipe_status }}
+                </p>
+                <p v-if="recipe.video_url">
+                    <strong>Video URL:</strong>
+                    <a :href="recipe.video_url" target="_blank">{{ recipe.video_url }}</a>
+                </p>
             </div>
         </section>
         <section id="preparation-section">
@@ -47,10 +62,12 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
-import Comment from './Comment.vue';
+import { ref, watch } from "vue";
+import Comment from "./Comment.vue";
 
-const { public: { apiBaseUrl } } = useRuntimeConfig();
+const {
+    public: { apiBaseUrl },
+} = useRuntimeConfig();
 
 const { id } = useRoute().params;
 const commentSection = ref(null);
@@ -66,20 +83,20 @@ const { recipe } = defineProps({
 // Reactive state for the image path
 const imagePath = ref(null);
 const recipe_picture = ref(null); // Placeholder for picture metadata if needed
-const defaultImage = '/default-recipe.png';
+const defaultImage = "/default-recipe.png";
 
 // Function to fetch picture data
 const fetchPictureData = async () => {
     if (recipe.picture_id) {
         try {
             const response = await fetch(`${apiBaseUrl}/picture/${recipe.picture_id}`);
-            if (!response.ok) throw new Error('Failed to fetch picture data');
+            if (!response.ok) throw new Error("Failed to fetch picture data");
 
             const data = await response.json();
             imagePath.value = `${apiBaseUrl}/picture/${data.data.picture_path}`;
             recipe_picture.value = data.data;
         } catch (error) {
-            console.error('Error fetching picture data:', error);
+            console.error("Error fetching picture data:", error);
         }
     } else {
         imagePath.value = null;
@@ -93,14 +110,14 @@ const handleImageError = (event) => {
 };
 
 // Function to fetch comments
-(async => {
+((async) => {
     fetch(`${apiBaseUrl}/comment/recipe/${id}`)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
             commentSection.value = data.data || [];
         })
-        .catch(error => {
-            console.error('Error fetching comments:', error);
+        .catch((error) => {
+            console.error("Error fetching comments:", error);
         });
 })();
 
@@ -131,7 +148,7 @@ watch(() => recipe.picture_id, fetchPictureData, { immediate: true });
     height: fit-content;
 }
 
-#header-section>p {
+#header-section > p {
     display: flex;
     flex-wrap: wrap;
     gap: 0 var(--spacing-small);
@@ -143,21 +160,20 @@ watch(() => recipe.picture_id, fetchPictureData, { immediate: true });
     width: 100%;
 }
 
-
-#detail-section>div:first-child {
+#detail-section > div:first-child {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
 }
 
-#detail-section>div:first-child>img {
+#detail-section > div:first-child > img {
     object-fit: cover;
     width: var(--polaroid-photo-size);
     height: var(--polaroid-photo-size);
 }
 
-#detail-section>div:nth-child(2) {
+#detail-section > div:nth-child(2) {
     display: flex;
     flex-direction: column;
 }
@@ -169,7 +185,7 @@ watch(() => recipe.picture_id, fetchPictureData, { immediate: true });
 }
 
 @media screen and (width>850px) {
-    #header-section>p>:nth-child(2):before {
+    #header-section > p > :nth-child(2):before {
         content: "| ";
     }
 }
@@ -185,7 +201,7 @@ watch(() => recipe.picture_id, fetchPictureData, { immediate: true });
         border-bottom: 1px solid #888;
     }
 
-    #header-section>p {
+    #header-section > p {
         flex-direction: column;
     }
 
