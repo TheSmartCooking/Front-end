@@ -2,27 +2,31 @@
     <div id="authentication">
         <section id="login">
             <Login />
-            <a id="go-to-login" @click="goToRegister">Don't have an account? <span class="link-color">Register</span></a>
+            <a id="go-to-login" @click="goToRegister"
+                >Don't have an account? <span class="link-color">Register</span></a
+            >
         </section>
         <section id="register" class="hidden">
             <Register :goToLogin="goToLogin" />
-            <a id="go-to-register" @click="goToLogin">Already have an account? <span class="link-color">Login</span></a>
+            <a id="go-to-register" @click="goToLogin"
+                >Already have an account? <span class="link-color">Login</span></a
+            >
         </section>
     </div>
 </template>
 
 <script setup>
-import Login from '@/components/authentication/Login.vue';
-import Register from '@/components/authentication/Register.vue';
+import Login from "@/components/authentication/Login.vue";
+import Register from "@/components/authentication/Register.vue";
 
 const goToLogin = () => {
-    document.getElementById('login').classList.remove('hidden');
-    document.getElementById('register').classList.add('hidden');
+    document.getElementById("login").classList.remove("hidden");
+    document.getElementById("register").classList.add("hidden");
 };
 
 const goToRegister = () => {
-    document.getElementById('login').classList.add('hidden');
-    document.getElementById('register').classList.remove('hidden');
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("register").classList.remove("hidden");
 };
 </script>
 
@@ -72,20 +76,14 @@ section {
     border-bottom: 1px solid light-dark(black, white);
 }
 
-:deep(
-    input:user-valid,
-    input.valid
-) {
+:deep(input:user-valid, input.valid) {
     background-color: rgb(0 255 0 / 5%);
     border: 1px solid var(--color-success);
     box-sizing: border-box;
     width: 100%;
 }
 
-:deep(
-    input:user-invalid,
-    input.invalid
-) {
+:deep(input:user-invalid, input.invalid) {
     background-color: rgb(255 0 0 / 5%);
     border: 1px solid var(--color-error);
     box-sizing: border-box;
