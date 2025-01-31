@@ -5,6 +5,7 @@ export default defineNuxtConfig({
         '@/assets/styles/variables.css'
     ],
     devtools: { enabled: false },
+    plugins: ['~/plugins/detect-language.js'],
     runtimeConfig: {
         public: {
             appTitle: `Smart Cooking ${String.fromCharCode(169)}`, // Smart Cooking &copy;
