@@ -3,9 +3,11 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed } from "vue";
 
-const { public: { appTitle } } = useRuntimeConfig();
+const {
+    public: { appTitle },
+} = useRuntimeConfig();
 
 // Define the base year
 const baseYear = 2024;
