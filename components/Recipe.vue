@@ -86,18 +86,16 @@ const recipe_picture = ref(null); // Placeholder for picture metadata if needed
 const defaultImage = "/default-recipe.png";
 
 // Function to fetch picture data
-const fetchPictureData = async () => {
+function fetchPictureData() {
     if (recipe.picture_id) {
-        try {
-            const response = await fetch(`${apiBaseUrl}/picture/${recipe.picture_id}`);
-            if (!response.ok) throw new Error("Failed to fetch picture data");
-
-            const data = await response.json();
-            imagePath.value = `${apiBaseUrl}/picture/${data.data.picture_path}`;
-            recipe_picture.value = data.data;
-        } catch (error) {
-            console.error("Error fetching picture data:", error);
-        }
+        fetchJSON(`${apiBaseUrl}/picture/${recipe.picture_id}`)
+            .then((data) => {
+                imagePath.value = `${apiBaseUrl}/picture/${data.data.picture_path}`;
+                recipe_picture.value = data.data;
+            })
+            .catch((error) => {
+                console.error("Error fetching picture data:", error);
+            });
     } else {
         imagePath.value = null;
         recipe_picture.value = null;
@@ -110,9 +108,8 @@ const handleImageError = (event) => {
 };
 
 // Function to fetch comments
-((async) => {
-    fetch(`${apiBaseUrl}/comment/recipe/${id}`)
-        .then((response) => response.json())
+(() => {
+    fetchJSON(`${apiBaseUrl}/comment/recipe/${id}`)
         .then((data) => {
             commentSection.value = data.data || [];
         })

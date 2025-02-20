@@ -29,7 +29,7 @@ const loading = ref(true);
 useHead(() => ({ title: appTitle }));
 
 // Fetch recipes from the API
-async function fetchRecipes(query = "") {
+function fetchRecipes(query = "") {
     loading.value = true;
     error.value = false;
 

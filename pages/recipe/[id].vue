@@ -23,20 +23,21 @@ const pageTitle = ref('Loading Recipe...');
 useHead(() => ({ title: `${appTitle} - ${pageTitle.value}` || 'Recipe Details' }));
 
 // Fetch the recipe data
-const fetchRecipe = async () => {
-    try {
-        const response = await fetchJSON(`${apiBaseUrl}/recipe/${id}`);
-        if (response.success) {
-            recipe.value = response.data;
-            pageTitle.value = recipe.value.title || 'Recipe Details';
-        } else {
-            console.error('Failed to fetch recipe data.');
-            pageTitle.value = 'Recipe Not Found';
-        }
-    } catch (e) {
-        console.error('Error fetching recipe:', e);
-        pageTitle.value = 'Error Loading Recipe';
-    }
+function fetchRecipe() {
+    fetchJSON(`${apiBaseUrl}/recipe/${id}`)
+        .then((data) => {
+            if (data.success) {
+                recipe.value = data.data;
+                pageTitle.value = recipe.value.title || 'Recipe Details';
+            } else {
+                console.error('Failed to fetch recipe data.');
+                pageTitle.value = 'Recipe Not Found';
+            }
+        })
+        .catch((e) => {
+            console.error('Error fetching recipe:', e);
+            pageTitle.value = 'Error Loading Recipe';
+        });
 };
 
 // Fetch recipe on mounted
