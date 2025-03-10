@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import IconHome from "@/assets/icons/home.svg";
+import IconHome from '@/assets/icons/home.svg';
 </script>

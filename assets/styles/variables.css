@@ -29,7 +29,9 @@
     --polaroid-height: 107mm;
     --polaroid-photo-size: 79mm;
     --polaroid-width: 88mm;
-    --polaroid-margin-top: calc((var(--polaroid-width) - var(--polaroid-photo-size)) / 2);
+    --polaroid-margin-top: calc(
+        (var(--polaroid-width) - var(--polaroid-photo-size)) / 2
+    );
 }
 
 * {
@@ -39,7 +41,7 @@
     padding: 0;
     scrollbar-color: var(--color-secondary) transparent;
     scrollbar-width: thin;
-    transition-duration: .5s;
+    transition-duration: 0.5s;
 }
 
 a {

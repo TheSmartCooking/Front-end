@@ -3,30 +3,32 @@
         <section id="login">
             <Login />
             <a id="go-to-login" @click="goToRegister"
-                >Don't have an account? <span class="link-color">Register</span></a
+                >Don't have an account?
+                <span class="link-color">Register</span></a
             >
         </section>
         <section id="register" class="hidden">
             <Register :goToLogin="goToLogin" />
             <a id="go-to-register" @click="goToLogin"
-                >Already have an account? <span class="link-color">Login</span></a
+                >Already have an account?
+                <span class="link-color">Login</span></a
             >
         </section>
     </div>
 </template>
 
 <script setup>
-import Login from "@/components/authentication/Login.vue";
-import Register from "@/components/authentication/Register.vue";
+import Login from '@/components/authentication/Login.vue';
+import Register from '@/components/authentication/Register.vue';
 
 const goToLogin = () => {
-    document.getElementById("login").classList.remove("hidden");
-    document.getElementById("register").classList.add("hidden");
+    document.getElementById('login').classList.remove('hidden');
+    document.getElementById('register').classList.add('hidden');
 };
 
 const goToRegister = () => {
-    document.getElementById("login").classList.add("hidden");
-    document.getElementById("register").classList.remove("hidden");
+    document.getElementById('login').classList.add('hidden');
+    document.getElementById('register').classList.remove('hidden');
 };
 </script>
 
@@ -50,7 +52,7 @@ section {
     align-items: center;
 }
 
-:deep(button[type="submit"]) {
+:deep(button[type='submit']) {
     margin-top: 1rem;
 }
 

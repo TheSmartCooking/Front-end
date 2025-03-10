@@ -1,9 +1,6 @@
 <template>
     <div id="recipe-details">
-        <Recipe
-            :key="recipe.recipe_id"
-            :recipe="recipe"
-        />
+        <Recipe :key="recipe.recipe_id" :recipe="recipe" />
     </div>
 </template>
 
@@ -13,14 +10,18 @@ import { useRoute } from 'vue-router';
 import { useHead } from '@vueuse/head';
 import { fetchJSON } from '@/utils/fetch.js';
 
-const { public: { apiBaseUrl, appTitle  } } = useRuntimeConfig();
+const {
+    public: { apiBaseUrl, appTitle }
+} = useRuntimeConfig();
 
 const { id } = useRoute().params;
 const recipe = ref({});
 
 // Reactive head for title
 const pageTitle = ref('Loading Recipe...');
-useHead(() => ({ title: `${appTitle} - ${pageTitle.value}` || 'Recipe Details' }));
+useHead(() => ({
+    title: `${appTitle} - ${pageTitle.value}` || 'Recipe Details'
+}));
 
 // Fetch the recipe data
 function fetchRecipe() {
@@ -38,7 +39,7 @@ function fetchRecipe() {
             console.error('Error fetching recipe:', e);
             pageTitle.value = 'Error Loading Recipe';
         });
-};
+}
 
 // Fetch recipe on mounted
 fetchRecipe();

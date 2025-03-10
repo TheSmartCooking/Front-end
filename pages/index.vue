@@ -1,24 +1,30 @@
 <template>
     <main>
         <SearchBar @search="onSearch" />
-        <p v-if="error">Unable to load recipes, please try again later or contact support</p>
+        <p v-if="error">
+            Unable to load recipes, please try again later or contact support
+        </p>
         <p v-else-if="loading">Loading recipes...</p>
         <p v-else-if="!recipes || recipes.length === 0">No recipes available</p>
         <section v-else id="recipes">
-            <RecipeCard v-for="recipe in recipes" :key="recipe.recipe_id" :recipe="recipe" />
+            <RecipeCard
+                v-for="recipe in recipes"
+                :key="recipe.recipe_id"
+                :recipe="recipe"
+            />
         </section>
     </main>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { fetchJSON } from "@/utils/fetch.js";
-import { useHead } from "@vueuse/head";
-import RecipeCard from "@/components/RecipeCard.vue";
-import SearchBar from "@/components/SearchBar.vue";
+import { ref } from 'vue';
+import { fetchJSON } from '@/utils/fetch.js';
+import { useHead } from '@vueuse/head';
+import RecipeCard from '@/components/RecipeCard.vue';
+import SearchBar from '@/components/SearchBar.vue';
 
 const {
-    public: { apiBaseUrl, appTitle },
+    public: { apiBaseUrl, appTitle }
 } = useRuntimeConfig();
 
 // Reactive state
@@ -29,17 +35,19 @@ const loading = ref(true);
 useHead(() => ({ title: appTitle }));
 
 // Fetch recipes from the API
-function fetchRecipes(query = "") {
+function fetchRecipes(query = '') {
     loading.value = true;
     error.value = false;
 
-    fetchJSON(`${apiBaseUrl}/recipe/${query ? `search?name=${query}&language_code=en` : "all"}`)
+    fetchJSON(
+        `${apiBaseUrl}/recipe/${query ? `search?name=${query}&language_code=en` : 'all'}`
+    )
         .then((data) => {
             recipes.value = data.data || [];
         })
         .catch((e) => {
             error.value = true;
-            console.error("Error fetching recipes:", e);
+            console.error('Error fetching recipes:', e);
         })
         .finally(() => {
             loading.value = false;
@@ -47,7 +55,7 @@ function fetchRecipes(query = "") {
 }
 
 function onSearch(searchTerm) {
-    console.log("Searching for:", searchTerm);
+    console.log('Searching for:', searchTerm);
     fetchRecipes(searchTerm);
 }
 

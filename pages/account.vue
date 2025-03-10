@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import { useRouter } from "vue-router";
-import { useCookie } from "#app";
+import { useRouter } from 'vue-router';
+import { useCookie } from '#app';
 
 export default {
     setup() {
@@ -14,17 +14,17 @@ export default {
 
         const logout = () => {
             // Remove session cookies
-            const accessToken = useCookie("access_token");
-            const refreshToken = useCookie("refresh_token");
+            const accessToken = useCookie('access_token');
+            const refreshToken = useCookie('refresh_token');
             accessToken.value = null;
             refreshToken.value = null;
 
             // Redirect to home
-            router.push("/");
+            router.push('/');
         };
 
         return { logout };
-    },
+    }
 };
 </script>
 

@@ -4,7 +4,9 @@
             <h1>{{ recipe.title }}</h1>
             <p>
                 <span v-if="recipe.author_name">@{{ recipe.author_name }}</span>
-                <span v-if="recipe.publication_date">{{ recipe.publication_date }}</span>
+                <span v-if="recipe.publication_date">{{
+                    recipe.publication_date
+                }}</span>
                 <span v-if="recipe.modification_date">
                     (Last Modified: {{ recipe.modification_date }})
                 </span>
@@ -18,7 +20,9 @@
                     alt="Recipe image"
                 />
                 <div v-if="imagePath && imagePath !== defaultImage">
-                    <span v-if="recipe_picture?.author_name">{{ recipe_picture.author_name }}</span>
+                    <span v-if="recipe_picture?.author_name">{{
+                        recipe_picture.author_name
+                    }}</span>
                     <span v-else>Unknown author.</span>
                 </div>
             </div>
@@ -27,26 +31,35 @@
                     <strong>Cook Time:</strong> {{ recipe.cook_time }} minutes
                 </p>
                 <p v-if="recipe.difficulty_level">
-                    <strong>Difficulty Level:</strong> {{ recipe.difficulty_level }}
+                    <strong>Difficulty Level:</strong>
+                    {{ recipe.difficulty_level }}
                 </p>
                 <p v-if="recipe.number_of_reviews">
-                    <strong>Number of Reviews:</strong> {{ recipe.number_of_reviews }}
+                    <strong>Number of Reviews:</strong>
+                    {{ recipe.number_of_reviews }}
                 </p>
                 <p v-if="recipe.nutritional_information">
-                    <strong>Nutritional Information:</strong> {{ recipe.nutritional_information }}
+                    <strong>Nutritional Information:</strong>
+                    {{ recipe.nutritional_information }}
                 </p>
-                <p v-if="recipe.details"><strong>Details:</strong> {{ recipe.details }}</p>
+                <p v-if="recipe.details">
+                    <strong>Details:</strong> {{ recipe.details }}
+                </p>
                 <p v-if="recipe.recipe_status">
                     <strong>Status:</strong> {{ recipe.recipe_status }}
                 </p>
                 <p v-if="recipe.video_url">
                     <strong>Video URL:</strong>
-                    <a :href="recipe.video_url" target="_blank">{{ recipe.video_url }}</a>
+                    <a :href="recipe.video_url" target="_blank">{{
+                        recipe.video_url
+                    }}</a>
                 </p>
             </div>
         </section>
         <section id="preparation-section">
-            <p v-if="recipe.preparation"><strong>Preparation:</strong> {{ recipe.preparation }}</p>
+            <p v-if="recipe.preparation">
+                <strong>Preparation:</strong> {{ recipe.preparation }}
+            </p>
             <p v-else>No preparation details available.</p>
         </section>
         <section id="review-section"></section>
@@ -62,11 +75,11 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
-import Comment from "./Comment.vue";
+import { ref, watch } from 'vue';
+import Comment from './Comment.vue';
 
 const {
-    public: { apiBaseUrl },
+    public: { apiBaseUrl }
 } = useRuntimeConfig();
 
 const { id } = useRoute().params;
@@ -76,14 +89,14 @@ const commentSection = ref(null);
 const { recipe } = defineProps({
     recipe: {
         type: Object,
-        required: true,
-    },
+        required: true
+    }
 });
 
 // Reactive state for the image path
 const imagePath = ref(null);
 const recipe_picture = ref(null); // Placeholder for picture metadata if needed
-const defaultImage = "/default-recipe.png";
+const defaultImage = '/default-recipe.png';
 
 // Function to fetch picture data
 function fetchPictureData() {
@@ -94,13 +107,13 @@ function fetchPictureData() {
                 recipe_picture.value = data.data;
             })
             .catch((error) => {
-                console.error("Error fetching picture data:", error);
+                console.error('Error fetching picture data:', error);
             });
     } else {
         imagePath.value = null;
         recipe_picture.value = null;
     }
-};
+}
 
 // Function to handle image loading errors
 const handleImageError = (event) => {
@@ -114,7 +127,7 @@ const handleImageError = (event) => {
             commentSection.value = data.data || [];
         })
         .catch((error) => {
-            console.error("Error fetching comments:", error);
+            console.error('Error fetching comments:', error);
         });
 })();
 
@@ -128,11 +141,11 @@ watch(() => recipe.picture_id, fetchPictureData, { immediate: true });
     display: grid;
     gap: 1rem;
     grid-template:
-        "header-section header-section" auto
-        "detail-section preparation-section" 1fr
-        "review-section review-section" auto
-        "comment-section comment-section" auto
-        "similar-recipes-section similar-recipes-section" auto
+        'header-section header-section' auto
+        'detail-section preparation-section' 1fr
+        'review-section review-section' auto
+        'comment-section comment-section' auto
+        'similar-recipes-section similar-recipes-section' auto
         / 1fr 1fr;
     height: 100%;
     width: 100%;
@@ -183,7 +196,7 @@ watch(() => recipe.picture_id, fetchPictureData, { immediate: true });
 
 @media screen and (width>850px) {
     #header-section > p > :nth-child(2):before {
-        content: "| ";
+        content: '| ';
     }
 }
 

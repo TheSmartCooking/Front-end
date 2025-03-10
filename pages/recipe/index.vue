@@ -2,7 +2,7 @@
     <div>
         <p>Nothing to see here.</p>
         <ButtonHome />
-</div>
+    </div>
 </template>
 
 <script setup>

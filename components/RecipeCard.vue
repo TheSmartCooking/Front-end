@@ -2,38 +2,46 @@
     <div class="card" @click="handleClick">
         <div
             class="card-body"
-            :style="{ backgroundImage: `url(${recipe.image || placeholderImage})` }"
+            :style="{
+                backgroundImage: `url(${recipe.image || placeholderImage})`
+            }"
         >
             <div class="card-top">
-                <div class="card-text cook-time">{{ `⏱ ${recipe.cook_time}` || "Unknown" }}</div>
-                <div class="card-text recipe-status">{{ recipe.status || "Unknown" }}</div>
+                <div class="card-text cook-time">
+                    {{ `⏱ ${recipe.cook_time}` || 'Unknown' }}
+                </div>
+                <div class="card-text recipe-status">
+                    {{ recipe.status || 'Unknown' }}
+                </div>
             </div>
             <div class="card-bottom">
                 <div class="card-text recipe-author">
-                    {{ `@${recipe.author_name}` || "Unknown" }}
+                    {{ `@${recipe.author_name}` || 'Unknown' }}
                 </div>
-                <div class="card-text recipe-likes">{{ recipe.likes || 0 }} likes</div>
+                <div class="card-text recipe-likes">
+                    {{ recipe.likes || 0 }} likes
+                </div>
             </div>
         </div>
         <div class="recipe-title">
-            <h1>{{ recipe.title || "Unknown" }}</h1>
+            <h1>{{ recipe.title || 'Unknown' }}</h1>
         </div>
     </div>
 </template>
 
 <script setup>
-import { useRouter } from "vue-router";
+import { useRouter } from 'vue-router';
 
 // Props
 const { recipe } = defineProps({
     recipe: {
         type: Object,
-        required: true,
-    },
+        required: true
+    }
 });
 
 // Constants
-const placeholderImage = "https://picsum.photos/300/300";
+const placeholderImage = 'https://picsum.photos/300/300';
 
 // Router for navigation
 const router = useRouter();

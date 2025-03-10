@@ -4,33 +4,37 @@
         <ul>
             <li><ButtonHome /></li>
             <li v-if="isLoggedIn">
-                <nuxt-link to="/account" title="Account"><IconAccount /></nuxt-link>
+                <nuxt-link to="/account" title="Account"
+                    ><IconAccount
+                /></nuxt-link>
             </li>
             <li v-else>
                 <nuxt-link to="/login" title="Login"><IconAccount /></nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/contact" title="Contact Us"><IconContact /></nuxt-link>
+                <nuxt-link to="/contact" title="Contact Us"
+                    ><IconContact
+                /></nuxt-link>
             </li>
         </ul>
     </header>
 </template>
 
 <script setup>
-import { ref, watchEffect } from "vue";
-import { useRouter } from "vue-router";
-import { useCookie } from "#app";
-import ButtonHome from "./ButtonHome.vue";
-import IconAccount from "@/assets/icons/user.svg";
-import IconContact from "@/assets/icons/mail-question.svg";
+import { ref, watchEffect } from 'vue';
+import { useRouter } from 'vue-router';
+import { useCookie } from '#app';
+import ButtonHome from './ButtonHome.vue';
+import IconAccount from '@/assets/icons/user.svg';
+import IconContact from '@/assets/icons/mail-question.svg';
 
 const {
-    public: { appTitle },
+    public: { appTitle }
 } = useRuntimeConfig();
 const isLoggedIn = ref(false);
 
 // Monitor the refresh_token cookie
-const userCookie = useCookie("refresh_token");
+const userCookie = useCookie('refresh_token');
 
 // Update isLoggedIn when the cookie changes
 watchEffect(() => {
