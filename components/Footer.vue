@@ -22,7 +22,7 @@ const yearString = computed(() => {
 <style scoped>
 footer {
     text-align: center;
-    color: var(--color-secondary);
+    color: light-dark(#000, #fff);
 }
 
 @media screen and (width<=850px) {

@@ -17,7 +17,7 @@ aside {
 
 span {
     animation: spin 1s linear infinite;
-    border: 1rem solid light-dark(var(--color-primary), var(--color-quinary));
+    border: 1rem solid light-dark(var(--color-primary), var(--color-secondary));
     border-radius: 50%;
     border-top: 1rem solid transparent;
     height: 7rem;

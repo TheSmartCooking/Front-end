@@ -3,6 +3,8 @@ name: Lint
 
 on:
   push: null
+    # branches:
+    #   - master
   pull_request: null
 
 permissions: {}
@@ -31,14 +33,14 @@ jobs:
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_ALL_CODEBASE: false
-          VALIDATE_CSS_PRETTIER: false
-          VALIDATE_HTML_PRETTIER: false
+          VALIDATE_ALL_CODEBASE: true
+          # VALIDATE_CSS_PRETTIER: false
+          # VALIDATE_HTML_PRETTIER: false
           VALIDATE_JAVASCRIPT_STANDARD: false
-          VALIDATE_JAVASCRIPT_PRETTIER: false
-          VALIDATE_JSON_PRETTIER: false
-          VALIDATE_YAML_PRETTIER: false
+          # VALIDATE_JAVASCRIPT_PRETTIER: false
+          # VALIDATE_JSON_PRETTIER: false
+          # VALIDATE_YAML_PRETTIER: false
           VALIDATE_JSON: false
-          VALIDATE_TYPESCRIPT_PRETTIER: false
+          # VALIDATE_TYPESCRIPT_PRETTIER: false
           VALIDATE_TYPESCRIPT_STANDARD: false
-          VALIDATE_VUE_PRETTIER: false
+          # VALIDATE_VUE_PRETTIER: false
