@@ -26,7 +26,7 @@ happen.
 - Browser [e.g. chrome, safari]
 - Version [e.g. 22]
 
-**Smartphone (please complete the following information):**
+**Mobile (please complete the following information):**
 
 - Device: [e.g. iPhone6]
 - OS: [e.g. iOS8.1]

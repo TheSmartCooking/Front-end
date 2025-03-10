@@ -6,7 +6,7 @@ This repository contains the frontend for SmartCooking.
 
 ### Nuxt Minimal Development Server
 
--   To develop the frontend locally, you'll need Nuxt.js installed. Follow the steps below to develop the frontend with Nuxt.js.
+- To develop the frontend locally, you'll need Nuxt.js installed. Follow the steps below to develop the frontend with Nuxt.js.
 
 1. Install the dependencies:
 
