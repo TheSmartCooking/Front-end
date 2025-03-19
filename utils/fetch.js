@@ -1,4 +1,4 @@
-import { showSpinner, hideSpinner } from "./spinner";
+import { showSpinner, hideSpinner } from './spinner';
 
 export async function fetchJSON(url) {
     showSpinner();

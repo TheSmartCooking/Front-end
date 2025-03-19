@@ -2,11 +2,8 @@
     color-scheme: light dark;
 
     /* Colors */
-    --color-primary: light-dark(#b8d8ba, #426347);
-    --color-secondary: light-dark(#d9dbbc, #636645);
-    --color-tertiary: light-dark(#fcddbc, #925527);
-    --color-quaternary: light-dark(#ef959d, #782939);
-    --color-quinary: light-dark(#69585f, #3d373a);
+    --color-primary: light-dark(#527f59, #2b422f);
+    --color-secondary: light-dark(#66af71, #3f8549);
     --color-error: red;
     --color-success: green;
 
@@ -32,7 +29,9 @@
     --polaroid-height: 107mm;
     --polaroid-photo-size: 79mm;
     --polaroid-width: 88mm;
-    --polaroid-margin-top: calc((var(--polaroid-width) - var(--polaroid-photo-size)) / 2);
+    --polaroid-margin-top: calc(
+        (var(--polaroid-width) - var(--polaroid-photo-size)) / 2
+    );
 }
 
 * {
@@ -40,9 +39,9 @@
     font-size: var(--font-size-body);
     margin: 0;
     padding: 0;
-    scrollbar-color: var(--color-quinary) transparent;
+    scrollbar-color: var(--color-secondary) transparent;
     scrollbar-width: thin;
-    transition-duration: .5s;
+    transition-duration: 0.5s;
 }
 
 a {
@@ -52,7 +51,7 @@ a {
 }
 
 button {
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary);
     height: 3rem;
 }
 
