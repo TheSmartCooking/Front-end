@@ -58,28 +58,28 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import IconShow from '@/assets/icons/eye.svg';
-import IconHide from '@/assets/icons/eye-off.svg';
+import { ref, computed } from 'vue'
+import IconShow from '@/assets/icons/eye.svg'
+import IconHide from '@/assets/icons/eye-off.svg'
 
 const {
-    public: { apiBaseUrl }
-} = useRuntimeConfig();
+    public: { apiBaseUrl },
+} = useRuntimeConfig()
 
-const username = ref('');
-const email = ref('');
-const password = ref('');
-const passwordConfirm = ref('');
-const passwordVisible = ref(false);
-const passwordStrengthValue = ref(0); // Current strength value
-const passwordStrengthMax = ref(5); // Maximum strength value
-const passwordStrengthBarVisible = ref(false); // Controls visibility of strength bar
+const username = ref('')
+const email = ref('')
+const password = ref('')
+const passwordConfirm = ref('')
+const passwordVisible = ref(false)
+const passwordStrengthValue = ref(0) // Current strength value
+const passwordStrengthMax = ref(5) // Maximum strength value
+const passwordStrengthBarVisible = ref(false) // Controls visibility of strength bar
 
-const props = defineProps({ goToLogin: { type: Function } });
+const props = defineProps({ goToLogin: { type: Function } })
 
 const togglePasswordVisibility = () => {
-    passwordVisible.value = !passwordVisible.value;
-};
+    passwordVisible.value = !passwordVisible.value
+}
 
 // Evaluate password strength based on criteria
 const evaluatePasswordStrength = () => {
@@ -88,22 +88,22 @@ const evaluatePasswordStrength = () => {
         uppercase: /[A-Z]/.test(password.value),
         lowercase: /[a-z]/.test(password.value),
         digit: /[0-9]/.test(password.value),
-        special: /[^A-Za-z0-9]/.test(password.value)
-    };
+        special: /[^A-Za-z0-9]/.test(password.value),
+    }
 
     // Count met criteria
-    const metCriteriaCount = Object.values(criteria).filter(Boolean).length;
+    const metCriteriaCount = Object.values(criteria).filter(Boolean).length
 
     // Update strength bar
-    passwordStrengthValue.value = metCriteriaCount;
-    passwordStrengthBarVisible.value = metCriteriaCount > 0;
-};
+    passwordStrengthValue.value = metCriteriaCount
+    passwordStrengthBarVisible.value = metCriteriaCount > 0
+}
 
 // Handle registration logic
 const register = async () => {
     if (password.value !== passwordConfirm.value) {
-        console.error('Passwords do not match');
-        return;
+        console.error('Passwords do not match')
+        return
     }
 
     try {
@@ -113,20 +113,20 @@ const register = async () => {
             body: JSON.stringify({
                 username: username.value,
                 email: email.value,
-                password: password.value
-            })
-        });
+                password: password.value,
+            }),
+        })
 
         if (!response.ok) {
-            throw new Error('Registration failed');
+            throw new Error('Registration failed')
         }
 
-        const data = await response.json();
-        props.goToLogin();
+        const data = await response.json()
+        props.goToLogin()
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error:', error)
     }
-};
+}
 </script>
 
 <style scoped>

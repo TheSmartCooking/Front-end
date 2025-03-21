@@ -1,15 +1,15 @@
-import { showSpinner, hideSpinner } from './spinner';
+import { showSpinner, hideSpinner } from './spinner'
 
 export async function fetchJSON(url) {
-    showSpinner();
+    showSpinner()
 
     try {
-        let response = await fetch(url);
-        let data = await response.json();
-        hideSpinner();
-        return data;
+        let response = await fetch(url)
+        let data = await response.json()
+        hideSpinner()
+        return data
     } catch (error) {
-        hideSpinner();
-        throw error;
+        hideSpinner()
+        throw error
     }
 }

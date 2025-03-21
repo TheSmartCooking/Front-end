@@ -1,2 +1,1 @@
-# Ignore diffs for package-lock.json
-package-lock.json diff=none
+* text=auto

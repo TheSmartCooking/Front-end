@@ -5,44 +5,44 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useRoute } from 'vue-router';
-import { useHead } from '@vueuse/head';
-import { fetchJSON } from '@/utils/fetch.js';
+import { ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { useHead } from '@vueuse/head'
+import { fetchJSON } from '@/utils/fetch.js'
 
 const {
-    public: { apiBaseUrl, appTitle }
-} = useRuntimeConfig();
+    public: { apiBaseUrl, appTitle },
+} = useRuntimeConfig()
 
-const { id } = useRoute().params;
-const recipe = ref({});
+const { id } = useRoute().params
+const recipe = ref({})
 
 // Reactive head for title
-const pageTitle = ref('Loading Recipe...');
+const pageTitle = ref('Loading Recipe...')
 useHead(() => ({
-    title: `${appTitle} - ${pageTitle.value}` || 'Recipe Details'
-}));
+    title: `${appTitle} - ${pageTitle.value}` || 'Recipe Details',
+}))
 
 // Fetch the recipe data
 function fetchRecipe() {
     fetchJSON(`${apiBaseUrl}/recipe/${id}`)
         .then((data) => {
             if (data.success) {
-                recipe.value = data.data;
-                pageTitle.value = recipe.value.title || 'Recipe Details';
+                recipe.value = data.data
+                pageTitle.value = recipe.value.title || 'Recipe Details'
             } else {
-                console.error('Failed to fetch recipe data.');
-                pageTitle.value = 'Recipe Not Found';
+                console.error('Failed to fetch recipe data.')
+                pageTitle.value = 'Recipe Not Found'
             }
         })
         .catch((e) => {
-            console.error('Error fetching recipe:', e);
-            pageTitle.value = 'Error Loading Recipe';
-        });
+            console.error('Error fetching recipe:', e)
+            pageTitle.value = 'Error Loading Recipe'
+        })
 }
 
 // Fetch recipe on mounted
-fetchRecipe();
+fetchRecipe()
 </script>
 
 <style scoped>

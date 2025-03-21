@@ -4,16 +4,16 @@ export default defineNuxtPlugin({
     async setup({}) {
         const browserLanguage = (
             navigator.language || navigator.userLanguage
-        ).split('-')[0];
+        ).split('-')[0]
 
         // Check if the cookie already exists
         const languageCookie = useCookie('language_code', {
             sameSite: 'strict',
-            maxAge: 60 * 60 * 24 * 365 * 100 // 100 years
-        });
+            maxAge: 60 * 60 * 24 * 365 * 100, // 100 years
+        })
 
         if (!languageCookie.value) {
-            languageCookie.value = browserLanguage;
+            languageCookie.value = browserLanguage
         }
-    }
-});
+    },
+})
