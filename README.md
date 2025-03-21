@@ -12,12 +12,12 @@ This ensures all dependencies are correctly installed without requiring contribu
 #### Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/)
-- VS Code with the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- Visual Studio Code with the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
 #### Steps to Use the DevContainer
 
-1. Open this repository in VS Code.
-2. If you have the Dev Containers extension installed, VS Code will prompt you to reopen the project inside the container.
+1. Open this repository in Visual Studio Code.
+2. If you have the Dev Containers extension installed, Visual Studio Code will prompt you to reopen the project inside the container.
    - If not prompted, open the Command Palette (`Ctrl + Shift + P` or `Cmd + Shift + P` on macOS) and run **"Reopen in Container"**.
 3. The container will set up automatically, installing dependencies and preparing the environment.
 4. Start the development server with:
