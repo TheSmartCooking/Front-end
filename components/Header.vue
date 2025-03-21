@@ -21,31 +21,31 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue';
-import { useRouter } from 'vue-router';
-import { useCookie } from '#app';
-import ButtonHome from './ButtonHome.vue';
-import IconAccount from '@/assets/icons/user.svg';
-import IconContact from '@/assets/icons/mail-question.svg';
+import { ref, watchEffect } from 'vue'
+import { useRouter } from 'vue-router'
+import { useCookie } from '#app'
+import ButtonHome from './ButtonHome.vue'
+import IconAccount from '@/assets/icons/user.svg'
+import IconContact from '@/assets/icons/mail-question.svg'
 
 const {
-    public: { appTitle }
-} = useRuntimeConfig();
-const isLoggedIn = ref(false);
+    public: { appTitle },
+} = useRuntimeConfig()
+const isLoggedIn = ref(false)
 
 // Monitor the refresh_token cookie
-const userCookie = useCookie('refresh_token');
+const userCookie = useCookie('refresh_token')
 
 // Update isLoggedIn when the cookie changes
 watchEffect(() => {
-    isLoggedIn.value = !!userCookie.value;
-});
+    isLoggedIn.value = !!userCookie.value
+})
 
 // Ensure the header reacts to route changes
-const router = useRouter();
+const router = useRouter()
 router.afterEach(() => {
-    isLoggedIn.value = !!userCookie.value;
-});
+    isLoggedIn.value = !!userCookie.value
+})
 </script>
 
 <style scoped>

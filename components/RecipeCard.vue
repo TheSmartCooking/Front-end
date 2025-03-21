@@ -3,7 +3,7 @@
         <div
             class="card-body"
             :style="{
-                backgroundImage: `url(${recipe.image || placeholderImage})`
+                backgroundImage: `url(${recipe.image || placeholderImage})`,
             }"
         >
             <div class="card-top">
@@ -30,26 +30,26 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 
 // Props
 const { recipe } = defineProps({
     recipe: {
         type: Object,
-        required: true
-    }
-});
+        required: true,
+    },
+})
 
 // Constants
-const placeholderImage = 'https://picsum.photos/300/300';
+const placeholderImage = 'https://picsum.photos/300/300'
 
 // Router for navigation
-const router = useRouter();
+const router = useRouter()
 
 // Methods
 const handleClick = () => {
-    router.push(`/recipe/${recipe.recipe_id}`);
-};
+    router.push(`/recipe/${recipe.recipe_id}`)
+}
 </script>
 
 <style scoped>

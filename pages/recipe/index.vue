@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import ButtonHome from '~/components/ButtonHome.vue';
+import ButtonHome from '~/components/ButtonHome.vue'
 </script>
 
 <style scoped>

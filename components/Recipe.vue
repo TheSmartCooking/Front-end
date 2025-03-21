@@ -75,64 +75,64 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
-import Comment from './Comment.vue';
+import { ref, watch } from 'vue'
+import Comment from './Comment.vue'
 
 const {
-    public: { apiBaseUrl }
-} = useRuntimeConfig();
+    public: { apiBaseUrl },
+} = useRuntimeConfig()
 
-const { id } = useRoute().params;
-const commentSection = ref(null);
+const { id } = useRoute().params
+const commentSection = ref(null)
 
 // Props
 const { recipe } = defineProps({
     recipe: {
         type: Object,
-        required: true
-    }
-});
+        required: true,
+    },
+})
 
 // Reactive state for the image path
-const imagePath = ref(null);
-const recipe_picture = ref(null); // Placeholder for picture metadata if needed
-const defaultImage = '/default-recipe.png';
+const imagePath = ref(null)
+const recipe_picture = ref(null) // Placeholder for picture metadata if needed
+const defaultImage = '/default-recipe.png'
 
 // Function to fetch picture data
 function fetchPictureData() {
     if (recipe.picture_id) {
         fetchJSON(`${apiBaseUrl}/picture/${recipe.picture_id}`)
             .then((data) => {
-                imagePath.value = `${apiBaseUrl}/picture/${data.data.picture_path}`;
-                recipe_picture.value = data.data;
+                imagePath.value = `${apiBaseUrl}/picture/${data.data.picture_path}`
+                recipe_picture.value = data.data
             })
             .catch((error) => {
-                console.error('Error fetching picture data:', error);
-            });
+                console.error('Error fetching picture data:', error)
+            })
     } else {
-        imagePath.value = null;
-        recipe_picture.value = null;
+        imagePath.value = null
+        recipe_picture.value = null
     }
 }
 
 // Function to handle image loading errors
 const handleImageError = (event) => {
-    event.target.src = defaultImage;
-};
+    event.target.src = defaultImage
+}
 
 // Function to fetch comments
-(() => {
+;(() => {
     fetchJSON(`${apiBaseUrl}/comment/recipe/${id}`)
         .then((data) => {
-            commentSection.value = data.data || [];
+            commentSection.value = data.data || []
         })
         .catch((error) => {
-            console.error('Error fetching comments:', error);
-        });
-})();
+            console.error('Error fetching comments:', error)
+        })
+})()
 
 // Watch for changes to the recipe prop
-watch(() => recipe.picture_id, fetchPictureData, { immediate: true });
+watch(() => recipe.picture_id, fetchPictureData, { immediate: true })
 </script>
 
 <style scoped>

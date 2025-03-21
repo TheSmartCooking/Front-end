@@ -17,50 +17,50 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { fetchJSON } from '@/utils/fetch.js';
-import { useHead } from '@vueuse/head';
-import RecipeCard from '@/components/RecipeCard.vue';
-import SearchBar from '@/components/SearchBar.vue';
+import { ref } from 'vue'
+import { fetchJSON } from '@/utils/fetch.js'
+import { useHead } from '@vueuse/head'
+import RecipeCard from '@/components/RecipeCard.vue'
+import SearchBar from '@/components/SearchBar.vue'
 
 const {
-    public: { apiBaseUrl, appTitle }
-} = useRuntimeConfig();
+    public: { apiBaseUrl, appTitle },
+} = useRuntimeConfig()
 
 // Reactive state
-const recipes = ref(null);
-const error = ref(false);
-const loading = ref(true);
+const recipes = ref(null)
+const error = ref(false)
+const loading = ref(true)
 
-useHead(() => ({ title: appTitle }));
+useHead(() => ({ title: appTitle }))
 
 // Fetch recipes from the API
 function fetchRecipes(query = '') {
-    loading.value = true;
-    error.value = false;
+    loading.value = true
+    error.value = false
 
     fetchJSON(
         `${apiBaseUrl}/recipe/${query ? `search?name=${query}&language_code=en` : 'all'}`
     )
         .then((data) => {
-            recipes.value = data.data || [];
+            recipes.value = data.data || []
         })
         .catch((e) => {
-            error.value = true;
-            console.error('Error fetching recipes:', e);
+            error.value = true
+            console.error('Error fetching recipes:', e)
         })
         .finally(() => {
-            loading.value = false;
-        });
+            loading.value = false
+        })
 }
 
 function onSearch(searchTerm) {
-    console.log('Searching for:', searchTerm);
-    fetchRecipes(searchTerm);
+    console.log('Searching for:', searchTerm)
+    fetchRecipes(searchTerm)
 }
 
 // Fetch recipes on mounted
-fetchRecipes();
+fetchRecipes()
 </script>
 
 <style scoped>

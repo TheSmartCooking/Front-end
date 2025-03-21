@@ -7,11 +7,11 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             appTitle: `Smart Cooking ${String.fromCharCode(169)}`, // Smart Cooking &copy;
-            apiBaseUrl: 'http://localhost:5000'
-        }
+            apiBaseUrl: 'http://localhost:5000',
+        },
     },
     ssr: false,
     vite: {
-        plugins: [require('vite-svg-loader')()]
-    }
-});
+        plugins: [require('vite-svg-loader')()],
+    },
+})
