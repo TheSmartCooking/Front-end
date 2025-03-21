@@ -12,6 +12,6 @@
             ]
         }
     },
-    "postStartCommand": "npm install",
+    "postStartCommand": "npm update && npm install",
     "remoteUser": "vscode"
 }
