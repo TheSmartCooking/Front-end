@@ -1,0 +1,17 @@
+{
+    "name": "Smart Cooking Front-end Development Container",
+    "dockerFile": "Dockerfile",
+    "customizations": {
+        "settings": {
+            "terminal.integrated.shell.linux": "/bin/bash"
+        },
+        "vscode": {
+            "extensions": [
+                "esbenp.prettier-vscode",
+                "nuxtr.nuxt-vscode-extentions"
+            ]
+        }
+    },
+    "postStartCommand": "npm update && npm install",
+    "remoteUser": "vscode"
+}

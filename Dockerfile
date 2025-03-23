@@ -17,7 +17,7 @@ COPY . .
 RUN npm run generate
 
 # Stage 2: Serve the static files using Nginx
-FROM nginx:1.24-alpine-slim
+FROM nginx:1.24-alpine-slim AS production-stage
 
 # Set environment variables
 ENV TEMP_FRONTEND_DIR=/temp-frontend-files

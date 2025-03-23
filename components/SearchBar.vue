@@ -8,19 +8,19 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const search = ref('');
-const emit = defineEmits(['search']);
+const search = ref('')
+const emit = defineEmits(['search'])
 
 // Debounce logic
-let debounceTimeout = null;
+let debounceTimeout = null
 function onInput() {
-    clearTimeout(debounceTimeout);
+    clearTimeout(debounceTimeout)
 
     debounceTimeout = setTimeout(() => {
-        emit('search', search.value.trim());
-    }, 750);
+        emit('search', search.value.trim())
+    }, 750)
 }
 </script>
 
