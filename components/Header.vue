@@ -4,17 +4,17 @@
         <ul>
             <li><ButtonHome /></li>
             <li v-if="isLoggedIn">
-                <nuxt-link to="/account" title="Account"
-                    ><IconAccount
-                /></nuxt-link>
+                <nuxt-link to="/account" title="Account">
+                    <IconAccount />
+                </nuxt-link>
             </li>
             <li v-else>
                 <nuxt-link to="/login" title="Login"><IconAccount /></nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/contact" title="Contact Us"
-                    ><IconContact
-                /></nuxt-link>
+                <nuxt-link to="/contact" title="Contact Us">
+                    <IconContact />
+                </nuxt-link>
             </li>
         </ul>
     </header>
