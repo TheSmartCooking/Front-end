@@ -55,7 +55,7 @@ We use HttpOnly and Secure cookies to store authentication tokens. This prevents
 
 These are logs of user activity within our system, such as authentication and website access:
 
-```log
+```
 2025-04-02 14:21:50 - config.logging - INFO - 172.17.0.1: GET / 200
 2025-04-02 14:21:54 - config.logging - INFO - 172.17.0.1: POST /auth/login 200
 ```
