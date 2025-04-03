@@ -4,7 +4,10 @@ Effective Date: 2025/04/06
 
 ## Introduction
 
-Welcome to {{ appTitle }}. Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal data when you visit our website.
+Welcome to Smart Cooking ©!
+
+Your privacy is important to us.
+This Privacy Policy explains how we collect, use, and protect your personal data when you visit our website.
 
 ## Information We Collect
 
@@ -83,7 +86,7 @@ We ensure that your information is safe, even in the event of a database breach.
 
 - Our website code is **fully open-source and available on GitHub**, allowing users to verify how data is handled.
 - You have the right to access and understand how your data is used.
-- Users may request data deletion by opening an issue on our GitHub repository (if they have a GitHub account) or by [contacting us](#contact-us).
+- Users may request data deletion by opening an issue on our GitHub repository (if they have a GitHub account) or by contacting us.
 
 ## Security Breach Notification
 
@@ -95,5 +98,4 @@ We may update this policy from time to time. The latest version will always be a
 
 ## Contact Us
 
-If you have questions about this Privacy Policy, contact us at:
-{{ TODO: Add contact address }}
+If you have questions about this Privacy Policy, contact us.
