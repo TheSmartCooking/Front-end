@@ -16,6 +16,11 @@
                     <IconContact />
                 </nuxt-link>
             </li>
+            <li>
+                <nuxt-link to="/privacy" title="Privacy Policy">
+                    <IconPrivacy />
+                </nuxt-link>
+            </li>
         </ul>
     </header>
 </template>
@@ -27,6 +32,7 @@ import { useCookie } from '#app'
 import ButtonHome from './ButtonHome.vue'
 import IconAccount from '@/assets/icons/user.svg'
 import IconContact from '@/assets/icons/mail-question.svg'
+import IconPrivacy from '@/assets/icons/privacy-policy.svg'
 
 const {
     public: { appTitle },

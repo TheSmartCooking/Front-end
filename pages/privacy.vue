@@ -1,11 +1,9 @@
 <template>
-    <div class="container mx-auto p-6">
-        <VueMarkdown
-            ref="markdown"
-            :source="privacyPolicy"
-            class="prose max-w-none"
-        />
-    </div>
+    <VueMarkdown
+        ref="markdown"
+        :source="privacyPolicy"
+        class="prose max-w-none"
+    />
 </template>
 
 <script setup>
@@ -26,7 +24,7 @@ onMounted(() => {
 })
 </script>
 
-<style>
+<style scoped>
 pre code {
     border: 1px solid #ccc;
     display: block;

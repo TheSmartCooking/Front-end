@@ -40,7 +40,9 @@ function fetchRecipes(query = '') {
     error.value = false
 
     fetchJSON(
-        `${apiBaseUrl}/recipe/${query ? `search?name=${query}&language_code=en` : 'all'}`
+        `${apiBaseUrl}/recipe/${
+            query ? `search?name=${query}&language_code=en` : 'all'
+        }`
     )
         .then((data) => {
             recipes.value = data.data || []
@@ -79,5 +81,6 @@ main {
     gap: var(--spacing-medium);
     justify-content: center;
     width: 100%;
+    overflow: auto;
 }
 </style>

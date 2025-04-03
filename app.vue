@@ -1,25 +1,25 @@
 <template>
-    <div class="layout">
+    <div id="app">
         <Header />
-        <NuxtPage />
+        <div class="layout">
+            <NuxtPage />
+        </div>
         <Footer />
         <LoadingSpinner class="hidden" />
     </div>
 </template>
 
 <style scoped>
-.layout {
-    align-items: center;
+#app {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-large);
     height: 100svh;
-    justify-content: center;
     width: 100%;
 }
 
-.layout > :nth-child(2) {
+.layout {
     flex: 1;
+    overflow: auto;
 }
 
 @media screen and (width<=850px) {
