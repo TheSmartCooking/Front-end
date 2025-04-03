@@ -81,6 +81,11 @@ ul {
         flex-direction: column;
     }
 
+    header > span {
+        margin: 0;
+        text-align: center;
+    }
+
     ul {
         justify-content: space-around;
     }
