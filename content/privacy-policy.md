@@ -1,10 +1,10 @@
 # Privacy Policy
 
-Effective Date: April 6, 2025
+_Effective Date: April 6, 2025_
 
 ## Introduction
 
-Welcome to Smart Cooking ©!
+Welcome to **Smart Cooking ©**!
 
 Your privacy is important to us.
 This Privacy Policy explains how we collect, use, and protect your personal data when you visit our website.

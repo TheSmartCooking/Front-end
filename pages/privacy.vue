@@ -20,3 +20,15 @@ onMounted(() => {
     }
 })
 </script>
+
+<style scoped>
+.markdown {
+    width: 75%;
+}
+
+@media screen and (width<=850px) {
+    .markdown {
+        width: 95%;
+    }
+}
+</style>
