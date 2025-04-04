@@ -26,6 +26,11 @@ onMounted(() => {
     width: 75%;
 }
 
+.markdown>p>em {
+    text-align: center;
+    color: red;
+}
+
 @media screen and (width<=850px) {
     .markdown {
         width: 95%;
