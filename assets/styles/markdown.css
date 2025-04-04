@@ -1,3 +1,7 @@
+.markdown {
+    margin-bottom: var(--spacing-medium);
+}
+
 .markdown h1,
 .markdown h2,
 .markdown h3,

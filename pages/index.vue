@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <div>
         <SearchBar @search="onSearch" />
         <p v-if="error">
             Unable to load recipes, please try again later or contact support
@@ -13,7 +13,7 @@
                 :recipe="recipe"
             />
         </section>
-    </main>
+    </div>
 </template>
 
 <script setup>
@@ -66,7 +66,7 @@ fetchRecipes()
 </script>
 
 <style scoped>
-main {
+div {
     align-items: center;
     display: flex;
     flex-direction: column;

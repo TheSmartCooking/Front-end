@@ -1,9 +1,9 @@
 <template>
     <div id="app">
         <Header />
-        <div class="layout">
+        <main class="layout">
             <NuxtPage />
-        </div>
+        </main>
         <Footer />
         <LoadingSpinner class="hidden" />
     </div>
