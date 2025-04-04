@@ -88,6 +88,7 @@ ul {
 
     ul {
         justify-content: space-around;
+        margin: 0;
     }
 }
 </style>
