@@ -14,7 +14,7 @@ const markdown = ref(null)
 
 onMounted(() => {
     if (markdown.value) {
-        document.querySelectorAll('pre code').forEach((block) => {
+        ref.querySelectorAll('pre code').forEach((block) => {
             hljs.highlightElement(block)
         })
     }
@@ -26,7 +26,7 @@ onMounted(() => {
     width: 75%;
 }
 
-.markdown>p>em {
+.markdown > p > em {
     text-align: center;
     color: red;
 }

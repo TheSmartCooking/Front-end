@@ -13,89 +13,90 @@ This Privacy Policy explains how we collect, use, and protect your personal data
 
 We collect and process the following types of information:
 
-### User Accounts & Authentication
+### Account & Authentication Details
 
-Users can create accounts directly on our platform, as we handle authentication internally without relying on third-party providers.
+- Users can create accounts directly on our platform.
+- We handle authentication internally without third-party providers.
 
-### Login & Session Data
+### Session & Login Data
 
-We use cookies to store authentication tokens and session data to keep you logged in securely.
+- We use cookies to store authentication tokens and session data to keep you securely logged in.
 
-### IP Address Logging
+### IP Logging for Security
 
-We log full IP addresses to apply rate limiting and prevent DoS attacks. This data is used solely for security purposes and is not linked to any personal user information. These logs are retained for **90 days** before being permanently deleted.
+- We log full IP addresses to apply rate limiting and prevent DoS attacks.
+- Logs are used solely for security and retained for **90 days** before deletion.
 
-## How We Use Your Information
+## How Your Information Is Used
 
-We use your information to:
+We use the information we collect to:
 
-- Provide secure login and authentication services.
-- Prevent abuse, such as DoS attacks, through rate limiting.
+- Provide secure login and authentication.
+- Prevent abuse (e.g., DoS attacks) through rate limiting and security checks.
 
-## Cookies and Tracking Technologies
+## Use of Cookies
 
-We use **essential cookies** to maintain user sessions and authentication. These cookies do not track your behavior outside our website. By using our site, you consent to our use of these cookies. You can manage cookies in your browser settings.
+### Essential Cookies
 
-Additionally, we use a cookie to store your **preferred language** setting. However, this may be removed in the future. At this time, there is no mechanism to opt out of cookies beyond browser settings.
+- Used to maintain user sessions and authentication.
+- Do not track behavior outside of our site.
 
-## Data Sharing & Security
+### Language Preference
 
-- We **do not** sell, trade, or rent your personal information to third parties.
-- We **do not** log or store any user activity data beyond session management and full IP logging for security purposes.
-- We implement security measures to protect your data from unauthorized access.
+- A cookie stores your **preferred language**, though this may be removed in the future.
+- No opt-out mechanism is provided beyond browser settings.
 
-## Example Data Storage Formats
+## Data Sharing and Protection
 
-For transparency, below are examples of how data is logged and stored in our system:
+- We **do not** sell, trade, or rent your personal data.
+- We **do not** log or store activity beyond session and IP logs.
+- We implement modern security measures to protect your data.
 
-### Cookies and Tracking Technologies
+## Examples of Stored Data
 
-We use session cookies to store authentication-related data such as session tokens and refresh tokens. These cookies are essential for keeping you securely logged in and expire after a set period.
+To maintain transparency, here are examples of how data is stored and logged:
 
-We use HttpOnly and Secure cookies to store authentication tokens. This prevents unauthorized access via JavaScript and ensures that sensitive data is only transmitted over encrypted connections.
+### Cookie Storage Format
 
-### Log Data Format
+- Session cookies store tokens like `session_token` and `refresh_token`.
+- Cookies are marked as `HttpOnly` and `Secure` to prevent JavaScript access and ensure encrypted transmission.
 
-These are logs of user activity within our system, such as authentication and website access:
+### Log Data Sample
 
-```
+```log
 2025-04-02 14:21:50 - config.logging - INFO - 172.17.0.1: GET / 200
 2025-04-02 14:21:54 - config.logging - INFO - 172.17.0.1: POST /auth/login 200
 ```
 
-### User Data Storage
-
-Below is an example of how user data might be stored when you create an account on our platform:
+### Sample User Data
 
 - **User ID**: 6
 - **Name**: Jane Doe
-- **Email**: (Stored securely, not viewable by anyone, even our team)
-- **Password**: (Hashed and encrypted using modern algorithms for your protection)
-- **Registration Date**: April 1st, 2025 at 00:00
+- **Email**: (Encrypted, not visible to our team)
+- **Password**: (Hashed securely using modern cryptographic algorithms)
+- **Registration Date**: April 1st, 2025
 - **Last Login**: Not yet logged in
 - **Preferred Language**: English
 
-### Data Protection Explanation
+### Security Practices
 
-We ensure that your information is safe, even in the event of a database breach.
+- **Password Hashing**: Ensures your password cannot be reversed or exposed.
+- **Email Encryption**: Protects your contact information from unauthorized access.
 
-- **Password Hashing**: Your password is transformed into a non-reversible hash, which means that even we cannot view your actual password.
-- **Email Encryption**: Your email is encrypted to protect it from unauthorized access.
+## Transparency and Control
 
-## Transparency & User Control
+- Our website is **open-source on GitHub**, so users can verify data handling.
+- You have the right to access your data and understand how it is used.
+- You may request data deletion by contacting us or opening a GitHub issue.
 
-- Our website code is **fully open-source and available on GitHub**, allowing users to verify how data is handled.
-- You have the right to access and understand how your data is used.
-- Users may request data deletion by opening an issue on our GitHub repository (if they have a GitHub account) or by contacting us.
+## In Case of a Breach
 
-## Security Breach Notification
+If a security breach occurs, we will notify affected users as soon as possible.
 
-In the event of a security breach, we will notify affected users as soon as we discover the issue.
+## Policy Updates
 
-## Changes to This Policy
+We may revise this Privacy Policy over time. The latest version will always be published on our website.
 
-We may update this policy from time to time. The latest version will always be available on our website.
+## Contact
 
-## Contact Us
-
-If you have questions about this Privacy Policy, contact us.
+If you have any questions about this policy, feel free to contact us.
