@@ -1,24 +1,12 @@
 <template>
-    <VueMarkdown ref="markdown" :source="privacyPolicy" class="markdown" />
+    <VueMarkdown :source="privacyPolicy" class="markdown" />
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue'
 import VueMarkdown from 'vue-markdown-render'
-import hljs from 'highlight.js'
-import 'highlight.js/styles/github-dark-dimmed.css'
 import '~/assets/styles/markdown.css'
 import privacyPolicy from '~/content/privacy-policy.md?raw'
-
-const markdown = ref(null)
-
-onMounted(() => {
-    if (markdown.value) {
-        markdown.value.querySelectorAll('pre code').forEach((block) => {
-            hljs.highlightElement(block)
-        })
-    }
-})
 </script>
 
 <style scoped>
