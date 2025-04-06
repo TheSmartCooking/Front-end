@@ -14,7 +14,7 @@ const markdown = ref(null)
 
 onMounted(() => {
     if (markdown.value) {
-        ref.querySelectorAll('pre code').forEach((block) => {
+        markdown.value.querySelectorAll('pre code').forEach((block) => {
             hljs.highlightElement(block)
         })
     }
