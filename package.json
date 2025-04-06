@@ -16,6 +16,7 @@
         "vue-router": "latest"
     },
     "devDependencies": {
+        "prettier": "^3.5.3",
         "vite-svg-loader": "^5.1.0"
     }
 }

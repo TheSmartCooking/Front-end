@@ -8,10 +8,11 @@
         "vscode": {
             "extensions": [
                 "esbenp.prettier-vscode",
-                "nuxtr.nuxt-vscode-extentions"
+                "nuxtr.nuxt-vscode-extentions",
+                "emeraldwalk.RunOnSave"
             ]
         }
     },
-    "postStartCommand": "npm update && npm install",
+    "postStartCommand": "npm update && npm install && npm add --save-dev prettier && npx prettier --write .",
     "remoteUser": "vscode"
 }
