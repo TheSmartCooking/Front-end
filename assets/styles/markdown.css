@@ -44,3 +44,9 @@ pre {
 pre code {
     color: #888;
 }
+
+code:not(pre code) {
+    border-radius: var(--border-radius-small);
+    padding: 0 var(--spacing-small);
+    background-color: var(--polaroid-color);
+}
