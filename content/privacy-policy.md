@@ -7,65 +7,64 @@ _Effective Date: April 6, 2025_
 Welcome to **Smart Cooking ©**!
 
 Your privacy is important to us.
-This Privacy Policy explains how we collect, use, and protect your personal data when you visit our site.
+This Privacy Policy explains what information we collect when you use our site, how we use it, and how we keep it safe.
 
 ## Information We Collect
 
 We collect and process the following types of information:
 
-### Account & Authentication Details
+### Account Information
 
-- Users can create accounts directly on our platform.
-- We handle authentication internally without third-party providers.
+- You can create an account directly on our platform.
+- We manage login and sign-up ourselves, without using services like Google or Facebook.
 
-### Session & Login Data
+### Login and Session Information
 
-- We use cookies to store authentication tokens and session data to keep you securely logged in.
+- We use small files (called cookies) to help keep you signed in and remember your session while you're using our site.
 
-### IP Logging for Security
+### IP Addresses (for Security)
 
-- We log full IP addresses to apply rate limiting and prevent DoS attacks.
-- Logs are used solely for security and retained for **90 days** before deletion.
+- We record your internet address (IP) to help protect our site from spam or abuse.
+- This information is kept for up to **90 days** and then deleted.
 
-## How Your Information Is Used
+## How We Use Your Information
 
 We use the information we collect to:
 
-- Provide secure login and authentication.
-- Prevent abuse (e.g., DoS attacks) through rate limiting and security checks.
+- Keep your account safe and make sure you stay logged in.
+- Protect the website from misuse or attacks.
 
-## Use of Cookies
+## Cookies
 
 ### Essential Cookies
 
-- Used to maintain user sessions and authentication.
-- Do not track behavior outside of our site.
+- These are required for the site to work properly, such as staying logged in.
+- We do **not** use cookies to track you on other websites.
 
 ### Language Preference
 
-- A cookie stores your **preferred language**, though this may be removed in the future.
-- No opt-out mechanism is provided beyond browser settings.
+- We may remember your preferred language to show the site in the language you like.
+- If you'd rather not store this, you can block cookies through your browser settings.
 
-## Data Sharing and Protection
+## How We Protect Your Information
 
-- We **do not** sell, trade, or rent your personal data.
-- We **do not** log or store activity beyond session and IP logs.
-- We implement modern security measures to protect your data.
+- We **do not** sell, share, or rent your personal information to anyone.
+- We only collect what is necessary for login and security.
+- We use modern security practices to protect your information from unauthorized access.
 
-## Transparency and Control
+## Your Rights and Choices
 
-- Our site is **open-source on GitHub**, so users can verify data handling.
-- You have the right to access your data and understand how it is used.
-- You may request data deletion by contacting us or opening a GitHub issue.
+- Our code is **open-source and [available on GitHub](https://github.com/TheSmartCooking)**, so anyone can see how we handle data.
+- You can ask to see or delete your data at any time by contacting us or opening a GitHub issue.
 
-## In Case of a Breach
+## In Case of a Security Issue
 
-If a security breach occurs, we will notify affected users as soon as possible.
+If something goes wrong and your information might be at risk, we will notify you as soon as we can.
 
-## Policy Updates
+## Changes to This Policy
 
-We may revise this Privacy Policy over time. The latest version will always be published on our site.
+We may update this policy occasionally. The most recent version will always be available on our website.
 
 ## Contact
 
-If you have any questions about this policy, feel free to contact us.
+If you have any questions about this Privacy Policy, feel free to reach out to us.
