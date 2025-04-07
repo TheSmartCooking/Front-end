@@ -52,37 +52,6 @@ We use the information we collect to:
 - We **do not** log or store activity beyond session and IP logs.
 - We implement modern security measures to protect your data.
 
-## Examples of Stored Data
-
-To maintain transparency, here are examples of how data is stored and logged:
-
-### Cookie Storage Format
-
-- Session cookies store tokens like `session_token` and `refresh_token`.
-- Cookies are marked as `HttpOnly` and `Secure` to prevent JavaScript access and ensure encrypted transmission.
-
-### Log Data Sample
-
-```log
-2025-04-02 14:21:50 - config.logging - INFO - 172.17.0.1: GET / 200
-2025-04-02 14:21:54 - config.logging - INFO - 172.17.0.1: POST /auth/login 200
-```
-
-### Sample User Data
-
-- **User ID**: 6
-- **Name**: Jane Doe
-- **Email**: (Encrypted, not visible to our team)
-- **Password**: (Hashed securely using modern cryptographic algorithms)
-- **Registration Date**: April 1st, 2025
-- **Last Login**: Not yet logged in
-- **Preferred Language**: English
-
-### Security Practices
-
-- **Password Hashing**: Ensures your password cannot be reversed or exposed.
-- **Email Encryption**: Protects your contact information from unauthorized access.
-
 ## Transparency and Control
 
 - Our site is **open-source on GitHub**, so users can verify data handling.
