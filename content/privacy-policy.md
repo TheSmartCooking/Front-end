@@ -32,14 +32,14 @@ We collect and process the following types of information:
 We use the information we collect to:
 
 - Keep your account safe and make sure you stay logged in.
-- Protect the website from misuse or attacks.
+- Protect the site from misuse or attacks.
 
 ## Cookies
 
 ### Essential Cookies
 
 - These are required for the site to work properly, such as staying logged in.
-- We do **not** use cookies to track you on other websites.
+- We do **not** use cookies to track you on other sites.
 
 ### Language Preference
 
@@ -63,7 +63,7 @@ If something goes wrong and your information might be at risk, we will notify yo
 
 ## Changes to This Policy
 
-We may update this policy occasionally. The most recent version will always be available on our website.
+We may update this policy occasionally. The most recent version will always be available on our site.
 
 ## Contact
 
