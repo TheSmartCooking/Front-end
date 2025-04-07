@@ -2,17 +2,17 @@
     <div id="authentication">
         <section id="login">
             <Login />
-            <a id="go-to-login" @click="goToRegister"
-                >Don't have an account?
-                <span class="link-color">Register</span></a
-            >
+            <a id="go-to-login" @click="goToRegister">
+                Don't have an account?
+                <span class="link-color">Register</span>
+            </a>
         </section>
         <section id="register" class="hidden">
             <Register :goToLogin="goToLogin" />
-            <a id="go-to-register" @click="goToLogin"
-                >Already have an account?
-                <span class="link-color">Login</span></a
-            >
+            <a id="go-to-register" @click="goToLogin">
+                Already have an account?
+                <span class="link-color">Login</span>
+            </a>
         </section>
     </div>
 </template>
