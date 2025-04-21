@@ -28,9 +28,8 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
-import { useCookie } from '#app'
+import { useAuth } from '@/composables/useAuth'
 import ButtonHome from './ButtonHome.vue'
 import IconAccount from '@/assets/icons/user.svg'
 import IconContact from '@/assets/icons/mail-question.svg'
@@ -39,20 +38,14 @@ import IconNewRecipe from '@/assets/icons/new-section.svg'
 const {
     public: { appTitle },
 } = useRuntimeConfig()
-const isLoggedIn = ref(false)
 
-// Monitor the refresh_token cookie
-const userCookie = useCookie('refresh_token')
-
-// Update isLoggedIn when the cookie changes
-watchEffect(() => {
-    isLoggedIn.value = !!userCookie.value
-})
+// Use the composable for logged-in state
+const { isLoggedIn } = useAuth()
 
 // Ensure the header reacts to route changes
 const router = useRouter()
 router.afterEach(() => {
-    isLoggedIn.value = !!userCookie.value
+    isLoggedIn.value = !!useCookie('refresh_token').value
 })
 </script>
 
