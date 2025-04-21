@@ -1,5 +1,8 @@
 <template>
-    <footer>{{ appTitle }} {{ yearString }} All rights reserved</footer>
+    <footer>
+        <span>{{ appTitle }} {{ yearString }}</span>
+        <span>All rights reserved</span>
+    </footer>
 </template>
 
 <script setup>
@@ -23,13 +26,18 @@ const yearString = computed(() => {
 
 <style scoped>
 footer {
-    text-align: center;
+    align-self: center;
     color: light-dark(#000, #fff);
+    display: flex;
+    gap: var(--spacing-small);
 }
 
 @media screen and (width<=850px) {
     footer {
+        flex-direction: column;
         font-size: 1rem;
+        gap: 0;
+        text-align: center;
     }
 }
 </style>
