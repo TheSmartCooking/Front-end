@@ -11,7 +11,8 @@
             <Register :goToLogin="goToLogin" />
             <a id="go-to-register" @click="goToLogin">
                 Already have an account?
-                <span class="link-color">Login</span></a>
+                <span class="link-color">Login</span>
+            </a>
         </section>
     </div>
 </template>
