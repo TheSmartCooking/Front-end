@@ -49,7 +49,6 @@ const login = async () => {
                 }
                 return response.json()
             })
-            .then((data) => data.data)
 
         // Use cookies to store tokens
         const accessToken = useCookie('access_token', {

@@ -43,7 +43,7 @@ function fetchRecipes(query = '') {
         `${apiBaseUrl}/recipe/${query ? `search?name=${query}&language_code=en` : 'all'}`
     )
         .then((data) => {
-            recipes.value = data.data || []
+            recipes.value = data || []
         })
         .catch((e) => {
             error.value = true
