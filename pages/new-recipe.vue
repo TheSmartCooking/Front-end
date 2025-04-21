@@ -8,23 +8,45 @@
             </div>
             <div>
                 <label for="ingredients">Ingredients:</label>
-                <textarea id="ingredients" v-model="recipe.ingredients" required></textarea>
+                <textarea
+                    id="ingredients"
+                    v-model="recipe.ingredients"
+                    required
+                ></textarea>
             </div>
             <div>
                 <label for="instructions">Instructions:</label>
-                <textarea id="instructions" v-model="recipe.instructions" required></textarea>
+                <textarea
+                    id="instructions"
+                    v-model="recipe.instructions"
+                    required
+                ></textarea>
             </div>
             <div>
                 <label for="preparationTime">Preparation Time:</label>
-                <input type="text" id="preparationTime" v-model="recipe.preparationTime"/>
+                <input
+                    type="text"
+                    id="preparationTime"
+                    v-model="recipe.preparationTime"
+                />
             </div>
             <div>
                 <label for="cookingTime">Cooking Time:</label>
-                <input type="text" id="cookingTime" v-model="recipe.cookingTime"/>
+                <input
+                    type="text"
+                    id="cookingTime"
+                    v-model="recipe.cookingTime"
+                />
             </div>
             <div>
                 <label for="servings">Servings:</label>
-                <input type="number" id="servings" v-model="recipe.servings" min="1" max="10"/>
+                <input
+                    type="number"
+                    id="servings"
+                    v-model="recipe.servings"
+                    min="1"
+                    max="10"
+                />
             </div>
             <div>
                 <label for="difficulty">Difficulty:</label>
@@ -36,8 +58,24 @@
             </div>
             <div>
                 <label for="source">Source:</label>
-                <input type="text" id="source" v-model="recipe.source"/>
+                <input type="text" id="source" v-model="recipe.source" />
             </div>
+            <div>
+                <label for="language">Language:</label>
+                <select id="language" v-model="recipe.language">
+                    <!-- TODO: Request languages list to API -->
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
+            <div>
+                <label for="nutritionalInfo">Nutritional Info:</label>
+                <textarea
+                    id="nutritionalInfo"
+                    v-model="recipe.nutritionalInfo"
+                ></textarea>
+            </div>
+
             <button type="submit">Create Recipe</button>
         </form>
     </div>
@@ -50,7 +88,9 @@
 <script setup>
 import { useAuth } from '@/composables/useAuth'
 
-const {apiBaseUrl } = useRuntimeConfig()
+const {
+    public: { apiBaseUrl },
+} = useRuntimeConfig()
 const { isLoggedIn } = useAuth()
 
 const recipe = ref({
@@ -61,7 +101,9 @@ const recipe = ref({
     cookingTime: '',
     servings: 1,
     difficulty: 'easy',
-    source: ''
+    source: '',
+    language: 'en',
+    nutritionalInfo: '',
 })
 
 const submitRecipe = async () => {
@@ -69,21 +111,49 @@ const submitRecipe = async () => {
         console.error('User is not logged in')
         return
     }
-    console.log('Submitting recipe:', recipe.value)
+
+    const accessToken = useCookie('access_token')?.value
+
+    if (!accessToken) {
+        console.error('Missing access token')
+        return
+    }
+
+    const payload = {
+        picture_id: 1,
+
+        cook_time:
+            parseInt(recipe.value.preparationTime || '0') +
+            parseInt(recipe.value.cookingTime || '0'),
+        recipe_source: recipe.value.source,
+        language_iso_code: recipe.value.language,
+        title: recipe.value.title,
+        details: recipe.value.ingredients,
+        preparation: recipe.value.instructions,
+        nutritional_information: recipe.value.nutritionalInfo,
+    }
+
     try {
         const response = await fetch(`${apiBaseUrl}/recipe`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(recipe.value)
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${accessToken}`,
+            },
+            body: JSON.stringify(payload),
         })
 
+        console.log('Response status:', response.status)
+        const text = await response.text()
+        console.log('Raw response text:', text)
+
         if (!response.ok) {
-            throw new Error('Failed to create recipe')
+            throw new Error(`Failed to create recipe: ${response.statusText}`)
         }
 
         const data = await response.json()
         console.log('Recipe created:', data)
-        // Redirect or show success message
+        // TODO: router.push(`/recipe/${data.recipe_id}`)
     } catch (error) {
         console.error('Error creating recipe:', error)
     }
