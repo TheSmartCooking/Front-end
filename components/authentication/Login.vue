@@ -42,13 +42,12 @@ const login = async () => {
                 email: email.value,
                 password: password.value,
             }),
+        }).then((response) => {
+            if (!response.ok) {
+                throw new Error('Login failed')
+            }
+            return response.json()
         })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Login failed')
-                }
-                return response.json()
-            })
 
         // Use cookies to store tokens
         const accessToken = useCookie('access_token', {
