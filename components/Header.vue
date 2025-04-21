@@ -9,7 +9,14 @@
                 /></nuxt-link>
             </li>
             <li v-else>
-                <nuxt-link to="/login" title="Login"><IconAccount /></nuxt-link>
+                <nuxt-link to="/login" title="Login">
+                    <IconAccount />
+                </nuxt-link>
+            </li>
+            <li v-if="isLoggedIn">
+                <nuxt-link to="/new-recipe" title="New Recipe">
+                    <IconNewRecipe />
+                </nuxt-link>
             </li>
             <li>
                 <nuxt-link to="/contact" title="Contact Us"
@@ -27,6 +34,7 @@ import { useCookie } from '#app'
 import ButtonHome from './ButtonHome.vue'
 import IconAccount from '@/assets/icons/user.svg'
 import IconContact from '@/assets/icons/mail-question.svg'
+import IconNewRecipe from '@/assets/icons/new-section.svg'
 
 const {
     public: { appTitle },
