@@ -25,17 +25,21 @@
             <div>
                 <label for="preparationTime">Preparation Time:</label>
                 <input
-                    type="text"
+                    type="number"
                     id="preparationTime"
                     v-model="recipe.preparationTime"
+                    min="0"
+                    max="4320"
                 />
             </div>
             <div>
                 <label for="cookingTime">Cooking Time:</label>
                 <input
-                    type="text"
+                    type="number"
                     id="cookingTime"
                     v-model="recipe.cookingTime"
+                    min="1"
+                    max="4320"
                 />
             </div>
             <div>
@@ -120,8 +124,8 @@ const submitRecipe = async () => {
     }
 
     const payload = {
+        author_id: 1, // TODO: Fix the API to use the session token
         picture_id: 1,
-
         cook_time:
             parseInt(recipe.value.preparationTime || '0') +
             parseInt(recipe.value.cookingTime || '0'),
@@ -132,6 +136,10 @@ const submitRecipe = async () => {
         preparation: recipe.value.instructions,
         nutritional_information: recipe.value.nutritionalInfo,
     }
+
+    console.log('Payload:', payload)
+    console.log('Access token:', accessToken)
+    console.log('API Base URL:', apiBaseUrl)
 
     try {
         const response = await fetch(`${apiBaseUrl}/recipe`, {
