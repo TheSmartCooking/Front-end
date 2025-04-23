@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <div>
         <SearchBar @search="onSearch" />
         <p v-if="error">
             Unable to load recipes, please try again later or contact support
@@ -13,7 +13,7 @@
                 :recipe="recipe"
             />
         </section>
-    </main>
+    </div>
 </template>
 
 <script setup>
@@ -40,7 +40,9 @@ function fetchRecipes(query = '') {
     error.value = false
 
     fetchJSON(
-        `${apiBaseUrl}/recipe/${query ? `search?name=${query}&language_code=en` : 'all'}`
+        `${apiBaseUrl}/recipe/${
+            query ? `search?name=${query}&language_code=en` : 'all'
+        }`
     )
         .then((data) => {
             recipes.value = data || []
@@ -64,7 +66,7 @@ fetchRecipes()
 </script>
 
 <style scoped>
-main {
+div {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -79,5 +81,6 @@ main {
     gap: var(--spacing-medium);
     justify-content: center;
     width: 100%;
+    overflow: auto;
 }
 </style>
