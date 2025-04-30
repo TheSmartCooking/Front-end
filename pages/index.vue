@@ -45,7 +45,7 @@ function fetchRecipes(query = '') {
         }`
     )
         .then((data) => {
-            recipes.value = data.data || []
+            recipes.value = data || []
         })
         .catch((e) => {
             error.value = true

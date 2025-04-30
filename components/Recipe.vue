@@ -103,8 +103,8 @@ function fetchPictureData() {
     if (recipe.picture_id) {
         fetchJSON(`${apiBaseUrl}/picture/${recipe.picture_id}`)
             .then((data) => {
-                imagePath.value = `${apiBaseUrl}/picture/${data.data.picture_path}`
-                recipe_picture.value = data.data
+                imagePath.value = `${apiBaseUrl}/picture/${picture_path}`
+                recipe_picture.value = data
             })
             .catch((error) => {
                 console.error('Error fetching picture data:', error)
@@ -124,7 +124,7 @@ const handleImageError = (event) => {
 ;(() => {
     fetchJSON(`${apiBaseUrl}/comment/recipe/${id}`)
         .then((data) => {
-            commentSection.value = data.data || []
+            commentSection.value = data || []
         })
         .catch((error) => {
             console.error('Error fetching comments:', error)

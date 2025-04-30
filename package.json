@@ -1,5 +1,5 @@
 {
-    "name": "nuxt-app",
+    "name": "smart-cooking",
     "private": true,
     "type": "module",
     "scripts": {
@@ -17,6 +17,7 @@
         "vue-router": "latest"
     },
     "devDependencies": {
+        "prettier": "^3.5.3",
         "vite-svg-loader": "^5.1.0"
     }
 }

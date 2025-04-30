@@ -27,9 +27,8 @@ useHead(() => ({
 function fetchRecipe() {
     fetchJSON(`${apiBaseUrl}/recipe/${id}`)
         .then((data) => {
-            if (data.success) {
-                recipe.value = data.data
-                pageTitle.value = recipe.value.title || 'Recipe Details'
+            if (data) {
+                pageTitle.value = data.title || 'Recipe Details'
             } else {
                 console.error('Failed to fetch recipe data.')
                 pageTitle.value = 'Recipe Not Found'
