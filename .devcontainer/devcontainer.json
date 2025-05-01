@@ -12,6 +12,6 @@
             ]
         }
     },
-    "postStartCommand": "npm update && npm install",
+    "postStartCommand": "npm update && npm install && npx prettier --write .",
     "remoteUser": "vscode"
 }

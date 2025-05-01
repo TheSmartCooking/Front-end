@@ -4,9 +4,9 @@
         <ul>
             <li><ButtonHome /></li>
             <li v-if="isLoggedIn">
-                <nuxt-link to="/account" title="Account"
-                    ><IconAccount
-                /></nuxt-link>
+                <nuxt-link to="/account" title="Account">
+                    <IconAccount />
+                </nuxt-link>
             </li>
             <li v-else>
                 <nuxt-link to="/login" title="Login">
@@ -19,9 +19,14 @@
                 </nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/contact" title="Contact Us"
-                    ><IconContact
-                /></nuxt-link>
+                <nuxt-link to="/contact" title="Contact Us">
+                    <IconContact />
+                </nuxt-link>
+            </li>
+            <li>
+                <nuxt-link to="/privacy" title="Privacy Policy">
+                    <IconPrivacy />
+                </nuxt-link>
             </li>
         </ul>
     </header>
@@ -34,6 +39,7 @@ import ButtonHome from './ButtonHome.vue'
 import IconAccount from '@/assets/icons/user.svg'
 import IconContact from '@/assets/icons/mail-question.svg'
 import IconNewRecipe from '@/assets/icons/new-section.svg'
+import IconPrivacy from '@/assets/icons/privacy-policy.svg'
 
 const {
     public: { appTitle },
@@ -76,8 +82,14 @@ ul {
         flex-direction: column;
     }
 
+    header > span {
+        margin: 0;
+        text-align: center;
+    }
+
     ul {
         justify-content: space-around;
+        margin: 0;
     }
 }
 </style>
