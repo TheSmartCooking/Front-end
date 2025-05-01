@@ -13,6 +13,6 @@
             ]
         }
     },
-    "postStartCommand": "npm update && npm install && npm add --save-dev prettier && npx prettier --write .",
+    "postStartCommand": "npm update && npm install && npx prettier --write .",
     "remoteUser": "vscode"
 }
