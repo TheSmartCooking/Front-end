@@ -8,7 +8,8 @@
         "vscode": {
             "extensions": [
                 "esbenp.prettier-vscode",
-                "nuxtr.nuxt-vscode-extentions"
+                "nuxtr.nuxt-vscode-extentions",
+                "emeraldwalk.RunOnSave"
             ]
         }
     },
