@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "@vueuse/head": "^2.0.0",
-        "nuxt": "^3.16.0",
+        "nuxt": "^3.16.2",
         "vue": "latest",
         "vue-markdown-render": "^2.2.1",
         "vue-router": "latest"
