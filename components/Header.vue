@@ -4,47 +4,54 @@
         <ul>
             <li><ButtonHome /></li>
             <li v-if="isLoggedIn">
-                <nuxt-link to="/account" title="Account"
-                    ><IconAccount
-                /></nuxt-link>
+                <nuxt-link to="/account" title="Account">
+                    <IconAccount />
+                </nuxt-link>
             </li>
             <li v-else>
-                <nuxt-link to="/login" title="Login"><IconAccount /></nuxt-link>
+                <nuxt-link to="/login" title="Login">
+                    <IconAccount />
+                </nuxt-link>
+            </li>
+            <li v-if="isLoggedIn">
+                <nuxt-link to="/new-recipe" title="New Recipe">
+                    <IconNewRecipe />
+                </nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/contact" title="Contact Us"
-                    ><IconContact
-                /></nuxt-link>
+                <nuxt-link to="/contact" title="Contact Us">
+                    <IconContact />
+                </nuxt-link>
+            </li>
+            <li>
+                <nuxt-link to="/privacy" title="Privacy Policy">
+                    <IconPrivacy />
+                </nuxt-link>
             </li>
         </ul>
     </header>
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
-import { useCookie } from '#app'
+import { useAuth } from '@/composables/useAuth'
 import ButtonHome from './ButtonHome.vue'
 import IconAccount from '@/assets/icons/user.svg'
 import IconContact from '@/assets/icons/mail-question.svg'
+import IconNewRecipe from '@/assets/icons/new-section.svg'
+import IconPrivacy from '@/assets/icons/privacy-policy.svg'
 
 const {
     public: { appTitle },
 } = useRuntimeConfig()
-const isLoggedIn = ref(false)
 
-// Monitor the refresh_token cookie
-const userCookie = useCookie('refresh_token')
-
-// Update isLoggedIn when the cookie changes
-watchEffect(() => {
-    isLoggedIn.value = !!userCookie.value
-})
+// Use the composable for logged-in state
+const { isLoggedIn } = useAuth()
 
 // Ensure the header reacts to route changes
 const router = useRouter()
 router.afterEach(() => {
-    isLoggedIn.value = !!userCookie.value
+    isLoggedIn.value = !!useCookie('refresh_token').value
 })
 </script>
 
@@ -75,8 +82,14 @@ ul {
         flex-direction: column;
     }
 
+    header > span {
+        margin: 0;
+        text-align: center;
+    }
+
     ul {
         justify-content: space-around;
+        margin: 0;
     }
 }
 </style>
