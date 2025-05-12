@@ -4,14 +4,16 @@
     "editor.formatOnSave": true,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "emeraldwalk.runonsave": {
-        "commands": [
-            {
-                "match": "\\.(js|ts|vue|json|css|scss|md|html)$",
-                "cmd": "npx prettier --write \"${file}\"",
-                "autoShowOutputPanel": "always"
-            }
+    "triggerTaskOnSave.tasks": {
+        "Prettify Code": [
+            "**/*.js",
+            "**/*.ts",
+            "**/*.vue",
+            "**/*.json",
+            "**/*.css",
+            "**/*.scss",
+            "**/*.md",
+            "**/*.html"
         ]
     }
 }
